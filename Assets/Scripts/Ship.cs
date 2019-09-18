@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ship : MonoBehaviour {
 
@@ -8,7 +9,10 @@ public class Ship : MonoBehaviour {
     public float maxThrust;
     public float turnSpeed = 1;
     public float fuel;
-    public float fuelEfficiencyMultiplier;
+    public float maxFuel;
+    public float fuelEfficiencyMultiplier = 1;
+
+    public bool canLaunch;
 
     public Rigidbody rb; 
     public ParticleSystem rocketThrust;
@@ -17,12 +21,13 @@ public class Ship : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         rocketThrust.Stop();
+        canLaunch = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        rb.AddForce(transform.up * thrust);
-        if (fuel <= 0)
+        rb.AddForce(new Vector3(0, 1, 0) * thrust);
+        if (fuel <= 0 || thrust == 0)
         {
             thrust = 0;
             rocketThrust.Stop();
@@ -30,12 +35,21 @@ public class Ship : MonoBehaviour {
 
         if (thrust > 0)
         {
-            fuel -= 1;
+            fuel -= (1 * thrust / maxThrust) * fuelEfficiencyMultiplier;
             rocketThrust.Play();
         }
-
-        handleMovement();    
+        if (canLaunch)
+        {
+            handleMovement();
+        }
 	}
+
+    public void resetShip()
+    {
+        rb.velocity = new Vector3(0f, 0f, 0f);
+        rb.position = new Vector3(0f, 0f, 0f);
+        thrust = 0;
+    }
 
     void handleMovement()
     {
@@ -65,5 +79,7 @@ public class Ship : MonoBehaviour {
         {
             transform.Rotate(new Vector3(0, 0, 1) * Time.deltaTime * turnSpeed, Space.World);
         }
+
+        
     }
 }
