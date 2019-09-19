@@ -16,13 +16,23 @@ public class Ship : MonoBehaviour {
 
     public Rigidbody rb; 
     public ParticleSystem rocketThrust;
+    public GameObject explosion;
+    private ParticleSystem[] childParticles;
+
+    private float velocityBeforeCollision;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         rocketThrust.Stop();
+        stopExplode();
         canLaunch = false;
 	}
+
+    void FixedUpdate()
+    {
+        velocityBeforeCollision = rb.velocity.y;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -44,11 +54,41 @@ public class Ship : MonoBehaviour {
         }
 	}
 
+    void OnCollisionEnter()
+    {
+        if (velocityBeforeCollision< -40)
+        {
+            Debug.Log("Collision");
+            explode();
+        }
+        
+    }
+
     public void resetShip()
     {
         rb.velocity = new Vector3(0f, 0f, 0f);
         rb.position = new Vector3(0f, 0f, 0f);
+        rb.rotation = Quaternion.identity;
         thrust = 0;
+        stopExplode();
+    }
+
+    void explode()
+    {
+        childParticles = explosion.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem p in childParticles)
+        {
+            p.Play();
+        }
+    }
+
+    void stopExplode()
+    {
+        childParticles = explosion.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem p in childParticles)
+        {
+            p.Stop();
+        }
     }
 
     void handleMovement()

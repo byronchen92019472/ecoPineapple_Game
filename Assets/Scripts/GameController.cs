@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
     public Text heightText;
     public Text maxHeightText;
     public Text velocityText;
+    public Text moneyText;
 
     public Canvas buildUI;
     public Canvas launchUI;
@@ -27,9 +28,9 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ship.maxFuel = 500;
+        ship.maxFuel = 150;
         ship.fuel = ship.maxFuel;
-        ship.maxThrust = 40;
+        ship.maxThrust = 25;
         ship.fuelEfficiencyMultiplier = .95f;
 
         maxHeight = 0;
@@ -42,9 +43,9 @@ public class GameController : MonoBehaviour {
 	void Update () {
         fuelSlider.value = ship.fuel;
         thrustSlider.value = ship.thrust;
-        heightText.text = "Height: " + ship.transform.position.y.ToString();
-        maxHeightText.text = "Max Height: " + maxHeight.ToString();
-        velocityText.text = "Velocity: " + ship.rb.velocity.y.ToString();
+        heightText.text = "Height: " + ((int)ship.transform.position.y).ToString();
+        maxHeightText.text = "Max Height: " + ((int)maxHeight).ToString();
+        velocityText.text = "Velocity: " + ((int)ship.rb.velocity.y).ToString();
 
         if (maxHeight < ship.transform.position.y)
         {
@@ -69,8 +70,15 @@ public class GameController : MonoBehaviour {
         
 	}
 
+    public void launchResults()
+    {
+        player.money += (int)maxHeight * 100;
+    }
+
     public void initBuildPhase()
     {
+        launchResults();
+        moneyText.text = "Money: " + player.money.ToString();
         buildUI.enabled = true;
         launchUI.enabled = false;
         ship.canLaunch = false;
@@ -81,6 +89,7 @@ public class GameController : MonoBehaviour {
 
     public void initLaunchPhase()
     {
+        maxHeight = 0f;
         ship.fuel = ship.maxFuel;
         fuelSlider.maxValue = ship.fuel;
         thrustSlider.maxValue = ship.maxThrust;
