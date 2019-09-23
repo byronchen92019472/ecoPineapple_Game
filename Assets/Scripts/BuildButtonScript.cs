@@ -43,6 +43,7 @@ public class BuildButtonScript : MonoBehaviour {
             {
                 gameController.ship.maxFuel = 250;
                 gameController.player.money -= 1000;
+                gameController.ship.shipParts.shipFuel1.SetActive(true);
 
             }
         }
@@ -52,6 +53,7 @@ public class BuildButtonScript : MonoBehaviour {
             {
                 gameController.ship.maxFuel = 500;
                 gameController.player.money -= 50000;
+                gameController.ship.shipParts.shipFuel2.SetActive(true);
             }
         }
         if (button == fuelPart3)

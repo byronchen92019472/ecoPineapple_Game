@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour {
         ship.fuel = ship.maxFuel;
         ship.maxThrust = 25;
         ship.fuelEfficiencyMultiplier = .95f;
+        player.money = 1000000;
 
         maxHeight = 0;
         initBuildPhase();

@@ -17,7 +17,9 @@ public class Ship : MonoBehaviour {
     public Rigidbody rb; 
     public ParticleSystem rocketThrust;
     public GameObject explosion;
+    public ShipParts shipParts;
     private ParticleSystem[] childParticles;
+
 
     private float velocityBeforeCollision;
 
@@ -25,18 +27,14 @@ public class Ship : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         rocketThrust.Stop();
-        stopExplode();
         canLaunch = false;
 	}
 
     void FixedUpdate()
     {
         velocityBeforeCollision = rb.velocity.y;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        rb.AddForce(new Vector3(0, 1, 0) * thrust);
+        rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
+
         if (fuel <= 0 || thrust == 0)
         {
             thrust = 0;
@@ -45,14 +43,14 @@ public class Ship : MonoBehaviour {
 
         if (thrust > 0)
         {
-            fuel -= (1 * thrust / maxThrust) * fuelEfficiencyMultiplier;
+            fuel -= (1 * thrust / maxThrust) * fuelEfficiencyMultiplier * Time.fixedDeltaTime * 60;
             rocketThrust.Play();
         }
         if (canLaunch)
         {
             handleMovement();
         }
-	}
+    }
 
     void OnCollisionEnter()
     {
@@ -75,6 +73,7 @@ public class Ship : MonoBehaviour {
 
     void explode()
     {
+        explosion.SetActive(true);
         childParticles = explosion.GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem p in childParticles)
         {
@@ -89,6 +88,7 @@ public class Ship : MonoBehaviour {
         {
             p.Stop();
         }
+        Debug.Log("Stop Explode");
     }
 
     void handleMovement()
@@ -99,14 +99,14 @@ public class Ship : MonoBehaviour {
             {
                 if (thrust < maxThrust)
                 {
-                    thrust += 1;
+                    thrust += 1 * Time.fixedDeltaTime * 60;
                 }
             }
             else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
             {
                 if (thrust > 0)
                 {
-                    thrust -= 1;
+                    thrust -= 1 * Time.fixedDeltaTime * 60;
                 }
             }
         }
