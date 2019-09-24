@@ -46,6 +46,11 @@ public class Ship : MonoBehaviour {
             fuel -= (1 * thrust / maxThrust) * fuelEfficiencyMultiplier * Time.fixedDeltaTime * 60;
             rocketThrust.Play();
         }
+        else if (thrust < 0)
+        {
+            fuel -= (1 * -thrust / maxThrust) * fuelEfficiencyMultiplier * Time.fixedDeltaTime * 60;
+            rocketThrust.Play();
+        }
         if (canLaunch)
         {
             handleMovement();
@@ -54,7 +59,7 @@ public class Ship : MonoBehaviour {
 
     void OnCollisionEnter()
     {
-        if (velocityBeforeCollision< -40)
+        if (velocityBeforeCollision< -30)
         {
             Debug.Log("Collision");
             explode();
@@ -104,7 +109,7 @@ public class Ship : MonoBehaviour {
             }
             else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
             {
-                if (thrust > 0)
+                if (thrust > -maxThrust)
                 {
                     thrust -= 1 * Time.fixedDeltaTime * 60;
                 }

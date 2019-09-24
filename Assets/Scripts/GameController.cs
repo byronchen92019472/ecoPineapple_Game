@@ -8,10 +8,12 @@ public class GameController : MonoBehaviour {
     public Camera frontCamera;
     public Camera highCamera;
     public Camera firstPersonCamera;
+    public Camera buildCamera;
 
     public Ship ship;
     public Slider fuelSlider;
     public Slider thrustSlider;
+    public Slider distanceSlider;
     public Text heightText;
     public Text maxHeightText;
     public Text velocityText;
@@ -26,24 +28,27 @@ public class GameController : MonoBehaviour {
     public bool buildPhase;
     public bool launchPhase;
 
+    public GameObject moon;
+
 	// Use this for initialization
 	void Start () {
         ship.maxFuel = 150;
         ship.fuel = ship.maxFuel;
         ship.maxThrust = 25;
         ship.fuelEfficiencyMultiplier = .95f;
-        player.money = 1000000;
+        player.money = 0;
 
         maxHeight = 0;
         initBuildPhase();
 
-        showFrontCamera();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
         fuelSlider.value = ship.fuel;
-        thrustSlider.value = ship.thrust;
+        thrustSlider.value = ship.thrust + ship.maxThrust;
+        distanceSlider.value = ship.transform.position.y;
         heightText.text = "Height: " + ((int)ship.transform.position.y).ToString();
         maxHeightText.text = "Max Height: " + ((int)maxHeight).ToString();
         velocityText.text = "Velocity: " + ((int)ship.rb.velocity.y).ToString();
@@ -86,6 +91,7 @@ public class GameController : MonoBehaviour {
         launchPhase = false;
         buildPhase = true;
         ship.resetShip();
+        showBuildCamera();
     }
 
     public void initLaunchPhase()
@@ -93,13 +99,15 @@ public class GameController : MonoBehaviour {
         maxHeight = 0f;
         ship.fuel = ship.maxFuel;
         fuelSlider.maxValue = ship.fuel;
-        thrustSlider.maxValue = ship.maxThrust;
+        thrustSlider.maxValue = ship.maxThrust * 2;
+        distanceSlider.maxValue = moon.transform.position.y;
 
         buildUI.enabled = false;
         launchUI.enabled = true;
         ship.canLaunch = true;
         buildPhase = false;
         launchPhase = true;
+        showFrontCamera();
     }
 
     void showFrontCamera()
@@ -121,5 +129,13 @@ public class GameController : MonoBehaviour {
         frontCamera.enabled = false;
         highCamera.enabled = false;
         firstPersonCamera.enabled = true;
+    }
+
+    void showBuildCamera()
+    {
+        frontCamera.enabled = false;
+        highCamera.enabled = false;
+        firstPersonCamera.enabled = false;
+        buildCamera.enabled = true;
     }
 }

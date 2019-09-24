@@ -22,7 +22,7 @@ public class LaunchButtonScript : MonoBehaviour {
     void Update()
     {
         fuelDisplay.text = "Fuel: " + ((int) ship.fuel).ToString() + " / " + ship.maxFuel.ToString();
-        thrustDisplay.text = "Thrust: " + ship.thrust.ToString() + " / " + ship.maxThrust.ToString();
+        thrustDisplay.text = "Thrust: " + ((int)ship.thrust).ToString() + " / " + ship.maxThrust.ToString();
     }
 
     void endButtonClick()
