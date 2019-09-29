@@ -18,9 +18,14 @@ public class GameController : MonoBehaviour {
     public Text maxHeightText;
     public Text velocityText;
     public Text moneyText;
+    public Text touristText;
 
     public Canvas buildUI;
     public Canvas launchUI;
+
+    public GameObject resultDisplayPanel;
+    public Text resultMoney;
+    public Text resultInfo;
 
     private float maxHeight;
     public Player player;
@@ -29,6 +34,8 @@ public class GameController : MonoBehaviour {
     public bool launchPhase;
 
     public GameObject moon;
+    public Material skyboxGround;
+    public Material skyboxSpace;
 
 	// Use this for initialization
 	void Start () {
@@ -40,8 +47,7 @@ public class GameController : MonoBehaviour {
 
         maxHeight = 0;
         initBuildPhase();
-
-        
+        resultDisplayPanel.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -72,19 +78,43 @@ public class GameController : MonoBehaviour {
             {
                 showFirstPersonCamera();
             }
+
+            if (ship.transform.position.y > 1500)
+            {
+                RenderSettings.skybox = skyboxSpace;
+                ship.rb.useGravity = false;
+            }
         }
         
 	}
 
     public void launchResults()
     {
-        player.money += (int)maxHeight * 100;
+        resultDisplayPanel.SetActive(true);
+        int touristMoney = (int)(ship.droppedTourists * ship.droppedHeight);
+        int moneyReceived = (int)maxHeight * 100 + touristMoney;
+        resultMoney.text = "You received $" + moneyReceived;
+        if (touristMoney > 0)
+        {
+            resultInfo.text = string.Format("Max Height Reached: {0} = ${4}\n{1} Tourists dropped off at Height {2} = ${3}",
+                                        (int)maxHeight, ship.droppedTourists, ship.droppedHeight, touristMoney, (int)maxHeight * 100);
+        }
+        else
+        {
+            resultInfo.text = string.Format("Max Height Reached: {0} = ${1}",
+                                        (int)maxHeight, (int)maxHeight * 100);
+        }
+        
+        ship.tourists = 0;
+        player.money += moneyReceived;
+
     }
 
     public void initBuildPhase()
     {
         launchResults();
         moneyText.text = "Money: " + player.money.ToString();
+        touristText.text = "Tourists: " + ship.tourists.ToString();
         buildUI.enabled = true;
         launchUI.enabled = false;
         ship.canLaunch = false;
@@ -92,6 +122,7 @@ public class GameController : MonoBehaviour {
         buildPhase = true;
         ship.resetShip();
         showBuildCamera();
+        RenderSettings.skybox = skyboxGround;
     }
 
     public void initLaunchPhase()

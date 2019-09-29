@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class BuildButtonScript : MonoBehaviour {
 
     public Button launchButton;
+    public Button addTouristsButton;
+    public Button removeTouristsButton;
 
     public Button fuelPart1;
     public Button fuelPart2;
@@ -21,6 +23,10 @@ public class BuildButtonScript : MonoBehaviour {
     public Text thrustDisplayText;
     public Text fuelEffiencyText;
     public Text moneyDisplayText;
+    public Text touristDisplayText;
+
+    public GameObject displayPanel;
+    public Button closeDisplayButton;
 
 
     public GameController gameController;
@@ -30,10 +36,17 @@ public class BuildButtonScript : MonoBehaviour {
         fuelDisplayText.text = "Max Fuel: " + gameController.ship.maxFuel.ToString();
         thrustDisplayText.text = "Max Thrust: " + gameController.ship.maxThrust.ToString();
         fuelEffiencyText.text = "Fuel Effiency: " + gameController.ship.fuelEfficiencyMultiplier.ToString() + "%";
+        touristDisplayText.text = "Tourists: " + gameController.ship.tourists.ToString();
     }
 	// Use this for initialization
 	void OnEnable () {     
         launchButton.onClick.AddListener(() => launchButtonClick());
+        addTouristsButton.onClick.AddListener(() => addTouristsClick());
+        removeTouristsButton.onClick.AddListener(() => removeTouristsClick());
+
+        closeDisplayButton.onClick.AddListener(() => closeDisplayClick());
+
+
         fuelPart1.onClick.AddListener(() => fuelButtonClick(fuelPart1));
         fuelPart2.onClick.AddListener(() => fuelButtonClick(fuelPart2));
         fuelPart3.onClick.AddListener(() => fuelButtonClick(fuelPart3));
@@ -44,6 +57,27 @@ public class BuildButtonScript : MonoBehaviour {
         thrustPart3.onClick.AddListener(() => thrustButtonClick(thrustPart3));
         thrustPart4.onClick.AddListener(() => thrustButtonClick(thrustPart4));
 	}
+
+    void closeDisplayClick()
+    {
+
+        displayPanel.SetActive(false);
+    }
+
+    void addTouristsClick()
+    {
+        gameController.ship.tourists += 1;
+        updateText();
+    }
+
+    void removeTouristsClick()
+    {
+        if (gameController.ship.tourists > 0)
+        {
+            gameController.ship.tourists -= 1;
+        }
+        updateText();
+    }
 
     void thrustButtonClick(Button button)
     {
@@ -141,6 +175,7 @@ public class BuildButtonScript : MonoBehaviour {
         thrustDisplayText.text = "Max Thrust: " + gameController.ship.maxThrust.ToString();
         fuelEffiencyText.text = "Fuel Effiency: " + gameController.ship.fuelEfficiencyMultiplier.ToString() + "%";
         moneyDisplayText.text = "Money: " + gameController.player.money.ToString();
+        touristDisplayText.text = "Tourists: " + gameController.ship.tourists.ToString();
     }
 
     void launchButtonClick()

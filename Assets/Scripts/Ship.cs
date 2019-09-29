@@ -11,6 +11,10 @@ public class Ship : MonoBehaviour {
     public float fuel;
     public float maxFuel;
     public float fuelEfficiencyMultiplier = 1;
+    public int tourists;
+    public int maxTourists;
+    public int droppedTourists;
+    public float droppedHeight;
 
     public bool canLaunch;
 
@@ -57,10 +61,12 @@ public class Ship : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision other)
     {
-        if (velocityBeforeCollision< -30)
+        if (velocityBeforeCollision< -10)
         {
+            rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * 500);
+            //rb.transform.Rotate(new Vector3(0, 0, -1), 1);
             Debug.Log("Collision");
             explode();
         }
@@ -71,6 +77,7 @@ public class Ship : MonoBehaviour {
     {
         rb.velocity = new Vector3(0f, 0f, 0f);
         rb.position = new Vector3(0f, 0f, 0f);
+        rb.angularVelocity = new Vector3(0f, 0f, 0f);
         rb.rotation = Quaternion.identity;
         thrust = 0;
         stopExplode();
@@ -93,7 +100,6 @@ public class Ship : MonoBehaviour {
         {
             p.Stop();
         }
-        Debug.Log("Stop Explode");
     }
 
     void handleMovement()
@@ -118,13 +124,19 @@ public class Ship : MonoBehaviour {
 
         if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(new Vector3(0, 0, -1) * Time.deltaTime * turnSpeed, Space.World);
+            transform.position = new Vector3(transform.position.x - 1, transform.position.y, 0);
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(new Vector3(0, 0, 1) * Time.deltaTime * turnSpeed, Space.World);
+            transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
         }
-
-        
     }
+
+    public void dropTourists(string name, float height)
+    {
+        droppedTourists = tourists;
+        droppedHeight = height;
+    }
+
+
 }
