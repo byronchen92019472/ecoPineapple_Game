@@ -2421,7 +2421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 0
   maxThrust: 15
-  turnSpeed: 1
+  turnSpeed: 0.2
   fuel: 1000
   maxFuel: 0
   fuelEfficiencyMultiplier: 0

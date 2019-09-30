@@ -7,7 +7,7 @@ public class Ship : MonoBehaviour {
 
     public float thrust;
     public float maxThrust;
-    public float turnSpeed = 1;
+    public float turnSpeed = 0.2f;
     public float fuel;
     public float maxFuel;
     public float fuelEfficiencyMultiplier = 1;
@@ -120,16 +120,16 @@ public class Ship : MonoBehaviour {
                     thrust -= 1 * Time.fixedDeltaTime * 60;
                 }
             }
+            if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
+            {
+                transform.position = new Vector3(transform.position.x - (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
+            }
+            else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
+            {
+                transform.position = new Vector3(transform.position.x + (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
+            }
         }
 
-        if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
-        {
-            transform.position = new Vector3(transform.position.x - 1, transform.position.y, 0);
-        }
-        else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
-        {
-            transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
-        }
     }
 
     public void dropTourists(string name, float height)
@@ -137,6 +137,5 @@ public class Ship : MonoBehaviour {
         droppedTourists = tourists;
         droppedHeight = height;
     }
-
 
 }
