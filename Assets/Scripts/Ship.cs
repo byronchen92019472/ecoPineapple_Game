@@ -22,6 +22,7 @@ public class Ship : MonoBehaviour {
     public ParticleSystem rocketThrust;
     public GameObject explosion;
     public ShipParts shipParts;
+    public GameObject rocketSprite;
     private ParticleSystem[] childParticles;
 
 
@@ -31,6 +32,7 @@ public class Ship : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         rocketThrust.Stop();
+        stopExplode();
         canLaunch = false;
 	}
 
@@ -65,9 +67,9 @@ public class Ship : MonoBehaviour {
     {
         if (velocityBeforeCollision< -10)
         {
-            rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * 500);
+            //rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * 500);
             //rb.transform.Rotate(new Vector3(0, 0, -1), 1);
-            Debug.Log("Collision");
+            //Debug.Log("Collision");
             explode();
         }
         
@@ -86,20 +88,14 @@ public class Ship : MonoBehaviour {
     void explode()
     {
         explosion.SetActive(true);
-        childParticles = explosion.GetComponentsInChildren<ParticleSystem>();
-        foreach (ParticleSystem p in childParticles)
-        {
-            p.Play();
-        }
+        rocketSprite.SetActive(false);
+
     }
 
     void stopExplode()
     {
-        childParticles = explosion.GetComponentsInChildren<ParticleSystem>();
-        foreach (ParticleSystem p in childParticles)
-        {
-            p.Stop();
-        }
+        explosion.SetActive(false);
+        rocketSprite.SetActive(true);
     }
 
     void handleMovement()
