@@ -8,6 +8,11 @@ TagManager:
   - Ship
   - Starport
   - Ground
+  - Settings
+  - Exit
+  - NewGame
+  - Continue
+  - Close
   layers:
   - Default
   - TransparentFX

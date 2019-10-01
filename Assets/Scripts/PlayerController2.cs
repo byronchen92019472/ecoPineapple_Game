@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerController2 : MonoBehaviour {
 
-    private float speed = 12;
+    private float speed = 20;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-    private Animator anim;
+    //private Animator anim;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -27,11 +27,11 @@ public class PlayerController2 : MonoBehaviour {
         if (moveVelocity[0] != 0)
         {
             rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-            anim.SetBool("isWalking", true);
+            //anim.SetBool("isWalking", true);
         }
         if (moveVelocity[0] == 0)
         {
-            anim.SetBool("isWalking", false);
+            //anim.SetBool("isWalking", false);
         }
 
         if (moveVelocity[0] > 0 && !m_FacingRight)

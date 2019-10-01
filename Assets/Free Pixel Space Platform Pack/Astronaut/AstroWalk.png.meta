@@ -1,36 +1,17 @@
 fileFormatVersion: 2
 guid: dfc7090c56f3626418196653e1eb610d
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -7750761410467519339
-    second: AstroWalk_0
-  - first:
-      213: 2356262865142047882
-    second: AstroWalk_1
-  - first:
-      213: 3586078263622456036
-    second: AstroWalk_2
-  - first:
-      213: -5082971117998345730
-    second: AstroWalk_3
-  - first:
-      213: 4854638451998381413
-    second: AstroWalk_4
-  - first:
-      213: 1477211506544611
-    second: AstroWalk_5
-  - first:
-      213: 2934233246830421270
-    second: AstroWalk_6
-  - first:
-      213: -3258305651147157043
-    second: AstroWalk_7
-  - first:
-      213: 5552983428473831152
-    second: AstroWalk_8
+  fileIDToRecycleName:
+    21300000: AstroWalk_0
+    21300002: AstroWalk_1
+    21300004: AstroWalk_2
+    21300006: AstroWalk_3
+    21300008: AstroWalk_4
+    21300010: AstroWalk_5
+    21300012: AstroWalk_6
+    21300014: AstroWalk_7
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 5
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -48,8 +29,6 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
-  streamingMipmaps: 0
-  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -159,7 +138,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f76c7e0bdad32194c8d2b2c9c3f76339
-      internalID: -7750761410467519339
       vertices: []
       indices: 
       edges: []
@@ -180,7 +158,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d0c5d825e9d8381428ee210771545d13
-      internalID: 2356262865142047882
       vertices: []
       indices: 
       edges: []
@@ -201,7 +178,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 72ea092f7fa0ae541aadf44bbf005597
-      internalID: 3586078263622456036
       vertices: []
       indices: 
       edges: []
@@ -222,7 +198,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b295fdf72fb9fbf40862e6acfb39e244
-      internalID: -5082971117998345730
       vertices: []
       indices: 
       edges: []
@@ -243,7 +218,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5f52c70c0fbda7947837e9679384e448
-      internalID: 4854638451998381413
       vertices: []
       indices: 
       edges: []
@@ -264,7 +238,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 0feaacf3fb6e70f4885a30e2876db3dc
-      internalID: 1477211506544611
       vertices: []
       indices: 
       edges: []
@@ -285,7 +258,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f84fe5323166f664a813d426522872af
-      internalID: 2934233246830421270
       vertices: []
       indices: 
       edges: []
@@ -306,7 +278,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 802b343084966fa4789776c13b690489
-      internalID: -3258305651147157043
       vertices: []
       indices: 
       edges: []
@@ -315,15 +286,11 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 3cbb0748d716be6499bb7828bdf029c8
-    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
   spritePackingTag: 
-  pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
