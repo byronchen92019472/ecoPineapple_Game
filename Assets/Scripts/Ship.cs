@@ -7,7 +7,7 @@ public class Ship : MonoBehaviour {
 
     public float thrust;
     public float maxThrust;
-    public float turnSpeed = 1;
+    public float turnSpeed = 0.2f;
     public float fuel;
     public float maxFuel;
     public float fuelEfficiencyMultiplier = 1;
@@ -16,12 +16,14 @@ public class Ship : MonoBehaviour {
     public int droppedTourists;
     public float droppedHeight;
 
+    public bool alive;
     public bool canLaunch;
 
     public Rigidbody rb; 
     public ParticleSystem rocketThrust;
     public GameObject explosion;
     public ShipParts shipParts;
+    public GameObject rocketSprite;
     private ParticleSystem[] childParticles;
 
 
@@ -31,13 +33,19 @@ public class Ship : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         rocketThrust.Stop();
+        stopExplode();
         canLaunch = false;
+        alive = true;
 	}
 
     void FixedUpdate()
     {
         velocityBeforeCollision = rb.velocity.y;
-        rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
+        if (alive)
+        {
+            rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
+        }
+        
 
         if (fuel <= 0 || thrust == 0)
         {
@@ -65,10 +73,8 @@ public class Ship : MonoBehaviour {
     {
         if (velocityBeforeCollision< -10)
         {
-            rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * 500);
-            //rb.transform.Rotate(new Vector3(0, 0, -1), 1);
-            Debug.Log("Collision");
             explode();
+            
         }
         
     }
@@ -83,23 +89,20 @@ public class Ship : MonoBehaviour {
         stopExplode();
     }
 
-    void explode()
+    public void explode()
     {
+        alive = false;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         explosion.SetActive(true);
-        childParticles = explosion.GetComponentsInChildren<ParticleSystem>();
-        foreach (ParticleSystem p in childParticles)
-        {
-            p.Play();
-        }
+        rocketSprite.SetActive(false);
     }
 
     void stopExplode()
     {
-        childParticles = explosion.GetComponentsInChildren<ParticleSystem>();
-        foreach (ParticleSystem p in childParticles)
-        {
-            p.Stop();
-        }
+        alive = true;
+        explosion.SetActive(false);
+        rocketSprite.SetActive(true);
     }
 
     void handleMovement()
@@ -120,16 +123,16 @@ public class Ship : MonoBehaviour {
                     thrust -= 1 * Time.fixedDeltaTime * 60;
                 }
             }
+            if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
+            {
+                transform.position = new Vector3(transform.position.x - (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
+            }
+            else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
+            {
+                transform.position = new Vector3(transform.position.x + (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
+            }
         }
 
-        if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
-        {
-            transform.position = new Vector3(transform.position.x - 1, transform.position.y, 0);
-        }
-        else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
-        {
-            transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
-        }
     }
 
     public void dropTourists(string name, float height)
@@ -137,6 +140,5 @@ public class Ship : MonoBehaviour {
         droppedTourists = tourists;
         droppedHeight = height;
     }
-
 
 }
