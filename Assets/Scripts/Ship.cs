@@ -16,6 +16,7 @@ public class Ship : MonoBehaviour {
     public int droppedTourists;
     public float droppedHeight;
 
+    public bool alive;
     public bool canLaunch;
 
     public Rigidbody rb; 
@@ -34,12 +35,17 @@ public class Ship : MonoBehaviour {
         rocketThrust.Stop();
         stopExplode();
         canLaunch = false;
+        alive = true;
 	}
 
     void FixedUpdate()
     {
         velocityBeforeCollision = rb.velocity.y;
-        rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
+        if (alive)
+        {
+            rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
+        }
+        
 
         if (fuel <= 0 || thrust == 0)
         {
@@ -67,10 +73,8 @@ public class Ship : MonoBehaviour {
     {
         if (velocityBeforeCollision< -10)
         {
-            //rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * 500);
-            //rb.transform.Rotate(new Vector3(0, 0, -1), 1);
-            //Debug.Log("Collision");
             explode();
+            
         }
         
     }
@@ -85,15 +89,18 @@ public class Ship : MonoBehaviour {
         stopExplode();
     }
 
-    void explode()
+    public void explode()
     {
+        alive = false;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         explosion.SetActive(true);
         rocketSprite.SetActive(false);
-
     }
 
     void stopExplode()
     {
+        alive = true;
         explosion.SetActive(false);
         rocketSprite.SetActive(true);
     }

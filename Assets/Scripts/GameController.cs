@@ -29,6 +29,10 @@ public class GameController : MonoBehaviour {
 
     private float maxHeight;
     public Player player;
+    public GameObject enemy;
+    public Vector3 enemySpawnPosition;
+    public float enemySpawnCounter;
+    public float enemySpawnTime;
 
     public bool buildPhase;
     public bool launchPhase;
@@ -37,8 +41,11 @@ public class GameController : MonoBehaviour {
     public Material skyboxGround;
     public Material skyboxSpace;
 
+    
+
 	// Use this for initialization
 	void Start () {
+        //Instantiate(ship, new Vector3(0, 0, 0), Quaternion.identity);
         ship.maxFuel = 150;
         ship.fuel = ship.maxFuel;
         ship.maxThrust = 25;
@@ -81,12 +88,24 @@ public class GameController : MonoBehaviour {
 
             if (ship.transform.position.y > 1500)
             {
-                RenderSettings.skybox = skyboxSpace;
+                //RenderSettings.skybox = skyboxSpace;
+                spawnAsteroids();
                 ship.rb.useGravity = false;
             }
         }
         
 	}
+
+    void spawnAsteroids()
+    {
+        enemySpawnCounter -= Time.deltaTime;
+        if (enemySpawnCounter < 0)
+        {
+            Vector3 spawnPos = new Vector3(Random.Range(-enemySpawnPosition.x, enemySpawnPosition.x), ship.transform.position.y + 50, enemySpawnPosition.z);
+            Instantiate(enemy, spawnPos, Quaternion.identity);
+            enemySpawnCounter = enemySpawnTime;
+        }
+    }
 
     public void launchResults()
     {
@@ -132,6 +151,8 @@ public class GameController : MonoBehaviour {
         fuelSlider.maxValue = ship.fuel;
         thrustSlider.maxValue = ship.maxThrust * 2;
         distanceSlider.maxValue = moon.transform.position.y;
+
+        enemySpawnTime = 2f;
 
         buildUI.enabled = false;
         launchUI.enabled = true;

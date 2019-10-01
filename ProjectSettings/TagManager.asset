@@ -8,6 +8,7 @@ TagManager:
   - Ship
   - Starport
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
