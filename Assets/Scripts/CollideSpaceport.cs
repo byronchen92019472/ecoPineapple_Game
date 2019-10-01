@@ -18,8 +18,13 @@ public class CollideSpaceport : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnTriggerEnter (Collider other) {
-        ship.dropTourists(planetName, this.transform.position.y);
-        Debug.Log("Collide with Ship");
-        Debug.Log(ship.rb.velocity.y);
+        if (other.tag == "Ship")
+        {
+            ship.dropTourists(planetName, this.transform.position.y);
+            Debug.Log("Collide with Ship");
+            Debug.Log(ship.rb.velocity.y);
+
+        }
+        
 	}
 }
