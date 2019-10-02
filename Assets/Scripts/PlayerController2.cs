@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController2 : MonoBehaviour {
 
-    private float speed = 20;
+    private float speed = 10; //20 WINDOWS
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -18,7 +19,8 @@ public class PlayerController2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), 0);
+        //Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), 0); WINDOWS
+        Vector2 moveInput = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 0);
         moveVelocity = moveInput * speed;
 	}
 
