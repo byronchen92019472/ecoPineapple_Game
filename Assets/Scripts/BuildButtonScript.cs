@@ -60,12 +60,13 @@ public class BuildButtonScript : MonoBehaviour {
 
     void closeDisplayClick()
     {
-
+        Debug.Log("a");
         displayPanel.SetActive(false);
     }
 
     void addTouristsClick()
     {
+        
         gameController.ship.tourists += 1;
         updateText();
     }
@@ -180,6 +181,7 @@ public class BuildButtonScript : MonoBehaviour {
 
     void launchButtonClick()
     {
+        Debug.Log("a");
         gameController.initLaunchPhase();
     }
 }
