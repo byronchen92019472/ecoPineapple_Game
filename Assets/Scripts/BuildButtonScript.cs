@@ -60,7 +60,6 @@ public class BuildButtonScript : MonoBehaviour {
 
     void closeDisplayClick()
     {
-        Debug.Log("a");
         displayPanel.SetActive(false);
     }
 
@@ -181,7 +180,6 @@ public class BuildButtonScript : MonoBehaviour {
 
     void launchButtonClick()
     {
-        Debug.Log("a");
         gameController.initLaunchPhase();
     }
 }
