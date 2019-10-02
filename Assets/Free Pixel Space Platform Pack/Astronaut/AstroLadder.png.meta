@@ -1,15 +1,11 @@
 fileFormatVersion: 2
 guid: 9e32e8a78482a0142b7d8c36040d3ad5
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -2536697272414595886
-    second: AstroLadder_0
-  - first:
-      213: -1140528671143257715
-    second: AstroLadder_1
+  fileIDToRecycleName:
+    21300000: AstroLadder_0
+    21300002: AstroLadder_1
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 5
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -27,8 +23,6 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
-  streamingMipmaps: 0
-  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -138,7 +132,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1f96a7201910ce84c86ba3d6b163f5d9
-      internalID: -2536697272414595886
       vertices: []
       indices: 
       edges: []
@@ -159,7 +152,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9d96a677e4f904548a9c8bd1531fbeaf
-      internalID: -1140528671143257715
       vertices: []
       indices: 
       edges: []
@@ -168,15 +160,11 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: fb7e13f2e6f42fc419716912f2bb6d5e
-    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
   spritePackingTag: 
-  pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

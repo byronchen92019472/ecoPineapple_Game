@@ -1,24 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController2 : MonoBehaviour {
 
-    private float speed = 12;
+    private float speed = 10; //20 WINDOWS
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-    private Animator anim;
+    //private Animator anim;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), 0);
+        //Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), 0); WINDOWS
+        Vector2 moveInput = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 0);
         moveVelocity = moveInput * speed;
 	}
 
@@ -27,11 +29,11 @@ public class PlayerController2 : MonoBehaviour {
         if (moveVelocity[0] != 0)
         {
             rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-            anim.SetBool("isWalking", true);
+            //anim.SetBool("isWalking", true);
         }
         if (moveVelocity[0] == 0)
         {
-            anim.SetBool("isWalking", false);
+            //anim.SetBool("isWalking", false);
         }
 
         if (moveVelocity[0] > 0 && !m_FacingRight)
