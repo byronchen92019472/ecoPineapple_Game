@@ -6,7 +6,6 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class TextActivationScript : MonoBehaviour
 {
-
     public Canvas exitCanvas; //Your target for the refference
     public Canvas settingsCanvas;
     public Canvas newgameCanvas;
@@ -36,6 +35,7 @@ public class TextActivationScript : MonoBehaviour
 
         if (atMilestones == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
+            //GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().updateUIText();
             milestonesDisplayCanvas.gameObject.SetActive(true);
         }
     }

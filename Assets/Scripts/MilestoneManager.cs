@@ -8,27 +8,39 @@ public class MilestoneManager : MonoBehaviour {
 
     public List<string> milestoneList = new List<string>();
     public Text milestoneText;
-    private string milestoneString;
+    public string milestoneString;
+    public static MilestoneManager instance = null;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-        DontDestroyOnLoad(milestoneText);
-    }
+    //void Awake()
+    //{
+    //    //Check if instance already exists
+    //    if (instance == null)
+
+    //        //if not, set instance to this
+    //        instance = this;
+
+    //    //If instance already exists and it's not this:
+    //    else if (instance != this)
+
+    //        //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+    //        Destroy(gameObject);
+
+    //    //Sets this to not be destroyed when reloading scene
+    //    DontDestroyOnLoad(this.gameObject);
+    //}
 
     // Use this for initialization
     void Start () {
         milestoneList.Add("1. Reach 500m. [Code: 123 - $5 Off any order over $20]");
         milestoneList.Add("2. Reach Earth Starport.");
+    }
 
+    // Update is called once per frame
+    void Update () {
         updateUIText();
     }
-	
-	// Update is called once per frame
-	void Update () {
-    }
 
-    void updateUIText()
+    public void updateUIText()
     {
         milestoneString = "";
 
@@ -38,6 +50,11 @@ public class MilestoneManager : MonoBehaviour {
         }
 
         milestoneText.text = milestoneString;
-        //milestoneText.
+        //GameObject.FindGameObjectWithTag("MilestoneText").GetComponent<UnityEngine.UI.Text>().text = milestoneString;
     }
+
+    //public void updateMilestoneList()
+    //{
+    //    milestoneList = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().milestoneList;
+    //}
 }

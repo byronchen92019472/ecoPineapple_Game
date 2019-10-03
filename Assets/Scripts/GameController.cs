@@ -46,6 +46,7 @@ public class GameController : MonoBehaviour {
     public Material skyboxGround;
     public Material skyboxSpace;
 
+    public List<string> milestoneList;
     
 
 	// Use this for initialization
@@ -97,6 +98,7 @@ public class GameController : MonoBehaviour {
                 spawnAsteroids();
                 ship.rb.useGravity = false;
             }
+
         }
         
 	}
@@ -142,6 +144,10 @@ public class GameController : MonoBehaviour {
         
         ship.tourists = 0;
         player.money += moneyReceived;
+
+        //milestoneList = GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().milestoneList;
+        //milestoneList.Add("3. Reach Moon Starport. [Code: 5LC - Free Delivery]");
+        //GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().updateMilestoneList();
     }
 
     public void initBuildPhase()
