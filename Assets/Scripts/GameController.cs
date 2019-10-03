@@ -126,7 +126,6 @@ public class GameController : MonoBehaviour {
         
         ship.tourists = 0;
         player.money += moneyReceived;
-
     }
 
     public void initBuildPhase()
