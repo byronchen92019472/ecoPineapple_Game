@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour {
     public GameObject ecoProduct;
     public float ecoSpawnCounter;
     public float ecoSpawnTime;
+    public int ecoHitCounter;
 
     public GameObject enemy;
     public Vector3 enemySpawnPosition;
@@ -90,7 +91,7 @@ public class GameController : MonoBehaviour {
             {
                 showFirstPersonCamera();
             }
-            
+            spawnEco();
             if (ship.transform.position.y > 1500)
             {
                 //RenderSettings.skybox = skyboxSpace;
