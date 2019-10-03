@@ -141,7 +141,7 @@ public class BuildButtonScript : MonoBehaviour {
     {
         if (gameController.player.money >= selectedFuelPrice)
         {
-            gameController.ship.maxFuel = selectedFuelValue;
+            gameController.ship.maxFuel += selectedFuelValue;
             gameController.player.money -= selectedFuelPrice;
             selectedFuelButton.interactable = false;
         }

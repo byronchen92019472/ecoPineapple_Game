@@ -17,6 +17,7 @@ public class BackgroundScript : MonoBehaviour {
          //   transform.position = new Vector3(transform.position.x, transform.position.y + (480), transform.position.z);
         //}
         //move = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.fixedDeltaTime * 60, transform.position.z);
+        
 
         //if (ship.rb.velocity.y != 0)
         //{

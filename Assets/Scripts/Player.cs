@@ -9,7 +9,6 @@ public class Player : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         milestones.Add("Milestone 1, First Flight");
     }
 }

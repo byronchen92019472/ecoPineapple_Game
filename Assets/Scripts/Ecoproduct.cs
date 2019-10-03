@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ecoproduct : MonoBehaviour {
 
     public Ship ship;
+    public GameController gamecontroller;
     public float speed;
 
     // Use this for initialization
@@ -14,6 +15,11 @@ public class Ecoproduct : MonoBehaviour {
         if (shipObject != null)
         {
             ship = shipObject.GetComponent<Ship>();
+        }
+        GameObject gameControlObject = GameObject.FindWithTag("GameController");
+        if (gameControlObject != null)
+        {
+            gamecontroller = gameControlObject.GetComponent<GameController>();
         }
     }
 
@@ -32,6 +38,7 @@ public class Ecoproduct : MonoBehaviour {
     {
         if (other.tag == "Ship")
         {
+            gamecontroller.player.money += 5;
             Debug.Log("Asteroid Collide with Ship");
             Destroy(gameObject);
         }
