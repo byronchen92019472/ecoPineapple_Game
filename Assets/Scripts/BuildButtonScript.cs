@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BuildButtonScript : MonoBehaviour {
 
@@ -9,10 +10,24 @@ public class BuildButtonScript : MonoBehaviour {
     public Button addTouristsButton;
     public Button removeTouristsButton;
 
+    public Button fuelTabButton;
+    public Button touristTabButton;
+
+    public GameObject fuelDisplayPanel;
+    public GameObject touristDisplayPanel;
+
     public Button fuelPart1;
     public Button fuelPart2;
     public Button fuelPart3;
     public Button fuelPart4;
+    public Button fuelPart5;
+    public Button fuelPart6;
+    public Button fuelPart7;
+    public Button fuelPart8;
+    public Button fuelPart9;
+
+    public Text fuelPurchaseText;
+    public Button fuelPurchaseButton;
 
     public Button thrustPart1;
     public Button thrustPart2;
@@ -28,6 +43,12 @@ public class BuildButtonScript : MonoBehaviour {
     public GameObject displayPanel;
     public Button closeDisplayButton;
 
+    private Button selectedFuelButton;
+    private float selectedFuelValue;
+    private float selectedFuelPrice;
+
+    public Button exitButton;
+
 
     public GameController gameController;
 
@@ -37,6 +58,8 @@ public class BuildButtonScript : MonoBehaviour {
         thrustDisplayText.text = "Max Thrust: " + gameController.ship.maxThrust.ToString();
         fuelEffiencyText.text = "Fuel Effiency: " + gameController.ship.fuelEfficiencyMultiplier.ToString() + "%";
         touristDisplayText.text = "Tourists: " + gameController.ship.tourists.ToString();
+        fuelPurchaseButton.enabled = false;
+        fuelTabButtonClick();
     }
 	// Use this for initialization
 	void OnEnable () {     
@@ -46,17 +69,44 @@ public class BuildButtonScript : MonoBehaviour {
 
         closeDisplayButton.onClick.AddListener(() => closeDisplayClick());
 
+        
+        touristTabButton.onClick.AddListener(() => touristTabButtonClick());
 
+        fuelTabButton.onClick.AddListener(() => fuelTabButtonClick());
+        fuelPurchaseButton.onClick.AddListener(() => fuelPurchaseButtonClick());
         fuelPart1.onClick.AddListener(() => fuelButtonClick(fuelPart1));
         fuelPart2.onClick.AddListener(() => fuelButtonClick(fuelPart2));
         fuelPart3.onClick.AddListener(() => fuelButtonClick(fuelPart3));
         fuelPart4.onClick.AddListener(() => fuelButtonClick(fuelPart4));
+        fuelPart5.onClick.AddListener(() => fuelButtonClick(fuelPart5));
+        fuelPart6.onClick.AddListener(() => fuelButtonClick(fuelPart6));
+        fuelPart7.onClick.AddListener(() => fuelButtonClick(fuelPart7));
+        fuelPart8.onClick.AddListener(() => fuelButtonClick(fuelPart8));
+        fuelPart9.onClick.AddListener(() => fuelButtonClick(fuelPart9));
 
         thrustPart1.onClick.AddListener(() => thrustButtonClick(thrustPart1));
         thrustPart2.onClick.AddListener(() => thrustButtonClick(thrustPart2));
         thrustPart3.onClick.AddListener(() => thrustButtonClick(thrustPart3));
         thrustPart4.onClick.AddListener(() => thrustButtonClick(thrustPart4));
+
+        exitButton.onClick.AddListener(() => exitButtonClick());
 	}
+    void exitButtonClick()
+    {
+        SceneManager.LoadScene("Start Screen");
+    }
+    
+    void fuelTabButtonClick()
+    {
+        fuelDisplayPanel.SetActive(true);
+        touristDisplayPanel.SetActive(false);
+    }
+
+    void touristTabButtonClick()
+    {
+        fuelDisplayPanel.SetActive(false);
+        touristDisplayPanel.SetActive(true);
+    }
 
     void closeDisplayClick()
     {
@@ -77,6 +127,26 @@ public class BuildButtonScript : MonoBehaviour {
             gameController.ship.tourists -= 1;
         }
         updateText();
+    }
+
+    void setFuelPurchase(Button button, string name, float price, float fuelvalue)
+    {
+        fuelPurchaseText.text = name + " - $" + price.ToString();
+        selectedFuelButton = button;
+        selectedFuelValue = fuelvalue;
+        selectedFuelPrice = price;
+    }
+
+    void fuelPurchaseButtonClick()
+    {
+        if (gameController.player.money >= selectedFuelPrice)
+        {
+            gameController.ship.maxFuel = selectedFuelValue;
+            gameController.player.money -= selectedFuelPrice;
+            selectedFuelButton.interactable = false;
+        }
+        updateText();
+        
     }
 
     void thrustButtonClick(Button button)
@@ -128,43 +198,41 @@ public class BuildButtonScript : MonoBehaviour {
     {
         if (button == fuelPart1)
         {
-            if (gameController.player.money >= 1000)
-            {
-                gameController.ship.maxFuel = 250;
-                gameController.player.money -= 1000;
-                fuelPart1.interactable = false;
-                gameController.ship.shipParts.shipFuel1.SetActive(true);
-
-            }
+            setFuelPurchase(button, "Fuel 1", 1, 250);
         }
         if (button == fuelPart2)
         {
-            if (gameController.player.money >= 50000)
-            {
-                gameController.ship.maxFuel = 500;
-                gameController.player.money -= 50000;
-                fuelPart2.interactable = false;
-                gameController.ship.shipParts.shipFuel2.SetActive(true);
-            }
+            setFuelPurchase(button, "Fuel 2", 3, 300);
         }
         if (button == fuelPart3)
         {
-            if (gameController.player.money >= 250000)
-            {
-                gameController.ship.maxFuel = 1000;
-                gameController.player.money -= 250000;
-                fuelPart3.interactable = false;
-            }
+            setFuelPurchase(button, "Fuel 3", 7, 400);
         }
         if (button == fuelPart4)
         {
-            if (gameController.player.money >= 4000000)
-            {
-                gameController.ship.maxFuel = 2000;
-                gameController.player.money -= 4000000;
-                fuelPart4.interactable = false;
-            }
+            setFuelPurchase(button, "Fuel 4", 15, 800);
         }
+        if (button == fuelPart5)
+        {
+            setFuelPurchase(button, "Fuel 5", 30, 2000);
+        }
+        if (button == fuelPart6)
+        {
+            setFuelPurchase(button, "Fuel 6", 75, 5000);
+        }
+        if (button == fuelPart7)
+        {
+            setFuelPurchase(button, "Fuel 7", 200, 15000);
+        }
+        if (button == fuelPart8)
+        {
+            setFuelPurchase(button, "Fuel 8", 1000, 30000);
+        }
+        if (button == fuelPart9)
+        {
+            setFuelPurchase(button, "Fuel 9", 10000, 100000);
+        }
+        fuelPurchaseButton.enabled = true;
         updateText();
         
     }
@@ -174,7 +242,7 @@ public class BuildButtonScript : MonoBehaviour {
         fuelDisplayText.text = "Max Fuel: " + gameController.ship.maxFuel.ToString();
         thrustDisplayText.text = "Max Thrust: " + gameController.ship.maxThrust.ToString();
         fuelEffiencyText.text = "Fuel Effiency: " + gameController.ship.fuelEfficiencyMultiplier.ToString() + "%";
-        moneyDisplayText.text = "Money: " + gameController.player.money.ToString();
+        moneyDisplayText.text = "x " + gameController.player.money.ToString();
         touristDisplayText.text = "Tourists: " + gameController.ship.tourists.ToString();
     }
 
