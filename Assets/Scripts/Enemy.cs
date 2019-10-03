@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour {
         {
             ship = shipObject.GetComponent<Ship>();
         }
-	}
+        StartCoroutine(selfdestruct());
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -35,5 +36,11 @@ public class Enemy : MonoBehaviour {
             Destroy(gameObject);
             ship.explode();
         }
+    }
+
+    IEnumerator selfdestruct()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 }
