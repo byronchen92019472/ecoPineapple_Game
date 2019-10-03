@@ -29,6 +29,11 @@ public class GameController : MonoBehaviour {
 
     private float maxHeight;
     public Player player;
+
+    public GameObject ecoProduct;
+    public float ecoSpawnCounter;
+    public float ecoSpawnTime;
+
     public GameObject enemy;
     public Vector3 enemySpawnPosition;
     public float enemySpawnCounter;
@@ -85,7 +90,7 @@ public class GameController : MonoBehaviour {
             {
                 showFirstPersonCamera();
             }
-
+            
             if (ship.transform.position.y > 1500)
             {
                 //RenderSettings.skybox = skyboxSpace;
@@ -95,6 +100,17 @@ public class GameController : MonoBehaviour {
         }
         
 	}
+
+    void spawnEco()
+    {
+        ecoSpawnCounter -= Time.deltaTime;
+        if (ecoSpawnCounter < 0)
+        {
+            Vector3 spawnPos = new Vector3(Random.Range(-enemySpawnPosition.x, enemySpawnPosition.x), ship.transform.position.y + 50, enemySpawnPosition.z);
+            Instantiate(ecoProduct, spawnPos, Quaternion.identity);
+            ecoSpawnCounter = ecoSpawnTime;
+        }
+    }
 
     void spawnAsteroids()
     {
@@ -131,7 +147,7 @@ public class GameController : MonoBehaviour {
     public void initBuildPhase()
     {
         launchResults();
-        moneyText.text = "Money: " + player.money.ToString();
+        moneyText.text = "x " + player.money.ToString();
         touristText.text = "Tourists: " + ship.tourists.ToString();
         buildUI.enabled = true;
         launchUI.enabled = false;

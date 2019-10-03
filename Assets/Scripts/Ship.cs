@@ -45,7 +45,6 @@ public class Ship : MonoBehaviour {
         {
             rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
         }
-        
 
         if (fuel <= 0 || thrust == 0)
         {
