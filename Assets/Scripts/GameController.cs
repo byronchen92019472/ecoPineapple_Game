@@ -48,9 +48,8 @@ public class GameController : MonoBehaviour {
     public Material skyboxSpace;
 
     public Text milestoneText;
-
-    
-
+    public List<string> milestoneList;
+  
 	// Use this for initialization
 	void Start () {
         //Instantiate(ship, new Vector3(0, 0, 0), Quaternion.identity);
@@ -107,6 +106,7 @@ public class GameController : MonoBehaviour {
                 ship.thrust = 0;
                 StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
             }
+
         }
         
 	}
@@ -160,6 +160,10 @@ public class GameController : MonoBehaviour {
         
         ship.tourists = 0;
         player.money += moneyReceived;
+
+        //milestoneList = GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().milestoneList;
+        //milestoneList.Add("3. Reach Moon Starport. [Code: 5LC - Free Delivery]");
+        //GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().updateMilestoneList();
     }
 
     public void initBuildPhase()

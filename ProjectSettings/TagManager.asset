@@ -16,6 +16,7 @@ TagManager:
   - Continue
   - Milestones
   - SceneTraveller
+  - MilestoneText
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4252440435
     locked: 0
