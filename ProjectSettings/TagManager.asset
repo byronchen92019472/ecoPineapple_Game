@@ -9,6 +9,13 @@ TagManager:
   - Starport
   - Ground
   - Enemy
+  - Settings
+  - Close
+  - Exit
+  - NewGame
+  - Continue
+  - Milestones
+  - SceneTraveller
   layers:
   - Default
   - TransparentFX

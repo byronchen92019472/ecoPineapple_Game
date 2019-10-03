@@ -11,12 +11,15 @@ public class TextActivationScript : MonoBehaviour
     public Canvas settingsCanvas;
     public Canvas newgameCanvas;
     public Canvas continueCanvas;
+    public Canvas milestonesCanvas;
+    public Canvas milestonesDisplayCanvas;
     private BoxCollider2D bc;
     private bool atExit;
     private bool atSettings;
     private bool atStart;
     private bool atContinue;
     private bool atClose;
+    private bool atMilestones;
 
 
     void Start()
@@ -29,6 +32,11 @@ public class TextActivationScript : MonoBehaviour
         if (atStart == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
             SceneManager.LoadScene("SpaceGame");
+        }
+
+        if (atMilestones == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
+        {
+            milestonesDisplayCanvas.gameObject.SetActive(true);
         }
     }
 
@@ -47,6 +55,13 @@ public class TextActivationScript : MonoBehaviour
             settingsCanvas.gameObject.SetActive(true);
             atSettings = true;
             
+        }
+
+        if (other.tag == "Milestones")
+        {
+            //myCanvas.enabled = true;
+            milestonesCanvas.gameObject.SetActive(true);
+            atMilestones = true;
         }
 
         if (other.tag == "NewGame")
@@ -76,10 +91,13 @@ public class TextActivationScript : MonoBehaviour
         settingsCanvas.gameObject.SetActive(false);
         newgameCanvas.gameObject.SetActive(false);
         continueCanvas.gameObject.SetActive(false);
+        milestonesCanvas.gameObject.SetActive(false);
+        milestonesDisplayCanvas.gameObject.SetActive(false);
         atExit = false;
         atSettings = false;
         atStart = false;
         atContinue = false;
+        atMilestones = false;
     }
 
     //If you want to be more specific to what gets enabled and store it all in one script you can check tags
