@@ -43,7 +43,13 @@ public class Ship : MonoBehaviour {
         velocityBeforeCollision = rb.velocity.y;
         if (alive)
         {
-            rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
+            if (rb.velocity.y <= 35)
+            {
+                rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
+
+            }
+            
+            //transform.position = new Vector3(transform.position.x, transform.position.y + thrust * Time.deltaTime * 60, transform.position.z);
         }
 
         if (fuel <= 0 || thrust == 0)
@@ -125,10 +131,12 @@ public class Ship : MonoBehaviour {
             if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
             {
                 transform.position = new Vector3(transform.position.x - (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
+                fuel -= 1 * 0.5f * Time.fixedDeltaTime * 60;
             }
             else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
             {
                 transform.position = new Vector3(transform.position.x + (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
+                fuel -= 1 * 0.5f * Time.fixedDeltaTime * 60;
             }
         }
 

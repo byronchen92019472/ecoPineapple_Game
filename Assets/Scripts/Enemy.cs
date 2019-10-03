@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour {
         if (other.tag == "Ship")
         {
             Debug.Log("Asteroid Collide with Ship");
+            Destroy(gameObject);
             ship.explode();
         }
     }

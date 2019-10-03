@@ -47,6 +47,8 @@ public class GameController : MonoBehaviour {
     public Material skyboxGround;
     public Material skyboxSpace;
 
+    public Text milestoneText;
+
     
 
 	// Use this for initialization
@@ -61,6 +63,7 @@ public class GameController : MonoBehaviour {
         maxHeight = 0;
         initBuildPhase();
         resultDisplayPanel.SetActive(false);
+        milestoneText.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -92,15 +95,29 @@ public class GameController : MonoBehaviour {
                 showFirstPersonCamera();
             }
             spawnEco();
-            if (ship.transform.position.y > 1500)
+            if (ship.transform.position.y > 1)
+            {
+                StartCoroutine(showMilestone("Milestone Reached\nFirst Flight"));
+            }
+            if (ship.transform.position.y > 300)
             {
                 //RenderSettings.skybox = skyboxSpace;
                 spawnAsteroids();
                 ship.rb.useGravity = false;
+                ship.thrust = 0;
+                StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
             }
         }
         
 	}
+
+    IEnumerator showMilestone(string message)
+    {
+        milestoneText.enabled = true;
+        milestoneText.text = message;    
+        yield return new WaitForSeconds(5);
+        milestoneText.enabled = false;
+    }
 
     void spawnEco()
     {
@@ -128,17 +145,17 @@ public class GameController : MonoBehaviour {
     {
         resultDisplayPanel.SetActive(true);
         int touristMoney = (int)(ship.droppedTourists * ship.droppedHeight);
-        int moneyReceived = (int)maxHeight * 100 + touristMoney;
+        int moneyReceived = (int)maxHeight + touristMoney;
         resultMoney.text = "You received $" + moneyReceived;
         if (touristMoney > 0)
         {
             resultInfo.text = string.Format("Max Height Reached: {0} = ${4}\n{1} Tourists dropped off at Height {2} = ${3}",
-                                        (int)maxHeight, ship.droppedTourists, ship.droppedHeight, touristMoney, (int)maxHeight * 100);
+                                        (int)maxHeight, ship.droppedTourists, ship.droppedHeight, touristMoney, (int)maxHeight);
         }
         else
         {
             resultInfo.text = string.Format("Max Height Reached: {0} = ${1}",
-                                        (int)maxHeight, (int)maxHeight * 100);
+                                        (int)maxHeight, (int)maxHeight);
         }
         
         ship.tourists = 0;
