@@ -131,7 +131,7 @@ public class BuildButtonScript : MonoBehaviour {
 
     void setFuelPurchase(Button button, string name, float price, float fuelvalue)
     {
-        fuelPurchaseText.text = name + " - $" + price.ToString();
+        fuelPurchaseText.text = "+" + fuelvalue + " Fuel - $" + price.ToString();
         selectedFuelButton = button;
         selectedFuelValue = fuelvalue;
         selectedFuelPrice = price;

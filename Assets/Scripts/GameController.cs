@@ -152,7 +152,12 @@ public class GameController : MonoBehaviour {
         if (ecoSpawnCounter < 0)
         {
             Vector3 spawnPos = new Vector3(Random.Range(-enemySpawnPosition.x, enemySpawnPosition.x), ship.transform.position.y + 50, enemySpawnPosition.z);
-            Instantiate(ecoProduct, spawnPos, Quaternion.identity);
+            GameObject ecoProductObj = ObjectPooler.sharedInstance.GetPooledObject("EcoProduct");
+            if (ecoProductObj != null)
+            {
+                ecoProductObj.transform.position = spawnPos;
+                ecoProductObj.SetActive(true);
+            }
             ecoSpawnCounter = ecoSpawnTime;
         }
     }
@@ -163,14 +168,25 @@ public class GameController : MonoBehaviour {
         if (enemySpawnCounter < 0)
         {
             Vector3 spawnPos = new Vector3(Random.Range(-enemySpawnPosition.x, enemySpawnPosition.x), ship.transform.position.y + 50, enemySpawnPosition.z);
-            Instantiate(enemy, spawnPos, Quaternion.identity);
+            GameObject asteroid = ObjectPooler.sharedInstance.GetPooledObject("Enemy");
+            if (asteroid != null)
+            {
+                asteroid.transform.position = spawnPos;
+                asteroid.SetActive(true);
+            }
+            //Instantiate(enemy, spawnPos, Quaternion.identity);
             enemySpawnCounter = enemySpawnTime;
         }
 
         if (ship.fuel < 1 && !deathAsteroid)
         {
             Vector3 spawnPos = new Vector3(ship.transform.position.x, ship.transform.position.y + 50, enemySpawnPosition.z);
-            Instantiate(enemy, spawnPos, Quaternion.identity);
+            GameObject asteroid = ObjectPooler.sharedInstance.GetPooledObject("Enemy");
+            if (asteroid != null)
+            {
+                asteroid.transform.position = spawnPos;
+                asteroid.SetActive(true);
+            }
             deathAsteroid = true;
         }
 
@@ -226,6 +242,7 @@ public class GameController : MonoBehaviour {
 
         enemySpawnTime = 2f;
 
+        deathAsteroid = false;
         buildUI.enabled = false;
         launchUI.enabled = true;
         ship.canLaunch = true;
