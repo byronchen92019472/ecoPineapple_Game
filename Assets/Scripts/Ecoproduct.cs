@@ -21,6 +21,7 @@ public class Ecoproduct : MonoBehaviour {
         {
             gamecontroller = gameControlObject.GetComponent<GameController>();
         }
+        StartCoroutine(selfdestruct());
     }
 
     // Update is called once per frame
@@ -42,5 +43,11 @@ public class Ecoproduct : MonoBehaviour {
             Debug.Log("Asteroid Collide with Ship");
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator selfdestruct()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 }

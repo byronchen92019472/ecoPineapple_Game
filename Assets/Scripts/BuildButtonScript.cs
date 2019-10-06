@@ -198,39 +198,39 @@ public class BuildButtonScript : MonoBehaviour {
     {
         if (button == fuelPart1)
         {
-            setFuelPurchase(button, "Fuel 1", 1, 250);
+            setFuelPurchase(button, "Fuel 1", 5, 100);
         }
         if (button == fuelPart2)
         {
-            setFuelPurchase(button, "Fuel 2", 3, 300);
+            setFuelPurchase(button, "Fuel 2", 20, 200);
         }
         if (button == fuelPart3)
         {
-            setFuelPurchase(button, "Fuel 3", 7, 400);
+            setFuelPurchase(button, "Fuel 3", 50, 300);
         }
         if (button == fuelPart4)
         {
-            setFuelPurchase(button, "Fuel 4", 15, 800);
+            setFuelPurchase(button, "Fuel 4", 100, 400);
         }
         if (button == fuelPart5)
         {
-            setFuelPurchase(button, "Fuel 5", 30, 2000);
+            setFuelPurchase(button, "Fuel 5", 200, 500);
         }
         if (button == fuelPart6)
         {
-            setFuelPurchase(button, "Fuel 6", 75, 5000);
+            setFuelPurchase(button, "Fuel 6", 400, 750);
         }
         if (button == fuelPart7)
         {
-            setFuelPurchase(button, "Fuel 7", 200, 15000);
+            setFuelPurchase(button, "Fuel 7", 600, 1000);
         }
         if (button == fuelPart8)
         {
-            setFuelPurchase(button, "Fuel 8", 1000, 30000);
+            setFuelPurchase(button, "Fuel 8", 800, 1500);
         }
         if (button == fuelPart9)
         {
-            setFuelPurchase(button, "Fuel 9", 10000, 100000);
+            setFuelPurchase(button, "Fuel 9", 1000, 2000);
         }
         fuelPurchaseButton.enabled = true;
         updateText();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Ship : MonoBehaviour {
 
@@ -114,7 +115,7 @@ public class Ship : MonoBehaviour {
     {
         if (fuel > 0)
         {
-            if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
+            if (CrossPlatformInputManager.GetAxis("Vertical") > 0)//(Input.GetKey("up") || Input.GetKey(KeyCode.W))
             {
                 if (thrust < maxThrust)
                 {
@@ -128,12 +129,12 @@ public class Ship : MonoBehaviour {
                     thrust -= 1 * Time.fixedDeltaTime * 60;
                 }
             }
-            if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
+            if (CrossPlatformInputManager.GetAxis("Horizontal") < 0) // (Input.GetKey("left") || Input.GetKey(KeyCode.A))
             {
                 transform.position = new Vector3(transform.position.x - (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
                 fuel -= 1 * 0.5f * Time.fixedDeltaTime * 60;
             }
-            else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
+            else if (CrossPlatformInputManager.GetAxis("Horizontal") > 0)  //(Input.GetKey("right") || Input.GetKey(KeyCode.D))
             {
                 transform.position = new Vector3(transform.position.x + (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
                 fuel -= 1 * 0.5f * Time.fixedDeltaTime * 60;

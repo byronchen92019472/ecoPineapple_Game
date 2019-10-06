@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
     public Text velocityText;
     public Text moneyText;
     public Text touristText;
+    public Text fuelWarningText;
 
     public Canvas buildUI;
     public Canvas launchUI;
@@ -42,6 +43,12 @@ public class GameController : MonoBehaviour {
 
     public bool buildPhase;
     public bool launchPhase;
+    public bool milestoneOne;
+    public bool milestoneTwo;
+    public bool milestoneThree;
+    public bool milestoneFour;
+
+    public bool deathAsteroid;
 
     public GameObject moon;
     public Material skyboxGround;
@@ -94,17 +101,37 @@ public class GameController : MonoBehaviour {
                 showFirstPersonCamera();
             }
             spawnEco();
-            if (ship.transform.position.y > 1)
+            if (ship.transform.position.y > 1 && !milestoneOne)
             {
                 StartCoroutine(showMilestone("Milestone Reached\nFirst Flight"));
+                milestoneOne = true;
             }
-            if (ship.transform.position.y > 300)
+            if (ship.transform.position.y > 100 && !milestoneTwo)
+            {
+                StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
+                milestoneTwo = true;
+            }
+            if (ship.transform.position.y > 100)
             {
                 //RenderSettings.skybox = skyboxSpace;
                 spawnAsteroids();
                 ship.rb.useGravity = false;
                 ship.thrust = 0;
-                StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
+            }
+            if (ship.transform.position.y > 1000 && !milestoneThree)
+            {
+                StartCoroutine(showMilestone("Milestone Reached\nReached the Moon"));
+                milestoneThree = true;
+            }
+            if (ship.transform.position.y > 3000 && !milestoneFour)
+            {
+                StartCoroutine(showMilestone("Milestone Reached\nReached Mars"));
+                milestoneThree = true;
+            }
+
+            if (ship.fuel < 1)
+            {
+                fuelWarningText.gameObject.SetActive(true);
             }
 
         }
@@ -139,6 +166,14 @@ public class GameController : MonoBehaviour {
             Instantiate(enemy, spawnPos, Quaternion.identity);
             enemySpawnCounter = enemySpawnTime;
         }
+
+        if (ship.fuel < 1 && !deathAsteroid)
+        {
+            Vector3 spawnPos = new Vector3(ship.transform.position.x, ship.transform.position.y + 50, enemySpawnPosition.z);
+            Instantiate(enemy, spawnPos, Quaternion.identity);
+            deathAsteroid = true;
+        }
+
     }
 
     public void launchResults()
@@ -197,6 +232,7 @@ public class GameController : MonoBehaviour {
         buildPhase = false;
         launchPhase = true;
         showFrontCamera();
+        fuelWarningText.gameObject.SetActive(false);
     }
 
     void showFrontCamera()
