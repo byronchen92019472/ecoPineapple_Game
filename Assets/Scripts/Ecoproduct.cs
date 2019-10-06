@@ -9,7 +9,7 @@ public class Ecoproduct : MonoBehaviour {
     public float speed;
 
     // Use this for initialization
-    void Start()
+    void OnAwake()
     {
         GameObject shipObject = GameObject.FindWithTag("Ship");
         if (shipObject != null)
@@ -30,8 +30,7 @@ public class Ecoproduct : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, transform.position.y + speed * Time.deltaTime * 60, transform.position.z);
         if (transform.position.y < ship.transform.position.y - 30)
         {
-            //Debug.Log(ship.transform.position.y);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -40,14 +39,13 @@ public class Ecoproduct : MonoBehaviour {
         if (other.tag == "Ship")
         {
             gamecontroller.player.money += 5;
-            Debug.Log("Asteroid Collide with Ship");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
     IEnumerator selfdestruct()
     {
         yield return new WaitForSeconds(5);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

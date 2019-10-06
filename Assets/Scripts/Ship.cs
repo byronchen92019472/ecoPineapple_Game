@@ -64,11 +64,6 @@ public class Ship : MonoBehaviour {
             fuel -= (1 * thrust / maxThrust) * fuelEfficiencyMultiplier * Time.fixedDeltaTime * 60;
             rocketThrust.Play();
         }
-        else if (thrust < 0)
-        {
-            fuel -= (1 * -thrust / maxThrust) * fuelEfficiencyMultiplier * Time.fixedDeltaTime * 60;
-            rocketThrust.Play();
-        }
         if (canLaunch)
         {
             handleMovement();
@@ -79,10 +74,8 @@ public class Ship : MonoBehaviour {
     {
         if (velocityBeforeCollision< -10)
         {
-            explode();
-            
-        }
-        
+            explode();     
+        }    
     }
 
     public void resetShip()
@@ -132,12 +125,12 @@ public class Ship : MonoBehaviour {
             if (CrossPlatformInputManager.GetAxis("Horizontal") < 0) // (Input.GetKey("left") || Input.GetKey(KeyCode.A))
             {
                 transform.position = new Vector3(transform.position.x - (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
-                fuel -= 1 * 0.5f * Time.fixedDeltaTime * 60;
+                fuel -= 1 * Time.fixedDeltaTime * 60;
             }
             else if (CrossPlatformInputManager.GetAxis("Horizontal") > 0)  //(Input.GetKey("right") || Input.GetKey(KeyCode.D))
             {
                 transform.position = new Vector3(transform.position.x + (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
-                fuel -= 1 * 0.5f * Time.fixedDeltaTime * 60;
+                fuel -= 1 * Time.fixedDeltaTime * 60;
             }
         }
 

@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
         GameObject shipObject = GameObject.FindWithTag("Ship");
         if (shipObject != null)
         {
@@ -23,8 +23,7 @@ public class Enemy : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, transform.position.y + speed * Time.deltaTime * 60, transform.position.z);
         if (transform.position.y < ship.transform.position.y - 30)
         {
-            Debug.Log(ship.transform.position.y);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 	}
 
@@ -32,8 +31,8 @@ public class Enemy : MonoBehaviour {
     {
         if (other.tag == "Ship")
         {
-            Debug.Log("Asteroid Collide with Ship");
-            Destroy(gameObject);
+            //Debug.Log("Asteroid Collide with Ship");
+            gameObject.SetActive(false);
             ship.explode();
         }
     }
@@ -41,6 +40,6 @@ public class Enemy : MonoBehaviour {
     IEnumerator selfdestruct()
     {
         yield return new WaitForSeconds(5);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

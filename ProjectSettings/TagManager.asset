@@ -17,6 +17,7 @@ TagManager:
   - Milestones
   - SceneTraveller
   - MilestoneText
+  - EcoProduct
   layers:
   - Default
   - TransparentFX
