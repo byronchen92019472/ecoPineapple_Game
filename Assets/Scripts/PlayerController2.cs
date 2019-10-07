@@ -9,7 +9,8 @@ public class PlayerController2 : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-    //private Animator anim;
+    //public GameObject animation;
+    public Animator anim;
 
     // Use this for initialization
     void Start () {
@@ -22,6 +23,16 @@ public class PlayerController2 : MonoBehaviour {
         //Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), 0); WINDOWS
         Vector2 moveInput = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 0);
         moveVelocity = moveInput * speed;
+        if (moveInput[0] != 0)
+        {
+            //gameObject.SetActive(true);
+            anim.SetBool("isWalking", true);
+
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
 	}
 
     private void FixedUpdate()

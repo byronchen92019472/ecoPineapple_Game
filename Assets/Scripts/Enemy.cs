@@ -9,12 +9,16 @@ public class Enemy : MonoBehaviour {
 
 
 	// Use this for initialization
-	void OnEnable () {
+	void OnAwake () {
         GameObject shipObject = GameObject.FindWithTag("Ship");
         if (shipObject != null)
         {
             ship = shipObject.GetComponent<Ship>();
         }
+        
+    }
+    void OnEnable()
+    {
         StartCoroutine(selfdestruct());
     }
 	
@@ -31,7 +35,7 @@ public class Enemy : MonoBehaviour {
     {
         if (other.tag == "Ship")
         {
-            //Debug.Log("Asteroid Collide with Ship");
+            Debug.Log("Asteroid Collide with Ship");
             gameObject.SetActive(false);
             ship.explode();
         }

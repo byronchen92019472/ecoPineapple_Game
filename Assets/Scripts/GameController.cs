@@ -56,6 +56,10 @@ public class GameController : MonoBehaviour {
 
     public Text milestoneText;
     public List<string> milestoneList;
+
+    public bool level1;
+    public bool level2;
+    public bool level3;
   
 	// Use this for initialization
 	void Start () {
@@ -152,6 +156,7 @@ public class GameController : MonoBehaviour {
         if (ecoSpawnCounter < 0)
         {
             Vector3 spawnPos = new Vector3(Random.Range(-enemySpawnPosition.x, enemySpawnPosition.x), ship.transform.position.y + 50, enemySpawnPosition.z);
+            Debug.Log("Eco");
             GameObject ecoProductObj = ObjectPooler.sharedInstance.GetPooledObject("EcoProduct");
             if (ecoProductObj != null)
             {

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65570487472500050}
   m_Layer: 0
   m_Name: EcoProduct 1
-  m_TagString: Untagged
+  m_TagString: EcoProduct
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,8 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90aab722b3e828e47b7bc688c93f7851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 0}
-  gamecontroller: {fileID: 0}
+  ship: {fileID: 114512844176852898, guid: 830e48dd72d388542840aefe382f53ea, type: 2}
   speed: 0
 --- !u!212 &212366610586783140
 SpriteRenderer:
