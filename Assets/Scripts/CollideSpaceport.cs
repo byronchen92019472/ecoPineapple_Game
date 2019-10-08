@@ -8,7 +8,7 @@ public class CollideSpaceport : MonoBehaviour {
     public GameController gameController;
     public string planetName;
 	// Use this for initialization
-	void Start () {
+	void OnAwake () {
         GameObject shipObject = GameObject.FindWithTag("Ship");
         if (shipObject != null)
         {

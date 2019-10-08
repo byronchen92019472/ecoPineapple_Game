@@ -20,12 +20,11 @@ public class Ship : MonoBehaviour {
     public bool alive;
     public bool canLaunch;
 
+    public GameObject flames;
     public Rigidbody rb; 
-    public ParticleSystem rocketThrust;
     public GameObject explosion;
     public ShipParts shipParts;
     public GameObject rocketSprite;
-    private ParticleSystem[] childParticles;
 
 
     private float velocityBeforeCollision;
@@ -33,7 +32,6 @@ public class Ship : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
-        rocketThrust.Stop();
         stopExplode();
         canLaunch = false;
         alive = true;
@@ -56,15 +54,15 @@ public class Ship : MonoBehaviour {
         if (fuel <= 0 || thrust == 0)
         {
             thrust = 0;
-            rocketThrust.Stop();
+            flames.SetActive(false);
         }
 
         if (thrust > 0)
         {
             fuel -= (1 * thrust / maxThrust) * fuelEfficiencyMultiplier * Time.fixedDeltaTime * 60;
-            rocketThrust.Play();
+            flames.SetActive(true);
         }
-        if (canLaunch)
+        if (canLaunch && alive)
         {
             handleMovement();
         }
@@ -86,6 +84,7 @@ public class Ship : MonoBehaviour {
         rb.rotation = Quaternion.identity;
         thrust = 0;
         stopExplode();
+        flames.SetActive(false);
     }
 
     public void explode()
@@ -95,6 +94,7 @@ public class Ship : MonoBehaviour {
         rb.angularVelocity = Vector3.zero;
         explosion.SetActive(true);
         rocketSprite.SetActive(false);
+        flames.SetActive(false);
     }
 
     void stopExplode()
@@ -113,13 +113,6 @@ public class Ship : MonoBehaviour {
                 if (thrust < maxThrust)
                 {
                     thrust += 1 * Time.fixedDeltaTime * 60;
-                }
-            }
-            else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
-            {
-                if (thrust > -maxThrust)
-                {
-                    thrust -= 1 * Time.fixedDeltaTime * 60;
                 }
             }
             if (CrossPlatformInputManager.GetAxis("Horizontal") < 0) // (Input.GetKey("left") || Input.GetKey(KeyCode.A))

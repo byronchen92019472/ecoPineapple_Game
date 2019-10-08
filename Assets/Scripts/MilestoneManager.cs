@@ -5,56 +5,41 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MilestoneManager : MonoBehaviour {
+    public bool milestoneOne;
+    public bool milestoneTwo;
+    public bool milestoneThree;
+    public bool milestoneFour;
 
-    public List<string> milestoneList = new List<string>();
+    public Ship ship;
     public Text milestoneText;
-    public string milestoneString;
-    public static MilestoneManager instance = null;
 
-    //void Awake()
-    //{
-    //    //Check if instance already exists
-    //    if (instance == null)
-
-    //        //if not, set instance to this
-    //        instance = this;
-
-    //    //If instance already exists and it's not this:
-    //    else if (instance != this)
-
-    //        //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-    //        Destroy(gameObject);
-
-    //    //Sets this to not be destroyed when reloading scene
-    //    DontDestroyOnLoad(this.gameObject);
-    //}
-
-    // Use this for initialization
-    void Start () {
-        milestoneList.Add("1. Reach 500m. [Code: 123 - $5 Off any order over $20]");
-        milestoneList.Add("2. Reach Earth Starport.");
+    void Start(){
+        milestoneText.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update () {
-        updateUIText();
-    }
-
-    public void updateUIText()
-    {
-        milestoneString = "";
-
-        foreach (string value in milestoneList)
-        {
-            milestoneString = milestoneString + value + "\n";
+    void Update(){
+        if (ship.transform.position.y > 1 && !milestoneOne){
+            StartCoroutine(showMilestone("Milestone Reached\nFirst Flight"));
+            milestoneOne = true;
         }
-
-        milestoneText.text = milestoneString;
-        //GameObject.FindGameObjectWithTag("MilestoneText").GetComponent<UnityEngine.UI.Text>().text = milestoneString;
+        if (ship.transform.position.y > 100 && !milestoneTwo){
+            StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
+            milestoneTwo = true;
+        }
+        if (ship.transform.position.y > 1000 && !milestoneThree){
+            StartCoroutine(showMilestone("Milestone Reached\nReached the Moon"));
+            milestoneThree = true;
+        }
+        if (ship.transform.position.y > 3000 && !milestoneFour){
+            StartCoroutine(showMilestone("Milestone Reached\nReached Mars"));
+            milestoneThree = true;
+        }
     }
 
-    //public void updateMilestoneList()
-    //{
-    //    milestoneList = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().milestoneList;
-    //}
+    IEnumerator showMilestone(string message){
+        milestoneText.enabled = true;
+        milestoneText.text = message;    
+        yield return new WaitForSeconds(5);
+        milestoneText.enabled = false;
+    }
 }

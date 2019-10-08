@@ -6,16 +6,17 @@ public class Enemy : MonoBehaviour {
 
     public Ship ship;
     public float speed;
-
+    public GameController gamecontroller;
 
 	// Use this for initialization
-	void OnEnable () {
-        GameObject shipObject = GameObject.FindWithTag("Ship");
+    void OnEnable()
+    {
+        GameObject shipObject = GameObject.Find("Ship");
         if (shipObject != null)
         {
             ship = shipObject.GetComponent<Ship>();
         }
-        StartCoroutine(selfdestruct());
+        //StartCoroutine(selfdestruct());
     }
 	
 	// Update is called once per frame
@@ -31,7 +32,7 @@ public class Enemy : MonoBehaviour {
     {
         if (other.tag == "Ship")
         {
-            //Debug.Log("Asteroid Collide with Ship");
+            Debug.Log("Asteroid Collide with Ship");
             gameObject.SetActive(false);
             ship.explode();
         }
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator selfdestruct()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         gameObject.SetActive(false);
     }
 }
