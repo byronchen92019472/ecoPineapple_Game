@@ -16,7 +16,7 @@ public class Ecoproduct : MonoBehaviour {
         {
             ship = shipObject.GetComponent<Ship>();
         }
-        StartCoroutine(selfdestruct());
+        //StartCoroutine(selfdestruct());
     }
 
 

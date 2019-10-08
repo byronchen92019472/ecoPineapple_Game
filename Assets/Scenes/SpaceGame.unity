@@ -148,7 +148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 44, y: 24.1}
+  m_AnchoredPosition: {x: 44, y: 24.099976}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &9209322
@@ -2335,9 +2335,9 @@ RectTransform:
   m_Father: {fileID: 1985214292}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -122.7, y: 750.9}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -122.7, y: -48}
   m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470328446
@@ -3319,6 +3319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 854052181}
   - component: {fileID: 854052180}
+  - component: {fileID: 854052183}
   - component: {fileID: 854052182}
   m_Layer: 0
   m_Name: GameController
@@ -3339,8 +3340,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frontCamera: {fileID: 762608780}
-  highCamera: {fileID: 1647061048}
-  firstPersonCamera: {fileID: 113633347}
   buildCamera: {fileID: 1882436855}
   ship: {fileID: 740515829}
   fuelSlider: {fileID: 538586449}
@@ -3368,19 +3367,11 @@ MonoBehaviour:
   enemySpawnTime: 1.1e+9
   buildPhase: 0
   launchPhase: 0
-  milestoneOne: 0
-  milestoneTwo: 0
-  milestoneThree: 0
-  milestoneFour: 0
   deathAsteroid: 0
   moon: {fileID: 1535796479}
   skyboxGround: {fileID: 2100000, guid: b856175f77c7a544c9bad600e17deeea, type: 2}
   skyboxSpace: {fileID: 2100000, guid: b856175f77c7a544c9bad600e17deeea, type: 2}
-  milestoneText: {fileID: 1999884647}
-  milestoneList: []
-  level1: 0
-  level2: 0
-  level3: 0
+  levelNumber: 0
 --- !u!4 &854052181
 Transform:
   m_ObjectHideFlags: 0
@@ -3415,6 +3406,23 @@ MonoBehaviour:
     amountToPool: 3
     shouldExpand: 1
   pooledObjects: []
+--- !u!114 &854052183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 854052179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8451062355583804a868de39981c4c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  milestoneOne: 0
+  milestoneTwo: 0
+  milestoneThree: 0
+  milestoneFour: 0
+  ship: {fileID: 740515829}
+  milestoneText: {fileID: 1999884647}
 --- !u!1 &881951773
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,9 +3601,9 @@ RectTransform:
   m_Father: {fileID: 1985214292}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -51.3, y: 752.3}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -51.3, y: -44}
   m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896111178
@@ -8626,7 +8634,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 50
-    m_Alignment: 2
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -8654,7 +8662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -434.9, y: -85.1}
+  m_AnchoredPosition: {x: -352.1, y: -85.1}
   m_SizeDelta: {x: 234, y: 54.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1914125405
@@ -9579,6 +9587,21 @@ Prefab:
     - target: {fileID: 65630514589391666, guid: 558e688cf1bf3604ab71158d9124422b,
         type: 2}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387257184201510, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: fuel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54909912476331738, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 54909912476331738, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9604,7 +9627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!225 &2087984593
 CanvasGroup:
   m_ObjectHideFlags: 0

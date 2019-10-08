@@ -34,6 +34,12 @@ public class ObjectPooler : MonoBehaviour {
         }
     }
 
+    public void ClearPooledList(){
+        foreach(GameObject item in pooledObjects){
+            item.SetActive(false);
+        }
+    }
+
     public GameObject GetPooledObject(string tag)
     {
         for (int i = 0; i < pooledObjects.Count; i++)

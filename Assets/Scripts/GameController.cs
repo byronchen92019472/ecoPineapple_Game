@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public Camera frontCamera;
-    public Camera highCamera;
-    public Camera firstPersonCamera;
     public Camera buildCamera;
 
     public Ship ship;
@@ -43,10 +41,6 @@ public class GameController : MonoBehaviour {
 
     public bool buildPhase;
     public bool launchPhase;
-    public bool milestoneOne;
-    public bool milestoneTwo;
-    public bool milestoneThree;
-    public bool milestoneFour;
 
     public bool deathAsteroid;
 
@@ -54,12 +48,7 @@ public class GameController : MonoBehaviour {
     public Material skyboxGround;
     public Material skyboxSpace;
 
-    public Text milestoneText;
-    public List<string> milestoneList;
-
-    public bool level1;
-    public bool level2;
-    public bool level3;
+    public int levelNumber;
   
 	// Use this for initialization
 	void Start () {
@@ -73,7 +62,6 @@ public class GameController : MonoBehaviour {
         maxHeight = 0;
         initBuildPhase();
         resultDisplayPanel.SetActive(false);
-        milestoneText.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -83,72 +71,34 @@ public class GameController : MonoBehaviour {
         distanceSlider.value = ship.transform.position.y;
         heightText.text = "Height: " + ((int)ship.transform.position.y).ToString();
         maxHeightText.text = "Max Height: " + ((int)maxHeight).ToString();
-        velocityText.text = "Velocity: " + ((int)ship.rb.velocity.y).ToString();
+        //velocityText.text = "Velocity: " + ((int)ship.rb.velocity.y).ToString();
 
         if (maxHeight < ship.transform.position.y)
         {
             maxHeight = ship.transform.position.y;
         }
-
         if (launchPhase)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                showFrontCamera();
+            if (levelNumber == 1){
+                
+            }else if(levelNumber == 2){
+                spawnEco();
+            }else if (levelNumber == 3){
+
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                showHighCamera();
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                showFirstPersonCamera();
-            }
-            spawnEco();
-            if (ship.transform.position.y > 1 && !milestoneOne)
-            {
-                StartCoroutine(showMilestone("Milestone Reached\nFirst Flight"));
-                milestoneOne = true;
-            }
-            if (ship.transform.position.y > 100 && !milestoneTwo)
-            {
-                StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
-                milestoneTwo = true;
-            }
+            
             if (ship.transform.position.y > 100)
             {
-                //RenderSettings.skybox = skyboxSpace;
                 spawnAsteroids();
                 ship.rb.useGravity = false;
                 ship.thrust = 0;
             }
-            if (ship.transform.position.y > 1000 && !milestoneThree)
-            {
-                StartCoroutine(showMilestone("Milestone Reached\nReached the Moon"));
-                milestoneThree = true;
-            }
-            if (ship.transform.position.y > 3000 && !milestoneFour)
-            {
-                StartCoroutine(showMilestone("Milestone Reached\nReached Mars"));
-                milestoneThree = true;
-            }
-
             if (ship.fuel < 1)
             {
                 fuelWarningText.gameObject.SetActive(true);
             }
-
-        }
-        
+        }     
 	}
-
-    IEnumerator showMilestone(string message)
-    {
-        milestoneText.enabled = true;
-        milestoneText.text = message;    
-        yield return new WaitForSeconds(5);
-        milestoneText.enabled = false;
-    }
 
     void spawnEco()
     {
@@ -156,7 +106,6 @@ public class GameController : MonoBehaviour {
         if (ecoSpawnCounter < 0)
         {
             Vector3 spawnPos = new Vector3(Random.Range(-enemySpawnPosition.x, enemySpawnPosition.x), ship.transform.position.y + 50, enemySpawnPosition.z);
-            Debug.Log("Eco");
             GameObject ecoProductObj = ObjectPooler.sharedInstance.GetPooledObject("EcoProduct");
             if (ecoProductObj != null)
             {
@@ -216,10 +165,6 @@ public class GameController : MonoBehaviour {
         
         ship.tourists = 0;
         player.money += moneyReceived;
-
-        //milestoneList = GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().milestoneList;
-        //milestoneList.Add("3. Reach Moon Starport. [Code: 5LC - Free Delivery]");
-        //GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().updateMilestoneList();
     }
 
     public void initBuildPhase()
@@ -235,6 +180,7 @@ public class GameController : MonoBehaviour {
         ship.resetShip();
         showBuildCamera();
         RenderSettings.skybox = skyboxGround;
+        ObjectPooler.sharedInstance.ClearPooledList();
     }
 
     public void initLaunchPhase()
@@ -244,9 +190,7 @@ public class GameController : MonoBehaviour {
         fuelSlider.maxValue = ship.fuel;
         thrustSlider.maxValue = ship.maxThrust * 2;
         distanceSlider.maxValue = moon.transform.position.y;
-
         enemySpawnTime = 2f;
-
         deathAsteroid = false;
         buildUI.enabled = false;
         launchUI.enabled = true;
@@ -260,29 +204,16 @@ public class GameController : MonoBehaviour {
     void showFrontCamera()
     {
         frontCamera.enabled = true;
-        highCamera.enabled = false;
-        firstPersonCamera.enabled = false;
-    }
-
-    void showHighCamera()
-    {
-        frontCamera.enabled = false;
-        highCamera.enabled = true;
-        firstPersonCamera.enabled = false;
-    }
-
-    void showFirstPersonCamera()
-    {
-        frontCamera.enabled = false;
-        highCamera.enabled = false;
-        firstPersonCamera.enabled = true;
+        buildCamera.enabled = false;
     }
 
     void showBuildCamera()
     {
         frontCamera.enabled = false;
-        highCamera.enabled = false;
-        firstPersonCamera.enabled = false;
         buildCamera.enabled = true;
+    }
+
+    void initLevel(int level){
+        
     }
 }
