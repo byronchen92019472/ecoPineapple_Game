@@ -6,19 +6,16 @@ public class Enemy : MonoBehaviour {
 
     public Ship ship;
     public float speed;
-
+    public GameController gamecontroller;
 
 	// Use this for initialization
-	void OnAwake () {
-        GameObject shipObject = GameObject.FindWithTag("Ship");
+    void OnEnable()
+    {
+        GameObject shipObject = GameObject.Find("Ship");
         if (shipObject != null)
         {
             ship = shipObject.GetComponent<Ship>();
         }
-        
-    }
-    void OnEnable()
-    {
         StartCoroutine(selfdestruct());
     }
 	

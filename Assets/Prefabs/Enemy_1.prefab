@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4954534839803982}
   - component: {fileID: 212229221876753310}
+  - component: {fileID: 114036908200416260}
   - component: {fileID: 54125061325842908}
   - component: {fileID: 65962936388601852}
-  - component: {fileID: 114036908200416260}
   m_Layer: 0
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -81,8 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d39f4cf3d416a34e96e2996d44536ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 114512844176852898, guid: 830e48dd72d388542840aefe382f53ea, type: 2}
+  ship: {fileID: 114387257184201510, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
   speed: 0
+  gamecontroller: {fileID: 0}
 --- !u!212 &212229221876753310
 SpriteRenderer:
   m_ObjectHideFlags: 1

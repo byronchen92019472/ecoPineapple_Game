@@ -32,10 +32,11 @@ public class Ship : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
-        flames.SetActive(false);
+        //flames.SetActive(false);
         stopExplode();
         canLaunch = false;
         alive = true;
+        Debug.Log("Start");
 	}
 
     void FixedUpdate()
@@ -63,7 +64,7 @@ public class Ship : MonoBehaviour {
             fuel -= (1 * thrust / maxThrust) * fuelEfficiencyMultiplier * Time.fixedDeltaTime * 60;
             flames.SetActive(true);
         }
-        if (canLaunch)
+        if (canLaunch && alive)
         {
             handleMovement();
         }
@@ -90,12 +91,14 @@ public class Ship : MonoBehaviour {
 
     public void explode()
     {
+        Debug.Log("Explode");
         alive = false;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         explosion.SetActive(true);
         rocketSprite.SetActive(false);
         flames.SetActive(false);
+        Debug.Log("Explodeaaaa");
     }
 
     void stopExplode()

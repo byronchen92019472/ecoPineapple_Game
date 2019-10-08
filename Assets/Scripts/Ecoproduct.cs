@@ -8,20 +8,17 @@ public class Ecoproduct : MonoBehaviour {
     public int speed = 0;
 
     // Use this for initialization
-    void OnAwake()
+
+    void OnEnable()
     {
-        GameObject shipObject = GameObject.FindGameObjectWithTag("Ship");
+        GameObject shipObject = GameObject.Find("Ship");
         if (shipObject != null)
         {
             ship = shipObject.GetComponent<Ship>();
         }
-        
-    }
-
-    void OnEnable()
-    {
         StartCoroutine(selfdestruct());
     }
+
 
     // Update is called once per frame
     void Update()
