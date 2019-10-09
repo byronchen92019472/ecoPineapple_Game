@@ -93,7 +93,7 @@ public class BuildButtonScript : MonoBehaviour {
 	}
     void exitButtonClick()
     {
-        SceneManager.LoadScene("Start Screen");
+        SceneManager.LoadSceneAsync("StartScreen");
     }
     
     void fuelTabButtonClick()

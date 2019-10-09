@@ -30,11 +30,11 @@ public class Ship : MonoBehaviour {
     public GameObject rocketSprite;
     public GameObject launchUpButton;
 
-
     private float velocityBeforeCollision;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         rb = GetComponent<Rigidbody>();
         maxFuel = 150;
         fuel = maxFuel;

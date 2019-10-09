@@ -20,17 +20,19 @@ public class TextActivationScript : MonoBehaviour
     private bool atClose;
     private bool atMilestones;
 
-
     void Start()
     {
         bc = GetComponent<BoxCollider2D>();
+        //testing
+        //bool sc = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneController>().level3Load;
+        //Debug.Log(sc);
     }
 
     void Update()
     {
         if (atStart == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
-            SceneManager.LoadScene("SpaceGame");
+            SceneManager.LoadSceneAsync("SpaceGame");
         }
 
         if (atMilestones == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))

@@ -18,6 +18,8 @@ TagManager:
   - SceneTraveller
   - MilestoneText
   - EcoProduct
+  - AnimatedDialog
+  - SceneManager
   layers:
   - Default
   - TransparentFX
