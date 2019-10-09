@@ -5,11 +5,11 @@ using UnityEngine;
 public class CollideSpaceport : MonoBehaviour {
 
     public Ship ship;
-    public GameController gameController;
+    //public GameController gameController;
     public string planetName;
 	// Use this for initialization
-	void OnAwake () {
-        GameObject shipObject = GameObject.FindWithTag("Ship");
+	void OnEnable () {
+        GameObject shipObject = GameObject.Find("Ship");
         if (shipObject != null)
         {
             ship = shipObject.GetComponent<Ship>();

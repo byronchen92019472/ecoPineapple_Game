@@ -29,8 +29,7 @@ public class ObjectPooler : MonoBehaviour {
                 GameObject obj = (GameObject)Instantiate(item.objectToPool);
                 obj.SetActive(false);
                 pooledObjects.Add(obj);
-            }
-            
+            }   
         }
     }
 

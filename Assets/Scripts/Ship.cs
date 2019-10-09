@@ -19,6 +19,7 @@ public class Ship : MonoBehaviour {
 
     public bool alive;
     public bool canLaunch;
+    public bool launchUp;
 
     public GameObject flames;
     public Rigidbody rb; 
@@ -45,10 +46,7 @@ public class Ship : MonoBehaviour {
             if (rb.velocity.y <= 35)
             {
                 rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
-
             }
-            
-            //transform.position = new Vector3(transform.position.x, transform.position.y + thrust * Time.deltaTime * 60, transform.position.z);
         }
 
         if (fuel <= 0 || thrust == 0)
@@ -66,6 +64,8 @@ public class Ship : MonoBehaviour {
         {
             handleMovement();
         }
+        if(launchUp)
+            launch();
     }
 
     void OnCollisionEnter(Collision other)
@@ -104,16 +104,20 @@ public class Ship : MonoBehaviour {
         rocketSprite.SetActive(true);
     }
 
+    void launch(){
+        if (thrust < maxThrust)
+        {
+            thrust += 1 * Time.fixedDeltaTime * 60;
+        }
+    }
+
     void handleMovement()
     {
         if (fuel > 0)
         {
             if (CrossPlatformInputManager.GetAxis("Vertical") > 0)//(Input.GetKey("up") || Input.GetKey(KeyCode.W))
             {
-                if (thrust < maxThrust)
-                {
-                    thrust += 1 * Time.fixedDeltaTime * 60;
-                }
+                launchUp = true;
             }
             if (CrossPlatformInputManager.GetAxis("Horizontal") < 0) // (Input.GetKey("left") || Input.GetKey(KeyCode.A))
             {

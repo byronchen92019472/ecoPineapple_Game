@@ -7,18 +7,26 @@ using UnityEngine.UI;
 public class MilestoneManager : MonoBehaviour {
     public bool milestoneOne;
     public bool milestoneTwo;
-    public bool milestoneThree;
-    public bool milestoneFour;
+    public bool milestoneMoon;
+    public bool milestoneMars;
+    public bool milestoneMercury;
+    public bool milestoneVenus;
+    public bool milestoneJupiter;
+    public bool milestoneSaturn;
+    public bool milestoneNeptune;
+    public bool milestoneUranus;
+    public bool milestonePluto;
 
     public Ship ship;
     public Text milestoneText;
+    public GameController gameController;
 
     void Start(){
         milestoneText.enabled = false;
     }
 
     void Update(){
-        if (ship.transform.position.y > 1 && !milestoneOne){
+        if (ship.transform.position.y > 3 && !milestoneOne){
             StartCoroutine(showMilestone("Milestone Reached\nFirst Flight"));
             milestoneOne = true;
         }
@@ -26,13 +34,41 @@ public class MilestoneManager : MonoBehaviour {
             StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
             milestoneTwo = true;
         }
-        if (ship.transform.position.y > 1000 && !milestoneThree){
+        if (ship.transform.position.y > 1000 && !milestoneMoon){
             StartCoroutine(showMilestone("Milestone Reached\nReached the Moon"));
-            milestoneThree = true;
+            milestoneMoon = true;
         }
-        if (ship.transform.position.y > 3000 && !milestoneFour){
+        if (ship.transform.position.y > 2000 && !milestoneVenus && gameController.levelNumber == 2){
+            StartCoroutine(showMilestone("Milestone Reached\nReached the Venus"));
+            milestoneMoon = true;
+        }
+        if (ship.transform.position.y > 3500 && !milestoneMercury && gameController.levelNumber == 2){
+            StartCoroutine(showMilestone("Milestone Reached\nReached the Mercury"));
+            milestoneMoon = true;
+        }
+        if (ship.transform.position.y > 3000 && !milestoneMars && gameController.levelNumber == 3){
             StartCoroutine(showMilestone("Milestone Reached\nReached Mars"));
-            milestoneThree = true;
+            milestoneMars = true;
+        }
+        if (ship.transform.position.y > 5000 && !milestoneJupiter && gameController.levelNumber == 3){
+            StartCoroutine(showMilestone("Milestone Reached\nReached Jupiter"));
+            milestoneJupiter = true;
+        }
+        if (ship.transform.position.y > 7000 && !milestoneSaturn && gameController.levelNumber == 3){
+            StartCoroutine(showMilestone("Milestone Reached\nReached Saturn"));
+            milestoneSaturn = true;
+        }
+        if (ship.transform.position.y > 9000 && !milestoneNeptune && gameController.levelNumber == 3){
+            StartCoroutine(showMilestone("Milestone Reached\nReached Neptune"));
+            milestoneNeptune = true;
+        }
+        if (ship.transform.position.y > 11000 && !milestoneVenus && gameController.levelNumber == 3){
+            StartCoroutine(showMilestone("Milestone Reached\nReached Venus"));
+            milestoneVenus = true;
+        }
+        if (ship.transform.position.y > 15000 && !milestonePluto && gameController.levelNumber == 3){
+            StartCoroutine(showMilestone("Milestone Reached\nReached Pluto"));
+            milestonePluto = true;
         }
     }
 
