@@ -65,32 +65,25 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //Instantiate(ship, new Vector3(0, 0, 0), Quaternion.identity);
-        ship.maxFuel = 150;
-        ship.fuel = ship.maxFuel;
-        ship.maxThrust = 25;
-        ship.fuelEfficiencyMultiplier = .95f;
-        player.money = 0;
+        //player.money = 0;
         objectList = new List<GameObject>();
         maxHeight = 0;  
-        initBuildPhase();
-        initLevel(levelNumber);        
+        initBuildPhase();     
         resultDisplayPanel.SetActive(false);
 	}
 	
 	void Update () {
-        fuelSlider.value = ship.fuel;
-        thrustSlider.value = ship.thrust + ship.maxThrust;
-        distanceSlider.value = ship.transform.position.y;
-        heightText.text = "Height: " + ((int)ship.transform.position.y).ToString();
-        maxHeightText.text = "Max Height: " + ((int)maxHeight).ToString();
-        //velocityText.text = "Velocity: " + ((int)ship.rb.velocity.y).ToString();
-
-        if (maxHeight < ship.transform.position.y)
-        {
-            maxHeight = ship.transform.position.y;
-        }
         if (launchPhase)
         {
+            if (maxHeight < ship.transform.position.y)
+            {
+                maxHeight = ship.transform.position.y;
+            }
+            fuelSlider.value = ship.fuel;
+            thrustSlider.value = ship.thrust + ship.maxThrust;
+            distanceSlider.value = ship.transform.position.y;
+            heightText.text = "Height: " + ((int)ship.transform.position.y).ToString();
+            maxHeightText.text = "Max Height: " + ((int)maxHeight).ToString();
             if (levelNumber == 1){
                 
             }else if(levelNumber == 2){
@@ -202,6 +195,7 @@ public class GameController : MonoBehaviour {
         showBuildCamera();
         RenderSettings.skybox = skyboxGround;
         ObjectPooler.sharedInstance.ClearPooledList();
+        initLevel(levelNumber);   
     }
 
     public void initLaunchPhase()
@@ -223,7 +217,7 @@ public class GameController : MonoBehaviour {
         showFrontCamera();
         fuelWarningText.gameObject.SetActive(false);
         if (levelNumber == 1)
-            StartCoroutine(showMessage("Level 1\nFly to the Moon", levelText, 2));
+            StartCoroutine(showMessage("Level 1\nFly out of Earth", levelText, 2));
         if (levelNumber == 2)
             StartCoroutine(showMessage("Level 2\nFly to Mercury", levelText, 2));
         if (levelNumber == 3)
@@ -242,31 +236,35 @@ public class GameController : MonoBehaviour {
         buildCamera.enabled = true;
     }
 
+    public void completeLevel(){
+
+    }
+
     void initLevel(int level){
         clearObjectList();
         if (level == 1){
-            addToObjectList(spacePort, new Vector3(-10, 144, 0));
+            addToObjectList(spacePort, new Vector3(0, 144, 0));
             addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
             addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
         }
         if (level == 2){
-            addToObjectList(spacePort, new Vector3(-10, 144, 0));
-            addToObjectList(spacePort, new Vector3(-10, 971, 0));
-            addToObjectList(spacePort, new Vector3(-10, 1970, 0));
-            addToObjectList(spacePort, new Vector3(-10, 3470, 0));
+            // addToObjectList(spacePort, new Vector3(-10, 144, 0));
+            // addToObjectList(spacePort, new Vector3(-10, 971, 0));
+            // addToObjectList(spacePort, new Vector3(-10, 1970, 0));
+            addToObjectList(spacePort, new Vector3(0, 3470, 0));
             addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
             addToObjectList(Venus, new Vector3(-5, 2000, 0));
             addToObjectList(Mercury, new Vector3(-5, 3500, 0));
         }
         if (level == 3){
-            addToObjectList(spacePort, new Vector3(-10, 144, 0));
-            addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 2989.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 4970.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 6970.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 8970.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 10970.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 14970.9f, 0));
+            // addToObjectList(spacePort, new Vector3(-10, 144, 0));
+            // addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
+            // addToObjectList(spacePort, new Vector3(9.4f, 2989.9f, 0));
+            // addToObjectList(spacePort, new Vector3(9.4f, 4970.9f, 0));
+            // addToObjectList(spacePort, new Vector3(9.4f, 6970.9f, 0));
+            // addToObjectList(spacePort, new Vector3(9.4f, 8970.9f, 0));
+            // addToObjectList(spacePort, new Vector3(9.4f, 10970.9f, 0));
+            addToObjectList(spacePort, new Vector3(0, 14970.9f, 0));
             addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
             addToObjectList(mars, new Vector3(-5.7f, 3004, 0));
             addToObjectList(Jupiter, new Vector3(-5.7f, 5000, 0));

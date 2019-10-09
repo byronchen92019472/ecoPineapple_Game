@@ -8055,8 +8055,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 245.01001, y: -302.43}
-  m_SizeDelta: {x: 442.4, y: 113.3}
+  m_AnchoredPosition: {x: 245.01001, y: -392}
+  m_SizeDelta: {x: 442.4, y: 446.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1882436850
 GameObject:
@@ -9176,8 +9176,13 @@ Prefab:
     - target: {fileID: 212540397101365924, guid: 558e688cf1bf3604ab71158d9124422b,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114387257184201510, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: launchUpButton
+      value: 
+      objectReference: {fileID: 9209320}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
   m_IsPrefabParent: 0
