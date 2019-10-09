@@ -15,7 +15,7 @@ public class TextActivationScript : MonoBehaviour
     private BoxCollider2D bc;
     private bool atExit;
     private bool atSettings;
-    private bool atStart;
+    public bool atStart;
     private bool atContinue;
     private bool atClose;
     private bool atMilestones;
