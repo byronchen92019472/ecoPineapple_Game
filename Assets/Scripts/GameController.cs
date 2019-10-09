@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    public static GameController Instance;
+
     public Camera frontCamera;
     public Camera buildCamera;
 
@@ -49,9 +51,9 @@ public class GameController : MonoBehaviour {
     public Material skyboxSpace;
 
     public int levelNumber;
-  
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         //Instantiate(ship, new Vector3(0, 0, 0), Quaternion.identity);
         ship.maxFuel = 150;
         ship.fuel = ship.maxFuel;

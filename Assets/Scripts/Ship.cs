@@ -26,11 +26,11 @@ public class Ship : MonoBehaviour {
     public ShipParts shipParts;
     public GameObject rocketSprite;
 
-
     private float velocityBeforeCollision;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         rb = GetComponent<Rigidbody>();
         stopExplode();
         canLaunch = false;

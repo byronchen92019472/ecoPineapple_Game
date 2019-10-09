@@ -9,7 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Start Screen.unity
+    path: Assets/Scenes/Intro/Intro.unity
+    guid: dc5b61378999cb2469dcd8d1a421cdad
+  - enabled: 1
+    path: Assets/Scenes/SplashScreen.unity
+    guid: 1be9cd44adf5fab4782a8ee05aeeec9b
+  - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
     guid: 4b5f49a4cf0449b4fb91b6b8dea82842
   - enabled: 1
     path: Assets/Scenes/SpaceGame.unity
