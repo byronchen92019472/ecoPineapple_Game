@@ -19,12 +19,16 @@ public class Ship : MonoBehaviour {
 
     public bool alive;
     public bool canLaunch;
+    public bool launchUp;
+    public bool canMoveToSpaceport;
+    private Vector3 spaceportPos;
 
     public GameObject flames;
     public Rigidbody rb; 
     public GameObject explosion;
     public ShipParts shipParts;
     public GameObject rocketSprite;
+    public GameObject launchUpButton;
 
     private float velocityBeforeCollision;
 
@@ -32,6 +36,10 @@ public class Ship : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
+        maxFuel = 150;
+        fuel = maxFuel;
+        maxThrust = 25;
+        fuelEfficiencyMultiplier = .95f;
         stopExplode();
         canLaunch = false;
         alive = true;
@@ -45,10 +53,7 @@ public class Ship : MonoBehaviour {
             if (rb.velocity.y <= 35)
             {
                 rb.AddForce(new Vector3(0, 1 * Time.fixedDeltaTime * 60, 0) * thrust);
-
             }
-            
-            //transform.position = new Vector3(transform.position.x, transform.position.y + thrust * Time.deltaTime * 60, transform.position.z);
         }
 
         if (fuel <= 0 || thrust == 0)
@@ -65,6 +70,15 @@ public class Ship : MonoBehaviour {
         if (canLaunch && alive)
         {
             handleMovement();
+        }
+        if(launchUp)
+            launch();
+        if (canMoveToSpaceport){
+            rb.velocity = Vector3.zero;
+            transform.position = Vector3.MoveTowards(transform.position, spaceportPos, 0.1f * Time.fixedDeltaTime * 60);
+            if(Vector3.Distance(transform.position, spaceportPos) < 0.1f){
+                rb.velocity = Vector3.zero;
+            }
         }
     }
 
@@ -83,7 +97,10 @@ public class Ship : MonoBehaviour {
         rb.angularVelocity = new Vector3(0f, 0f, 0f);
         rb.rotation = Quaternion.identity;
         thrust = 0;
+        launchUp = false;
+        canMoveToSpaceport = false;
         stopExplode();
+        launchUpButton.SetActive(true);
         flames.SetActive(false);
     }
 
@@ -104,16 +121,21 @@ public class Ship : MonoBehaviour {
         rocketSprite.SetActive(true);
     }
 
+    void launch(){
+        if (thrust < maxThrust)
+        {
+            thrust += 1 * Time.fixedDeltaTime * 60;
+        }
+    }
+
     void handleMovement()
     {
         if (fuel > 0)
         {
             if (CrossPlatformInputManager.GetAxis("Vertical") > 0)//(Input.GetKey("up") || Input.GetKey(KeyCode.W))
             {
-                if (thrust < maxThrust)
-                {
-                    thrust += 1 * Time.fixedDeltaTime * 60;
-                }
+                launchUp = true;
+                launchUpButton.SetActive(false);
             }
             if (CrossPlatformInputManager.GetAxis("Horizontal") < 0) // (Input.GetKey("left") || Input.GetKey(KeyCode.A))
             {
@@ -129,10 +151,13 @@ public class Ship : MonoBehaviour {
 
     }
 
-    public void dropTourists(string name, float height)
+    public void dropTourists(string name, Vector3 pos)
     {
+        canMoveToSpaceport = true;
+        spaceportPos = pos;
+        alive = false;
         droppedTourists = tourists;
-        droppedHeight = height;
+        droppedHeight = pos.y;
     }
 
 }

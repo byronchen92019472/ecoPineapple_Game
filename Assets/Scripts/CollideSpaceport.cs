@@ -8,11 +8,15 @@ public class CollideSpaceport : MonoBehaviour {
     public GameController gameController;
     public string planetName;
 	// Use this for initialization
-	void OnAwake () {
-        GameObject shipObject = GameObject.FindWithTag("Ship");
+	void OnEnable () {
+        GameObject shipObject = GameObject.Find("Ship");
         if (shipObject != null)
         {
             ship = shipObject.GetComponent<Ship>();
+        }
+        GameObject gameObject = GameObject.Find("GameController");
+        if (gameObject != null){
+            gameController = gameObject.GetComponent<GameController>();
         }
 	}
 	
@@ -20,9 +24,10 @@ public class CollideSpaceport : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
         if (other.tag == "Ship")
         {
-            ship.dropTourists(planetName, this.transform.position.y);
-            Debug.Log("Collide with Ship");
-            Debug.Log(ship.rb.velocity.y);
+            gameController.completeLevel();
+            ship.dropTourists(planetName, this.transform.position);
+            //Debug.Log("Collide with Ship");
+            //Debug.Log(ship.rb.velocity.y);
 
         }
         

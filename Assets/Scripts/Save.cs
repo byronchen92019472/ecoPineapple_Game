@@ -7,7 +7,7 @@ public class Save {
     
     public float money;
     public float maxFuel;
-    public float maxThrust;
-    public float fuelEfficiencyMultiplier;
-    public float maxHeight;
+    public int level;
+    //public float maxThrust;
+    //public float maxHeight;
 }
