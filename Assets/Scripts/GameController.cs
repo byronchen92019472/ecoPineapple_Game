@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.IO;
 
 public class GameController : MonoBehaviour {
 
@@ -64,10 +67,10 @@ public class GameController : MonoBehaviour {
   
 	// Use this for initialization
 	void Start () {
-        //Instantiate(ship, new Vector3(0, 0, 0), Quaternion.identity);
         //player.money = 0;
         objectList = new List<GameObject>();
         maxHeight = 0;  
+        LoadGame();
         initBuildPhase();     
         resultDisplayPanel.SetActive(false);
 	}
@@ -105,6 +108,38 @@ public class GameController : MonoBehaviour {
             }
         }     
 	}
+
+    private Save CreateSaveGameObject(){
+        Save save = new Save();
+        save.money = player.money;
+        save.maxFuel = ship.maxFuel;
+        save.level = levelNumber;
+        return save;
+    }
+
+    public void SaveGame(){
+        Save save = CreateSaveGameObject();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        bf.Serialize(file, save);
+        file.Close();
+    }
+
+    public void LoadGame(){
+        if(File.Exists(Application.persistentDataPath + "/gamesave.save")){
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            Save save = (Save)bf.Deserialize(file);
+            file.Close();
+
+            player.money = save.money;
+            ship.maxFuel = save.maxFuel;
+            levelNumber = save.level;
+        }else{
+            Debug.Log("No Save File");
+        }
+
+    }
 
     IEnumerator showMessage(string message, Text text, int time = 5){
         text.enabled = true;
@@ -182,7 +217,9 @@ public class GameController : MonoBehaviour {
 
     public void initBuildPhase()
     {
+        
         launchResults();
+        SaveGame();
         moneyText.text = "x " + player.money.ToString();
         touristText.text = "Tourists: " + ship.tourists.ToString();
         buildUI.enabled = true;
