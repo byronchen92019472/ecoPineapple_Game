@@ -49,12 +49,11 @@ public class AnimatedDialog : MonoBehaviour {
             characterIndex = strings[stringIndex].Length;
         }
 
-        else if (stringIndex < strings.Length)
-        {
+        else if (stringIndex < strings.Length - 1)
+        {    
             stringIndex++;
             characterIndex = 0;
         }
-
         else
         {
             isEndScene = true;

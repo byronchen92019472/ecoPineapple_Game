@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.IO;
 
 public class TextActivationScript : MonoBehaviour
 {
@@ -20,9 +23,13 @@ public class TextActivationScript : MonoBehaviour
     private bool atClose;
     private bool atMilestones;
 
+    public int levelNumber;
+
     void Start()
     {
         bc = GetComponent<BoxCollider2D>();
+        LoadGame();
+        Debug.Log(levelNumber);
         //testing
         //bool sc = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneController>().level3Load;
         //Debug.Log(sc);
@@ -39,6 +46,35 @@ public class TextActivationScript : MonoBehaviour
         {
             //GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().updateUIText();
             milestonesDisplayCanvas.gameObject.SetActive(true);
+        }
+    }
+    
+    private Save CreateSaveGameObject(){
+        Save save = new Save();
+        save.money = 0;
+        save.maxFuel = 150;
+        save.level = 1;
+        return save;
+    }
+
+    public void SaveGame(){
+        Save save = CreateSaveGameObject();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        bf.Serialize(file, save);
+        file.Close();
+    }
+
+    public void LoadGame(){
+        if(File.Exists(Application.persistentDataPath + "/gamesave.save")){
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            Save save = (Save)bf.Deserialize(file);
+            file.Close();
+
+            levelNumber = save.level;
+        }else{
+            Debug.Log("No Save File");
         }
     }
 

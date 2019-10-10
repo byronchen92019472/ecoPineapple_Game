@@ -23,6 +23,10 @@ public class MilestoneManager : MonoBehaviour {
 
     void Start(){
         milestoneText.enabled = false;
+        GameObject gameObject = GameObject.Find("GameController");
+        if (gameObject != null){
+            gameController = gameObject.GetComponent<GameController>();
+        }
     }
 
     void Update(){

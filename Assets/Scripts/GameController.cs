@@ -59,7 +59,9 @@ public class GameController : MonoBehaviour {
     public GameObject Neptune;
     public GameObject Uranus;
     public GameObject Pluto;
+    public GameObject Sun;
     public GameObject spacePort;
+    public GameObject spacePortEnd;
     public Material skyboxGround;
     public Material skyboxSpace;
 
@@ -76,6 +78,7 @@ public class GameController : MonoBehaviour {
 	}
 	
 	void Update () {
+        //SaveGame();
         if (launchPhase)
         {
             if (maxHeight < ship.transform.position.y)
@@ -138,7 +141,6 @@ public class GameController : MonoBehaviour {
         }else{
             Debug.Log("No Save File");
         }
-
     }
 
     IEnumerator showMessage(string message, Text text, int time = 5){
@@ -274,40 +276,43 @@ public class GameController : MonoBehaviour {
     }
 
     public void completeLevel(){
-
+        if(levelNumber < 3) 
+            levelNumber++; 
     }
 
     void initLevel(int level){
         clearObjectList();
         if (level == 1){
-            addToObjectList(spacePort, new Vector3(0, 144, 0));
-            addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
-            addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
+            addToObjectList(spacePort, new Vector3(0, 160, 0));
+            
+            //addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
+            //addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
         }
         if (level == 2){
             // addToObjectList(spacePort, new Vector3(-10, 144, 0));
             // addToObjectList(spacePort, new Vector3(-10, 971, 0));
             // addToObjectList(spacePort, new Vector3(-10, 1970, 0));
-            addToObjectList(spacePort, new Vector3(0, 3470, 0));
-            addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
-            addToObjectList(Venus, new Vector3(-5, 2000, 0));
-            addToObjectList(Mercury, new Vector3(-5, 3500, 0));
+            addToObjectList(spacePort, new Vector3(0, 2970, 0));
+            addToObjectList(moon, new Vector3(-16.5f, 700, 0));
+            addToObjectList(Venus, new Vector3(-5, 1500, 0));
+            addToObjectList(Mercury, new Vector3(-5, 2200, 0));
+            addToObjectList(Sun, new Vector3(-5, 3000, 0));
         }
         if (level == 3){
-            // addToObjectList(spacePort, new Vector3(-10, 144, 0));
-            // addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 2989.9f, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 4970.9f, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 6970.9f, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 8970.9f, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 10970.9f, 0));
+            addToObjectList(spacePort, new Vector3(-10, 160, 0));
+            addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 2989.9f, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 4970.9f, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 6970.9f, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 8970.9f, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 10970.9f, 0));
             addToObjectList(spacePort, new Vector3(0, 14970.9f, 0));
             addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
             addToObjectList(mars, new Vector3(-5.7f, 3004, 0));
             addToObjectList(Jupiter, new Vector3(-5.7f, 5000, 0));
             addToObjectList(Saturn, new Vector3(-5.7f, 7000, 0));
-            addToObjectList(Neptune, new Vector3(-5.7f, 9000, 0));
-            addToObjectList(Venus, new Vector3(-5.7f, 11000, 0));
+            addToObjectList(Uranus, new Vector3(-5.7f, 9000, 0));
+            addToObjectList(Neptune, new Vector3(-5.7f, 11000, 0));
             addToObjectList(Pluto, new Vector3(-5.7f, 15000, 0));
         }
     }
