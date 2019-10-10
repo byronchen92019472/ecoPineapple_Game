@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour {
     public Vector3 enemySpawnPosition;
     public float enemySpawnCounter;
     public float enemySpawnTime;
+    public float enemyDistanceTracker;
 
     public bool buildPhase;
     public bool launchPhase;
@@ -71,7 +72,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
         //player.money = 0;
         objectList = new List<GameObject>();
-        maxHeight = 0;  
+        maxHeight = 0;
         LoadGame();
         initBuildPhase();     
         resultDisplayPanel.SetActive(false);
@@ -81,6 +82,7 @@ public class GameController : MonoBehaviour {
         //SaveGame();
         if (launchPhase)
         {
+            enemyDistanceTracker = enemyDistanceTracker + ship.rb.velocity.y * Time.fixedDeltaTime;
             if (maxHeight < ship.transform.position.y)
             {
                 maxHeight = ship.transform.position.y;
@@ -94,13 +96,16 @@ public class GameController : MonoBehaviour {
                 
             }else if(levelNumber == 2){
                 spawnEco();
+                if (ship.transform.position.y > 200 && ship.alive){
+                    spawnAsteroids();
+                }
             }else if (levelNumber == 3){
                 spawnEco();
-                if (ship.transform.position.y > 150){
+                if (ship.transform.position.y > 200 && ship.alive){
                     spawnAsteroids();
                 }
             }
-            if (ship.transform.position.y > 100)
+            if (ship.transform.position.y > 130)
             {
                 ship.rb.useGravity = false;
                 ship.thrust = 0;
@@ -168,6 +173,12 @@ public class GameController : MonoBehaviour {
 
     void spawnAsteroids()
     {
+        
+        if(enemyDistanceTracker > 500 && enemySpawnTime > 0.3){
+            //Debug.Log(enemyDistanceTracker);
+            enemySpawnTime = enemySpawnTime - 0.05f;
+            enemyDistanceTracker = 0f;
+        }
         enemySpawnCounter -= Time.deltaTime;
         if (enemySpawnCounter < 0)
         {
@@ -242,10 +253,9 @@ public class GameController : MonoBehaviour {
         initLevel(levelNumber);
         maxHeight = 0f;
         ship.fuel = ship.maxFuel;
-        fuelSlider.maxValue = ship.fuel;
-        thrustSlider.maxValue = ship.maxThrust * 2;
-        distanceSlider.maxValue = moon.transform.position.y;
         enemySpawnTime = 2f;
+        enemyDistanceTracker = 0;
+        ecoSpawnTime = 4;
         deathAsteroid = false;
         buildUI.enabled = false;
         launchUI.enabled = true;

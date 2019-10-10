@@ -2997,12 +2997,13 @@ MonoBehaviour:
   player: {fileID: 2055807809}
   ecoProduct: {fileID: 1645028106158818, guid: f6aeea0bb1a8b9444a4a547850187a58, type: 2}
   ecoSpawnCounter: 0
-  ecoSpawnTime: 10
+  ecoSpawnTime: 4
   ecoHitCounter: 0
   enemy: {fileID: 1553224653398952, guid: 38c06fb1b15abb443b5650920573140d, type: 2}
   enemySpawnPosition: {x: 15, y: 50, z: 0}
   enemySpawnCounter: 0
-  enemySpawnTime: 1.1e+9
+  enemySpawnTime: 2
+  enemyDistanceTracker: 0
   buildPhase: 0
   launchPhase: 0
   deathAsteroid: 0
@@ -9498,6 +9499,16 @@ Prefab:
       propertyPath: launchUpButton
       value: 
       objectReference: {fileID: 9209320}
+    - target: {fileID: 65623382882143968, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 65623382882143968, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 5.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
   m_IsPrefabParent: 0
