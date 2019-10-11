@@ -20,6 +20,7 @@ TagManager:
   - EcoProduct
   - AnimatedDialog
   - SceneManager
+  - StarportEnd
   layers:
   - Default
   - TransparentFX

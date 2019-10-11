@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour {
     public GameObject Sun;
     public GameObject spacePort;
     public GameObject spacePortEnd;
+    public GameObject trash;
     public Material skyboxGround;
     public Material skyboxSpace;
 
@@ -286,15 +287,21 @@ public class GameController : MonoBehaviour {
     }
 
     public void completeLevel(){
-        if(levelNumber < 3) 
+        if(levelNumber < 3)
+            StartCoroutine(showMessage("Level 1\nComplete", levelText, 2));
             levelNumber++; 
     }
 
     void initLevel(int level){
         clearObjectList();
         if (level == 1){
-            addToObjectList(spacePort, new Vector3(0, 160, 0));
-            
+            addToObjectList(spacePortEnd, new Vector3(0, 160, 0));
+            addToObjectList(trash, new Vector3(0, 40));
+            addToObjectList(trash, new Vector3(-2, 40));
+            addToObjectList(trash, new Vector3(2, 40));
+            addToObjectList(trash, new Vector3(-8, 70));
+            addToObjectList(trash, new Vector3(-10, 70));
+            addToObjectList(trash, new Vector3(-12, 70));
             //addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
             //addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
         }
@@ -302,7 +309,7 @@ public class GameController : MonoBehaviour {
             // addToObjectList(spacePort, new Vector3(-10, 144, 0));
             // addToObjectList(spacePort, new Vector3(-10, 971, 0));
             // addToObjectList(spacePort, new Vector3(-10, 1970, 0));
-            addToObjectList(spacePort, new Vector3(0, 2970, 0));
+            addToObjectList(spacePortEnd, new Vector3(0, 2970, 0));
             addToObjectList(moon, new Vector3(-16.5f, 700, 0));
             addToObjectList(Venus, new Vector3(-5, 1500, 0));
             addToObjectList(Mercury, new Vector3(-5, 2200, 0));
@@ -316,7 +323,7 @@ public class GameController : MonoBehaviour {
             addToObjectList(spacePort, new Vector3(9.4f, 6970.9f, 0));
             addToObjectList(spacePort, new Vector3(9.4f, 8970.9f, 0));
             addToObjectList(spacePort, new Vector3(9.4f, 10970.9f, 0));
-            addToObjectList(spacePort, new Vector3(0, 14970.9f, 0));
+            addToObjectList(spacePortEnd, new Vector3(0, 14970.9f, 0));
             addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
             addToObjectList(mars, new Vector3(-5.7f, 3004, 0));
             addToObjectList(Jupiter, new Vector3(-5.7f, 5000, 0));
