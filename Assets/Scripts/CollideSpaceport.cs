@@ -24,11 +24,9 @@ public class CollideSpaceport : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
         if (other.tag == "Ship")
         {
-            gameController.completeLevel();
+            if (tag == "StarportEnd")
+                gameController.completeLevel();
             ship.dropTourists(planetName, this.transform.position);
-            //Debug.Log("Collide with Ship");
-            //Debug.Log(ship.rb.velocity.y);
-
         }
         
 	}

@@ -47,6 +47,7 @@ public class Ship : MonoBehaviour {
 
     void FixedUpdate()
     {
+        Debug.Log(rb.velocity.y);
         velocityBeforeCollision = rb.velocity.y;
         if (alive)
         {
@@ -56,7 +57,7 @@ public class Ship : MonoBehaviour {
             }
         }
 
-        if (fuel <= 0 || thrust == 0)
+        if (fuel <= 0)
         {
             thrust = 0;
             flames.SetActive(false);
@@ -95,6 +96,7 @@ public class Ship : MonoBehaviour {
         rb.velocity = new Vector3(0f, 0f, 0f);
         rb.position = new Vector3(0f, 0f, 0f);
         rb.angularVelocity = new Vector3(0f, 0f, 0f);
+        rb.useGravity = true;
         rb.rotation = Quaternion.identity;
         thrust = 0;
         launchUp = false;

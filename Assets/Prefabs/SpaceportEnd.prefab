@@ -9,94 +9,78 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1553224653398952}
+  m_RootGameObject: {fileID: 1586570863502392}
   m_IsPrefabParent: 1
---- !u!1 &1553224653398952
+--- !u!1 &1586570863502392
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4954534839803982}
-  - component: {fileID: 212229221876753310}
-  - component: {fileID: 114036908200416260}
-  - component: {fileID: 54125061325842908}
-  - component: {fileID: 65962936388601852}
+  - component: {fileID: 4247415910027306}
+  - component: {fileID: 212712142224790420}
+  - component: {fileID: 114072215742832562}
+  - component: {fileID: 65700306104854364}
   m_Layer: 0
-  m_Name: Enemy_1
-  m_TagString: Enemy
+  m_Name: SpaceportEnd
+  m_TagString: StarportEnd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4954534839803982
+--- !u!4 &4247415910027306
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1553224653398952}
+  m_GameObject: {fileID: 1586570863502392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.96, y: 19.98, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalPosition: {x: -7.8445783, y: -0.25164366, z: -2.9449997}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54125061325842908
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1553224653398952}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &65962936388601852
+--- !u!65 &65700306104854364
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1553224653398952}
+  m_GameObject: {fileID: 1586570863502392}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3, z: 0.2}
+  m_Size: {x: 10, y: 9.24, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114036908200416260
+--- !u!114 &114072215742832562
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1553224653398952}
+  m_GameObject: {fileID: 1586570863502392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d39f4cf3d416a34e96e2996d44536ec, type: 3}
+  m_Script: {fileID: 11500000, guid: c1241379191cf0841a13b248cd1052bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 114387257184201510, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
-  speed: 0
-  gamecontroller: {fileID: 0}
---- !u!212 &212229221876753310
+  ship: {fileID: 0}
+  gameController: {fileID: 0}
+  planetName: Moon
+--- !u!212 &212712142224790420
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1553224653398952}
+  m_GameObject: {fileID: 1586570863502392}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -118,13 +102,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: ae16e4b7a2740ac499c8e30fd9daeb1d, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 9a9ba0cb2b7a05b4ab018d4e9f27d1de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.88, y: 5.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

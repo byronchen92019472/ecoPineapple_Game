@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.IO;
 
 public class GameController : MonoBehaviour {
 
@@ -39,6 +42,7 @@ public class GameController : MonoBehaviour {
     public Vector3 enemySpawnPosition;
     public float enemySpawnCounter;
     public float enemySpawnTime;
+    public float enemyDistanceTracker;
 
     public bool buildPhase;
     public bool launchPhase;
@@ -56,7 +60,10 @@ public class GameController : MonoBehaviour {
     public GameObject Neptune;
     public GameObject Uranus;
     public GameObject Pluto;
+    public GameObject Sun;
     public GameObject spacePort;
+    public GameObject spacePortEnd;
+    public GameObject trash;
     public Material skyboxGround;
     public Material skyboxSpace;
 
@@ -64,17 +71,19 @@ public class GameController : MonoBehaviour {
   
 	// Use this for initialization
 	void Start () {
-        //Instantiate(ship, new Vector3(0, 0, 0), Quaternion.identity);
         //player.money = 0;
         objectList = new List<GameObject>();
-        maxHeight = 0;  
+        maxHeight = 0;
+        LoadGame();
         initBuildPhase();     
         resultDisplayPanel.SetActive(false);
 	}
 	
 	void Update () {
+        //SaveGame();
         if (launchPhase)
         {
+            enemyDistanceTracker = enemyDistanceTracker + ship.rb.velocity.y * Time.fixedDeltaTime;
             if (maxHeight < ship.transform.position.y)
             {
                 maxHeight = ship.transform.position.y;
@@ -88,13 +97,16 @@ public class GameController : MonoBehaviour {
                 
             }else if(levelNumber == 2){
                 spawnEco();
+                if (ship.transform.position.y > 200 && ship.alive){
+                    spawnAsteroids();
+                }
             }else if (levelNumber == 3){
                 spawnEco();
-                if (ship.transform.position.y > 150){
+                if (ship.transform.position.y > 200 && ship.alive){
                     spawnAsteroids();
                 }
             }
-            if (ship.transform.position.y > 100)
+            if (ship.transform.position.y > 130)
             {
                 ship.rb.useGravity = false;
                 ship.thrust = 0;
@@ -105,6 +117,37 @@ public class GameController : MonoBehaviour {
             }
         }     
 	}
+
+    private Save CreateSaveGameObject(){
+        Save save = new Save();
+        save.money = player.money;
+        save.maxFuel = ship.maxFuel;
+        save.level = levelNumber;
+        return save;
+    }
+
+    public void SaveGame(){
+        Save save = CreateSaveGameObject();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        bf.Serialize(file, save);
+        file.Close();
+    }
+
+    public void LoadGame(){
+        if(File.Exists(Application.persistentDataPath + "/gamesave.save")){
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            Save save = (Save)bf.Deserialize(file);
+            file.Close();
+
+            player.money = save.money;
+            ship.maxFuel = save.maxFuel;
+            levelNumber = save.level;
+        }else{
+            Debug.Log("No Save File");
+        }
+    }
 
     IEnumerator showMessage(string message, Text text, int time = 5){
         text.enabled = true;
@@ -131,6 +174,12 @@ public class GameController : MonoBehaviour {
 
     void spawnAsteroids()
     {
+        
+        if(enemyDistanceTracker > 500 && enemySpawnTime > 0.3){
+            //Debug.Log(enemyDistanceTracker);
+            enemySpawnTime = enemySpawnTime - 0.05f;
+            enemyDistanceTracker = 0f;
+        }
         enemySpawnCounter -= Time.deltaTime;
         if (enemySpawnCounter < 0)
         {
@@ -182,7 +231,9 @@ public class GameController : MonoBehaviour {
 
     public void initBuildPhase()
     {
+        
         launchResults();
+        SaveGame();
         moneyText.text = "x " + player.money.ToString();
         touristText.text = "Tourists: " + ship.tourists.ToString();
         buildUI.enabled = true;
@@ -203,10 +254,9 @@ public class GameController : MonoBehaviour {
         initLevel(levelNumber);
         maxHeight = 0f;
         ship.fuel = ship.maxFuel;
-        fuelSlider.maxValue = ship.fuel;
-        thrustSlider.maxValue = ship.maxThrust * 2;
-        distanceSlider.maxValue = moon.transform.position.y;
         enemySpawnTime = 2f;
+        enemyDistanceTracker = 0;
+        ecoSpawnTime = 4;
         deathAsteroid = false;
         buildUI.enabled = false;
         launchUI.enabled = true;
@@ -237,40 +287,49 @@ public class GameController : MonoBehaviour {
     }
 
     public void completeLevel(){
-
+        if(levelNumber < 3)
+            StartCoroutine(showMessage("Level 1\nComplete", levelText, 2));
+            levelNumber++; 
     }
 
     void initLevel(int level){
         clearObjectList();
         if (level == 1){
-            addToObjectList(spacePort, new Vector3(0, 144, 0));
-            addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
-            addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
+            addToObjectList(spacePortEnd, new Vector3(0, 160, 0));
+            addToObjectList(trash, new Vector3(0, 40));
+            addToObjectList(trash, new Vector3(-2, 40));
+            addToObjectList(trash, new Vector3(2, 40));
+            addToObjectList(trash, new Vector3(-8, 70));
+            addToObjectList(trash, new Vector3(-10, 70));
+            addToObjectList(trash, new Vector3(-12, 70));
+            //addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
+            //addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
         }
         if (level == 2){
             // addToObjectList(spacePort, new Vector3(-10, 144, 0));
             // addToObjectList(spacePort, new Vector3(-10, 971, 0));
             // addToObjectList(spacePort, new Vector3(-10, 1970, 0));
-            addToObjectList(spacePort, new Vector3(0, 3470, 0));
-            addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
-            addToObjectList(Venus, new Vector3(-5, 2000, 0));
-            addToObjectList(Mercury, new Vector3(-5, 3500, 0));
+            addToObjectList(spacePortEnd, new Vector3(0, 2970, 0));
+            addToObjectList(moon, new Vector3(-16.5f, 700, 0));
+            addToObjectList(Venus, new Vector3(-5, 1500, 0));
+            addToObjectList(Mercury, new Vector3(-5, 2200, 0));
+            addToObjectList(Sun, new Vector3(-5, 3000, 0));
         }
         if (level == 3){
-            // addToObjectList(spacePort, new Vector3(-10, 144, 0));
-            // addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 2989.9f, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 4970.9f, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 6970.9f, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 8970.9f, 0));
-            // addToObjectList(spacePort, new Vector3(9.4f, 10970.9f, 0));
-            addToObjectList(spacePort, new Vector3(0, 14970.9f, 0));
+            addToObjectList(spacePort, new Vector3(-10, 160, 0));
+            addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 2989.9f, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 4970.9f, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 6970.9f, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 8970.9f, 0));
+            addToObjectList(spacePort, new Vector3(9.4f, 10970.9f, 0));
+            addToObjectList(spacePortEnd, new Vector3(0, 14970.9f, 0));
             addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
             addToObjectList(mars, new Vector3(-5.7f, 3004, 0));
             addToObjectList(Jupiter, new Vector3(-5.7f, 5000, 0));
             addToObjectList(Saturn, new Vector3(-5.7f, 7000, 0));
-            addToObjectList(Neptune, new Vector3(-5.7f, 9000, 0));
-            addToObjectList(Venus, new Vector3(-5.7f, 11000, 0));
+            addToObjectList(Uranus, new Vector3(-5.7f, 9000, 0));
+            addToObjectList(Neptune, new Vector3(-5.7f, 11000, 0));
             addToObjectList(Pluto, new Vector3(-5.7f, 15000, 0));
         }
     }

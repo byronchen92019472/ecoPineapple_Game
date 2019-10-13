@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2213,10 +2213,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   milestoneOne: 0
   milestoneTwo: 0
-  milestoneThree: 0
-  milestoneFour: 0
+  milestoneMoon: 0
+  milestoneMars: 0
+  milestoneMercury: 0
+  milestoneVenus: 0
+  milestoneJupiter: 0
+  milestoneSaturn: 0
+  milestoneNeptune: 0
+  milestoneUranus: 0
+  milestonePluto: 0
   ship: {fileID: 0}
   milestoneText: {fileID: 1399113975}
+  gameController: {fileID: 0}
 --- !u!4 &1289893325
 Transform:
   m_ObjectHideFlags: 0
@@ -2743,6 +2751,7 @@ MonoBehaviour:
   continueCanvas: {fileID: 265871871}
   milestonesCanvas: {fileID: 196797283}
   milestonesDisplayCanvas: {fileID: 260434042}
+  levelNumber: 0
 --- !u!1 &1623643154
 GameObject:
   m_ObjectHideFlags: 0

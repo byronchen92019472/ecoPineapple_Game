@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.IO;
 
 public class BuildButtonScript : MonoBehaviour {
 
@@ -84,13 +87,52 @@ public class BuildButtonScript : MonoBehaviour {
         fuelPart8.onClick.AddListener(() => fuelButtonClick(fuelPart8));
         fuelPart9.onClick.AddListener(() => fuelButtonClick(fuelPart9));
 
-        thrustPart1.onClick.AddListener(() => thrustButtonClick(thrustPart1));
-        thrustPart2.onClick.AddListener(() => thrustButtonClick(thrustPart2));
-        thrustPart3.onClick.AddListener(() => thrustButtonClick(thrustPart3));
-        thrustPart4.onClick.AddListener(() => thrustButtonClick(thrustPart4));
-
         exitButton.onClick.AddListener(() => exitButtonClick());
+        //LoadButton();
+        Debug.Log("Load Button");
 	}
+
+    private Save CreateSaveGameObject(){
+        Save save = new Save();
+        save.fuelPart1 = !fuelPart1.interactable;
+        save.fuelPart2 = !fuelPart2.interactable;
+        save.fuelPart3 = !fuelPart3.interactable;
+        save.fuelPart4 = !fuelPart4.interactable;
+        save.fuelPart5 = !fuelPart5.interactable;
+        save.fuelPart6 = !fuelPart6.interactable;
+        save.fuelPart7 = !fuelPart7.interactable;
+        save.fuelPart8 = !fuelPart8.interactable;
+        save.fuelPart9 = !fuelPart9.interactable;
+        Debug.Log(save.fuelPart1);
+        Debug.Log(fuelPart1.interactable);
+        return save;
+    }
+    public void SaveButton(){
+        Save save = CreateSaveGameObject();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        bf.Serialize(file, save);
+        file.Close();
+    }
+    public void LoadButton(){
+        if(File.Exists(Application.persistentDataPath + "/gamesave.save")){
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            Save save = (Save)bf.Deserialize(file);
+            file.Close();
+            fuelPart1.interactable = !save.fuelPart1;
+            fuelPart2.interactable = !save.fuelPart2;
+            fuelPart3.interactable = !save.fuelPart3;
+            fuelPart4.interactable = !save.fuelPart4;
+            fuelPart5.interactable = !save.fuelPart5;
+            fuelPart6.interactable = !save.fuelPart6;
+            fuelPart7.interactable = !save.fuelPart7;
+            fuelPart8.interactable = !save.fuelPart8;
+            fuelPart9.interactable = !save.fuelPart9;
+        }else{
+            Debug.Log("No Save File");
+        }
+    }
     void exitButtonClick()
     {
         SceneManager.LoadSceneAsync("StartScreen");
@@ -139,59 +181,15 @@ public class BuildButtonScript : MonoBehaviour {
 
     void fuelPurchaseButtonClick()
     {
-        if (gameController.player.money >= selectedFuelPrice)
+        if (gameController.player.money >= selectedFuelPrice && selectedFuelButton.interactable)
         {
             gameController.ship.maxFuel += selectedFuelValue;
             gameController.player.money -= selectedFuelPrice;
             selectedFuelButton.interactable = false;
         }
         updateText();
+        //SaveButton();
         
-    }
-
-    void thrustButtonClick(Button button)
-    {
-        if (button == thrustPart1)
-        {
-            if (gameController.player.money >= 1000)
-            {
-                gameController.ship.maxThrust = 30;
-                gameController.player.money -= 1000;
-                thrustPart1.interactable = false;
-
-            }
-        }
-        if (button == thrustPart2)
-        {
-            if (gameController.player.money >= 50000)
-            {
-                gameController.ship.maxThrust = 45;
-                gameController.player.money -= 50000;
-                thrustPart2.interactable = false;
-
-            }
-        }
-        if (button == thrustPart3)
-        {
-            if (gameController.player.money >= 250000)
-            {
-                gameController.ship.maxThrust = 60;
-                gameController.player.money -= 250000;
-                thrustPart3.interactable = false;
-
-            }
-        }
-        if (button == thrustPart4)
-        {
-            if (gameController.player.money >= 4000000)
-            {
-                gameController.ship.maxThrust = 75;
-                gameController.player.money -= 4000000;
-                thrustPart4.interactable = false;
-
-            }
-        }
-        updateText();
     }
 
     void fuelButtonClick(Button button)

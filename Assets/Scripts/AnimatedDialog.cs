@@ -55,7 +55,6 @@ public class AnimatedDialog : MonoBehaviour {
             stringIndex++;
             characterIndex = 0;
         }
-
         else
         {
             isEndScene = true;
