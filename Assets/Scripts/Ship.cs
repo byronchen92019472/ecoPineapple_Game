@@ -47,7 +47,7 @@ public class Ship : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Debug.Log(rb.velocity.y);
+        //Debug.Log(rb.velocity.y);
         velocityBeforeCollision = rb.velocity.y;
         if (alive)
         {
@@ -63,7 +63,7 @@ public class Ship : MonoBehaviour {
             flames.SetActive(false);
         }
 
-        if (thrust > 0)
+        if (thrust > 0 && alive)
         {
             fuel -= (1 * thrust / maxThrust) * fuelEfficiencyMultiplier * Time.fixedDeltaTime * 60;
             flames.SetActive(true);
@@ -114,6 +114,7 @@ public class Ship : MonoBehaviour {
         explosion.SetActive(true);
         rocketSprite.SetActive(false);
         flames.SetActive(false);
+        rb.useGravity = false;
     }
 
     void stopExplode()

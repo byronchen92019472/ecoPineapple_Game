@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
     public Ship ship;
     public float speed;
     public GameController gamecontroller;
+    public List<Sprite> asteroidImages; 
 
 	// Use this for initialization
     void OnEnable()
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour {
         {
             ship = shipObject.GetComponent<Ship>();
         }
+        int rand = Random.Range(0, 6);
+		GetComponent<SpriteRenderer>().sprite = asteroidImages[rand];
         //StartCoroutine(selfdestruct());
     }
 	
