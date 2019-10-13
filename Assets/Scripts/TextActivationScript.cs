@@ -32,7 +32,8 @@ public class TextActivationScript : MonoBehaviour
     {
         if (atStart == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
-            SceneManager.LoadSceneAsync("SpaceGame");
+            SceneManager.LoadSceneAsync("Level1Story");
+            //SceneManager.LoadSceneAsync("SpaceGame");
         }
 
         if (atMilestones == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
