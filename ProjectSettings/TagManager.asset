@@ -21,6 +21,7 @@ TagManager:
   - AnimatedDialog
   - SceneManager
   - StarportEnd
+  - Audio
   layers:
   - Default
   - TransparentFX

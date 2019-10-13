@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
 
 public class AnimatedDialog : MonoBehaviour {
@@ -21,6 +22,12 @@ public class AnimatedDialog : MonoBehaviour {
     void Start ()
     {
         StartCoroutine (DisplayTimer());
+    }
+
+    void Update(){
+        if(Input.GetKeyDown("space")){
+            ContinueButtonClick();
+        }
     }
 
     IEnumerator DisplayTimer()

@@ -29,6 +29,7 @@ public class Ship : MonoBehaviour {
     public ShipParts shipParts;
     public GameObject rocketSprite;
     public GameObject launchUpButton;
+    public AudioController audioManager;
 
     private float velocityBeforeCollision;
 
@@ -115,6 +116,7 @@ public class Ship : MonoBehaviour {
         rocketSprite.SetActive(false);
         flames.SetActive(false);
         rb.useGravity = false;
+        audioManager.playExplosion();
     }
 
     void stopExplode()
