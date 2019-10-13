@@ -22,17 +22,17 @@ public class Trash : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + speed * Time.deltaTime * 60, transform.position.z);
-        if (transform.position.y < ship.transform.position.y - 30)
-        {
-            gameObject.SetActive(false);
-        }
+        //if (transform.position.y < ship.transform.position.y - 30)
+        //{
+        //    gameObject.SetActive(false);
+        //}
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ship")
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             ship.explode();
         }
     }

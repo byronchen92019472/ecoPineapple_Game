@@ -34,21 +34,21 @@ public class MilestoneManager : MonoBehaviour {
             StartCoroutine(showMilestone("Milestone Reached\nFirst Flight"));
             milestoneOne = true;
         }
-        if (ship.transform.position.y > 100 && !milestoneTwo){
+        if (ship.transform.position.y > 140 && !milestoneTwo){
             StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
             milestoneTwo = true;
         }
-        if (ship.transform.position.y > 1000 && !milestoneMoon){
+        if (ship.transform.position.y > 700 && !milestoneMoon){
             StartCoroutine(showMilestone("Milestone Reached\nReached the Moon"));
             milestoneMoon = true;
         }
-        if (ship.transform.position.y > 2000 && !milestoneVenus && gameController.levelNumber == 2){
+        if (ship.transform.position.y > 1500 && !milestoneVenus && gameController.levelNumber == 2){
             StartCoroutine(showMilestone("Milestone Reached\nReached the Venus"));
-            milestoneMoon = true;
+            milestoneVenus = true;
         }
-        if (ship.transform.position.y > 3500 && !milestoneMercury && gameController.levelNumber == 2){
+        if (ship.transform.position.y > 2200 && !milestoneMercury && gameController.levelNumber == 2){
             StartCoroutine(showMilestone("Milestone Reached\nReached the Mercury"));
-            milestoneMoon = true;
+            milestoneMercury = true;
         }
         if (ship.transform.position.y > 3000 && !milestoneMars && gameController.levelNumber == 3){
             StartCoroutine(showMilestone("Milestone Reached\nReached Mars"));
