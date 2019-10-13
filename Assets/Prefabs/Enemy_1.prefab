@@ -84,6 +84,13 @@ MonoBehaviour:
   ship: {fileID: 114387257184201510, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
   speed: 0
   gamecontroller: {fileID: 0}
+  asteroidImages:
+  - {fileID: 21300000, guid: ae16e4b7a2740ac499c8e30fd9daeb1d, type: 3}
+  - {fileID: 21300000, guid: 7715af364f82f0b46936532c4b909640, type: 3}
+  - {fileID: 21300000, guid: 3e1d0f602f47cd84f80bd42ab0789bd2, type: 3}
+  - {fileID: 21300000, guid: e80215ce1c19c924ba7bee6315e690bd, type: 3}
+  - {fileID: 21300000, guid: c5ea8d9270642774aaa6fecdbf3ae146, type: 3}
+  - {fileID: 21300000, guid: 57cc45caf15db654283ed1140d65c268, type: 3}
 --- !u!212 &212229221876753310
 SpriteRenderer:
   m_ObjectHideFlags: 1
