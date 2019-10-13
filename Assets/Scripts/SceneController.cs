@@ -6,8 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class SceneController : MonoBehaviour
 {
-
-    public static SceneController Instance;
+    private static SceneController _instance;
 
     string scene1 = "StartScreen";
     string scene2 = "SpaceGame";
@@ -25,6 +24,25 @@ public class SceneController : MonoBehaviour
     private bool level2Load;
     public bool level3Load;
 
+    public bool atStartFromStartScreen;
+
+    public static SceneController Instance
+    {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -35,6 +53,7 @@ public class SceneController : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(scene1);
             startStart = true;
+
         }
 
         //Loads Story 1 Scene after player confirms new game

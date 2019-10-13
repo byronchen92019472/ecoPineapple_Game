@@ -18,7 +18,7 @@ public class TextActivationScript : MonoBehaviour
     private BoxCollider2D bc;
     private bool atExit;
     private bool atSettings;
-    private bool atStart;
+    public bool atStart;
     private bool atContinue;
     private bool atClose;
     private bool atMilestones;
@@ -43,8 +43,8 @@ public class TextActivationScript : MonoBehaviour
         }
         if (atStart == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
-            SaveGame();
-            SceneManager.LoadSceneAsync("SpaceGame");
+            SceneManager.LoadSceneAsync("Level1Story");
+            //SceneManager.LoadSceneAsync("SpaceGame");
         }
 
 
