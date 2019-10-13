@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/Intro/Intro.unity
-    guid: dc5b61378999cb2469dcd8d1a421cdad
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SplashScreen.unity
     guid: 1be9cd44adf5fab4782a8ee05aeeec9b
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpaceGame.unity
     guid: dfc30c35dad1ff9448ebfa3452acc5a7
+  - enabled: 1
+    path: Assets/Scenes/Level1Story.unity
+    guid: 9b437bf6e1c9903469da31c770f04cdb
   m_configObjects: {}

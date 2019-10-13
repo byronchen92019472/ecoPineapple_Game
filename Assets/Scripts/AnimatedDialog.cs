@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AnimatedDialog : MonoBehaviour {
     public Text textArea;
@@ -50,13 +51,14 @@ public class AnimatedDialog : MonoBehaviour {
         }
 
         else if (stringIndex < strings.Length - 1)
-        {    
+        {
             stringIndex++;
             characterIndex = 0;
         }
         else
         {
             isEndScene = true;
+            SceneManager.LoadSceneAsync("SpaceGame");
         }
     }
 
