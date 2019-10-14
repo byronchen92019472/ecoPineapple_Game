@@ -21,7 +21,9 @@ public class Ship : MonoBehaviour {
     public bool canLaunch;
     public bool launchUp;
     public bool canMoveToSpaceport;
+
     private Vector3 spaceportPos;
+    public Player player;
 
     public GameObject flames;
     public Rigidbody rb; 
@@ -29,6 +31,7 @@ public class Ship : MonoBehaviour {
     public ShipParts shipParts;
     public GameObject rocketSprite;
     public GameObject launchUpButton;
+    public AudioController audioManager;
 
     private float velocityBeforeCollision;
 
@@ -115,6 +118,7 @@ public class Ship : MonoBehaviour {
         rocketSprite.SetActive(false);
         flames.SetActive(false);
         rb.useGravity = false;
+        audioManager.playExplosion();
     }
 
     void stopExplode()
@@ -150,6 +154,8 @@ public class Ship : MonoBehaviour {
                 transform.position = new Vector3(transform.position.x + (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
                 fuel -= 1 * Time.fixedDeltaTime * 60;
             }
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16, 15), transform.position.y, 0);
+            
         }
 
     }

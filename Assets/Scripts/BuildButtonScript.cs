@@ -46,11 +46,15 @@ public class BuildButtonScript : MonoBehaviour {
     public GameObject displayPanel;
     public Button closeDisplayButton;
 
+    public GameObject milestonePanel;
+    public Button closeMilestoneButton;
+
     private Button selectedFuelButton;
     private float selectedFuelValue;
     private float selectedFuelPrice;
 
     public Button exitButton;
+    public Button milestoneButton;
 
 
     public GameController gameController;
@@ -71,8 +75,6 @@ public class BuildButtonScript : MonoBehaviour {
         removeTouristsButton.onClick.AddListener(() => removeTouristsClick());
 
         closeDisplayButton.onClick.AddListener(() => closeDisplayClick());
-
-        
         touristTabButton.onClick.AddListener(() => touristTabButtonClick());
 
         fuelTabButton.onClick.AddListener(() => fuelTabButtonClick());
@@ -88,6 +90,8 @@ public class BuildButtonScript : MonoBehaviour {
         fuelPart9.onClick.AddListener(() => fuelButtonClick(fuelPart9));
 
         exitButton.onClick.AddListener(() => exitButtonClick());
+        milestoneButton.onClick.AddListener(() => milestoneButtonClick());
+        closeMilestoneButton.onClick.AddListener(() => closeMilestoneClick());
         //LoadButton();
         Debug.Log("Load Button");
 	}
@@ -133,9 +137,17 @@ public class BuildButtonScript : MonoBehaviour {
             Debug.Log("No Save File");
         }
     }
+
+    void closeMilestoneClick(){
+        milestonePanel.SetActive(false);
+    }
     void exitButtonClick()
     {
         SceneManager.LoadSceneAsync("StartScreen");
+    }
+    void milestoneButtonClick()
+    {
+        milestonePanel.SetActive(true);
     }
     
     void fuelTabButtonClick()

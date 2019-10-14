@@ -26,6 +26,7 @@ public class CollideSpaceport : MonoBehaviour {
         {
             if (tag == "StarportEnd")
                 gameController.completeLevel();
+            ship.audioManager.playStarport();
             ship.dropTourists(planetName, this.transform.position);
         }
         

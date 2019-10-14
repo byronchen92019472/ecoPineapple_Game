@@ -22,6 +22,7 @@ public class TextActivationScript : MonoBehaviour
     private bool atContinue;
     private bool atClose;
     private bool atMilestones;
+    public Animation walk2;
 
     public int levelNumber;
     public AudioSource footstepAudio;
@@ -47,6 +48,7 @@ public class TextActivationScript : MonoBehaviour
         if (atStart == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
             SceneManager.LoadSceneAsync("Level1Story");
+            SaveGame();
             //SceneManager.LoadSceneAsync("SpaceGame");
         }
 
