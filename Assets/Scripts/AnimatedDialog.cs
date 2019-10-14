@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class AnimatedDialog : MonoBehaviour {
     public Text textArea;
+    public string[] strings1;
     public string[] strings;
     public string[] strings2, strings3;
     public float speed = 0.1f;
@@ -16,6 +17,8 @@ public class AnimatedDialog : MonoBehaviour {
     public bool isEndScene;
     public Button continueButton;
 
+    private ArrayList allstrings = new ArrayList(3);
+
     int stringIndex = 0;
     int characterIndex = 0;
 
@@ -23,7 +26,7 @@ public class AnimatedDialog : MonoBehaviour {
 
     void Start ()
     {
-        strings = new string[10] {
+        strings1 = new string[10] {
             "Hello, my name is Elon and I am an investor for this space tourism company",
             "I have been tasked to guide you in constructing a suitable spacecraft for space tourism",
             "Your first test is to build a spacecraft that is able to reach our planetary starport",
@@ -35,8 +38,7 @@ public class AnimatedDialog : MonoBehaviour {
             "\u0022When something is important enough, you do it even if the odds are not in your favor\u0022",
             "Good Luck!"
         };
-        //strings2 = new string[5] { "Element 1", "Element 2", "Element 3", "Element 4", "Element 5" };
-        //strings3 = new string[5] { "Element 1", "Element 2", "Element 3", "Element 4", "Element 5" };
+
         StartCoroutine (DisplayTimer());
     }
 
@@ -49,6 +51,7 @@ public class AnimatedDialog : MonoBehaviour {
     IEnumerator DisplayTimer()
     {
         while (true) {
+            
             yield return new WaitForSeconds(speed);
             if (characterIndex > strings [stringIndex].Length)
             {
