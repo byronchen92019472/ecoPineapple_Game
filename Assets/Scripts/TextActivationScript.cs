@@ -42,13 +42,13 @@ public class TextActivationScript : MonoBehaviour
     {
         if (atContinue == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
-            SceneManager.LoadSceneAsync("SpaceGame");
+            SceneManager.LoadScene("SpaceGame");
         }
 
         if (atStart == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
-            SceneManager.LoadSceneAsync("Level1Story");
             SaveGame();
+            SceneManager.LoadScene("Level1Story");
             //SceneManager.LoadSceneAsync("SpaceGame");
         }
 
@@ -69,6 +69,15 @@ public class TextActivationScript : MonoBehaviour
         save.money = 0;
         save.maxFuel = 150;
         save.level = 1;
+        save.fuelPart1 = true;
+        save.fuelPart2 = true;
+        save.fuelPart3 = true;
+        save.fuelPart4 = true;
+        save.fuelPart5 = true;
+        save.fuelPart6 = true;
+        save.fuelPart7 = true;
+        save.fuelPart8 = true;
+        save.fuelPart9 = true;
         return save;
     }
 

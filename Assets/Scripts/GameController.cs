@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.IO;
+//using System;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -67,7 +69,7 @@ public class GameController : MonoBehaviour {
     public Material skyboxGround;
     public Material skyboxSpace;
     public AudioController audioController;
-
+    public BuildButtonScript bbs;
     public int levelNumber = 1;
   
 	// Use this for initialization
@@ -124,6 +126,15 @@ public class GameController : MonoBehaviour {
         save.money = player.money;
         save.maxFuel = ship.maxFuel;
         save.level = levelNumber;
+        save.fuelPart1 = bbs.fuelPart1.interactable;
+        save.fuelPart2 = bbs.fuelPart2.interactable;
+        save.fuelPart3 = bbs.fuelPart3.interactable;
+        save.fuelPart4 = bbs.fuelPart4.interactable;
+        save.fuelPart5 = bbs.fuelPart5.interactable;
+        save.fuelPart6 = bbs.fuelPart6.interactable;
+        save.fuelPart7 = bbs.fuelPart7.interactable;
+        save.fuelPart8 = bbs.fuelPart8.interactable;
+        save.fuelPart9 = bbs.fuelPart9.interactable;
         return save;
     }
 
@@ -290,9 +301,16 @@ public class GameController : MonoBehaviour {
     }
 
     public void completeLevel(){
-        if(levelNumber < 3)
-            StartCoroutine(showMessage("Level 1\nComplete", levelText, 2));
+        if(levelNumber < 3){
             levelNumber++; 
+            string s = "Level " + levelNumber + "\nComplete";
+            StartCoroutine(showMessage(s, levelText, 2));
+            
+        }
+    }
+    public void playStoryScene(){
+        SaveGame();
+        SceneManager.LoadSceneAsync("Level1Story");
     }
 
     void initLevel(int level){

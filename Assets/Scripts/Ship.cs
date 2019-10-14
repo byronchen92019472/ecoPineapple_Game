@@ -31,6 +31,7 @@ public class Ship : MonoBehaviour {
     public ShipParts shipParts;
     public GameObject rocketSprite;
     public GameObject launchUpButton;
+    public GameController gc;
     public AudioController audioManager;
 
     private float velocityBeforeCollision;
@@ -82,6 +83,7 @@ public class Ship : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, spaceportPos, 0.1f * Time.fixedDeltaTime * 60);
             if(Vector3.Distance(transform.position, spaceportPos) < 0.1f){
                 rb.velocity = Vector3.zero;
+                gc.playStoryScene();
             }
         }
     }
