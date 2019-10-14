@@ -178,7 +178,7 @@ public class GameController : MonoBehaviour {
         
         if(enemyDistanceTracker > 500 && enemySpawnTime > 0.3){
             //Debug.Log(enemyDistanceTracker);
-            enemySpawnTime = enemySpawnTime - 0.05f;
+            enemySpawnTime = enemySpawnTime - 0.1f;
             enemyDistanceTracker = 0f;
         }
         enemySpawnCounter -= Time.deltaTime;
@@ -320,12 +320,12 @@ public class GameController : MonoBehaviour {
         }
         if (level == 3){
             addToObjectList(spacePort, new Vector3(-10, 160, 0));
-            addToObjectList(spacePort, new Vector3(0.6f, 971, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 2989.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 4970.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 6970.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 8970.9f, 0));
-            addToObjectList(spacePort, new Vector3(9.4f, 10970.9f, 0));
+            addToObjectList(spacePort, new Vector3(-10, 971, 0));
+            addToObjectList(spacePort, new Vector3(-10, 2989.9f, 0));
+            addToObjectList(spacePort, new Vector3(-10, 4970.9f, 0));
+            addToObjectList(spacePort, new Vector3(-10, 6970.9f, 0));
+            addToObjectList(spacePort, new Vector3(-10, 8970.9f, 0));
+            addToObjectList(spacePort, new Vector3(-10, 10970.9f, 0));
             addToObjectList(spacePortEnd, new Vector3(0, 14970.9f, 0));
             addToObjectList(moon, new Vector3(-16.5f, 1000, 0));
             addToObjectList(mars, new Vector3(-5.7f, 3004, 0));

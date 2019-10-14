@@ -21,7 +21,9 @@ public class Ship : MonoBehaviour {
     public bool canLaunch;
     public bool launchUp;
     public bool canMoveToSpaceport;
+
     private Vector3 spaceportPos;
+    public Player player;
 
     public GameObject flames;
     public Rigidbody rb; 
@@ -152,6 +154,8 @@ public class Ship : MonoBehaviour {
                 transform.position = new Vector3(transform.position.x + (turnSpeed * Time.fixedDeltaTime * 60), transform.position.y, 0);
                 fuel -= 1 * Time.fixedDeltaTime * 60;
             }
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16, 15), transform.position.y, 0);
+            
         }
 
     }

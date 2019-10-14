@@ -1172,6 +1172,8 @@ MonoBehaviour:
   thrustUp: {fileID: 8300000, guid: b6ef759bd8577c34f902e2c5e872c2f8, type: 3}
   buildMusic: {fileID: 8300000, guid: a223c04285b047148b4b4571fbb5dc25, type: 3}
   launchMusic: {fileID: 8300000, guid: 0b0564ab6db255c489c7b5b5f87891bd, type: 3}
+  fuelAlarm: {fileID: 8300000, guid: 7b4c0442b6514304fb3f8c9d844a91fd, type: 3}
+  starport: {fileID: 8300000, guid: 09f507d74637d1248ae7329e300506b2, type: 3}
   audioSource: {fileID: 274422964}
 --- !u!82 &274422964
 AudioSource:
@@ -1184,7 +1186,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.339
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2693,6 +2695,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606107063}
+--- !u!1 &660595373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 660595374}
+  - component: {fileID: 660595376}
+  - component: {fileID: 660595375}
+  m_Layer: 5
+  m_Name: MilestoneCodes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &660595374
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660595373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1648749070}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -146.7}
+  m_SizeDelta: {x: 388.29, y: 143.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &660595375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660595373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
+    m_FontSize: 28
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: ecoProduct Codes
+--- !u!222 &660595376
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660595373}
 --- !u!1 &678171699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,7 +3272,7 @@ MonoBehaviour:
   itemsToPool:
   - objectToPool: {fileID: 1553224653398952, guid: 38c06fb1b15abb443b5650920573140d,
       type: 2}
-    amountToPool: 5
+    amountToPool: 10
     shouldExpand: 1
   - objectToPool: {fileID: 1645028106158818, guid: f6aeea0bb1a8b9444a4a547850187a58,
       type: 2}
@@ -7336,7 +7412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1648749070
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7350,6 +7426,7 @@ RectTransform:
   - {fileID: 1230296317}
   - {fileID: 1177827595}
   - {fileID: 1960677027}
+  - {fileID: 660595374}
   m_Father: {fileID: 1985214292}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9683,6 +9760,11 @@ Prefab:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 274422963}
+    - target: {fileID: 114387257184201510, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2055807809}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
   m_IsPrefabParent: 0

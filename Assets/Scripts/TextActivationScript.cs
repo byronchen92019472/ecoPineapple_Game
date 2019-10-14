@@ -22,6 +22,7 @@ public class TextActivationScript : MonoBehaviour
     private bool atContinue;
     private bool atClose;
     private bool atMilestones;
+    public Animation walk2;
 
     public int levelNumber;
 
