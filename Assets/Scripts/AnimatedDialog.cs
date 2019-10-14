@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class AnimatedDialog : MonoBehaviour {
     public Text textArea;
     public string[] strings;
+    public string[] strings2, strings3;
     public float speed = 0.1f;
+    public GameObject rubbishImages;
+    public GameObject starportImage;
 
     public bool isEndScene;
-
     public Button continueButton;
 
     int stringIndex = 0;
@@ -20,6 +22,20 @@ public class AnimatedDialog : MonoBehaviour {
 
     void Start ()
     {
+        strings = new string[10] {
+            "Hello, my name is Elon and I am an investor for this space tourism company",
+            "I have been tasked to guide you in constructing a suitable spacecraft for space tourism",
+            "Your first test is to build a spacecraft that is able to reach our planetary starport",
+            "Be careful though. You want to avoid the space trash layer orbitting the Earth",
+            "Navigate the rocket using the left and right thrusters to avoid the following rubbish obstacles...",
+            "",
+            "Once you are close enough, the starport's tractor beam will guide you in for docking.\n\nThe starport looks like this...",
+            "",
+            "\u0022When something is important enough, you do it even if the odds are not in your favor\u0022",
+            "Good Luck!"
+        };
+        //strings2 = new string[5] { "Element 1", "Element 2", "Element 3", "Element 4", "Element 5" };
+        //strings3 = new string[5] { "Element 1", "Element 2", "Element 3", "Element 4", "Element 5" };
         StartCoroutine (DisplayTimer());
     }
 
@@ -31,6 +47,27 @@ public class AnimatedDialog : MonoBehaviour {
             {
                 continue;
             }
+
+            if (stringIndex == 5)
+            {
+                rubbishImages.SetActive(true);
+            }
+
+            else
+            {
+                rubbishImages.SetActive(false);
+            }
+
+            if (stringIndex == 7)
+            {
+                starportImage.SetActive(true);
+            }
+
+            else
+            {
+                starportImage.SetActive(false);
+            }
+
             textArea.text = strings[stringIndex].Substring(0, characterIndex);
             characterIndex++;
         }
