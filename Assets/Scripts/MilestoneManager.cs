@@ -22,6 +22,7 @@ public class MilestoneManager : MonoBehaviour {
     public Text milestoneDisplay;
     public GameController gameController;
     public string milestoneDisplayString;
+    public Text milestoneCodes;
 
     void Start(){
         milestoneText.enabled = false;

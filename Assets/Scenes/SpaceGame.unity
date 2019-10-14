@@ -2727,7 +2727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -146.7}
+  m_AnchoredPosition: {x: 0, y: -181}
   m_SizeDelta: {x: 388.29, y: 143.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &660595375
@@ -2762,7 +2762,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ecoProduct Codes
+  m_Text: 
 --- !u!222 &660595376
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3244,6 +3244,7 @@ MonoBehaviour:
   skyboxGround: {fileID: 2100000, guid: b856175f77c7a544c9bad600e17deeea, type: 2}
   skyboxSpace: {fileID: 2100000, guid: b856175f77c7a544c9bad600e17deeea, type: 2}
   audioController: {fileID: 274422963}
+  bbs: {fileID: 1985214293}
   levelNumber: 1
 --- !u!4 &854052181
 Transform:
@@ -3306,6 +3307,7 @@ MonoBehaviour:
   milestoneDisplay: {fileID: 1960677028}
   gameController: {fileID: 0}
   milestoneDisplayString: 
+  milestoneCodes: {fileID: 660595375}
 --- !u!1 &881951773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,6 +4480,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136644346}
+--- !u!1 &1141514636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1141514637}
+  - component: {fileID: 1141514639}
+  - component: {fileID: 1141514638}
+  m_Layer: 5
+  m_Name: MilestoneCodesTitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1141514637
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1141514636}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1648749070}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -89}
+  m_SizeDelta: {x: 388.29, y: 29.09}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1141514638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1141514636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
+    m_FontSize: 28
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: ecoProduct Codes
+--- !u!222 &1141514639
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1141514636}
 --- !u!1 &1147467370
 GameObject:
   m_ObjectHideFlags: 0
@@ -7427,6 +7503,7 @@ RectTransform:
   - {fileID: 1177827595}
   - {fileID: 1960677027}
   - {fileID: 660595374}
+  - {fileID: 1141514637}
   m_Father: {fileID: 1985214292}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9765,6 +9842,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 2055807809}
+    - target: {fileID: 114387257184201510, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 854052180}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
   m_IsPrefabParent: 0
