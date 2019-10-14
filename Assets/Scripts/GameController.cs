@@ -66,6 +66,7 @@ public class GameController : MonoBehaviour {
     public GameObject trash;
     public Material skyboxGround;
     public Material skyboxSpace;
+    public AudioController audioController;
 
     public int levelNumber = 1;
   
@@ -247,11 +248,13 @@ public class GameController : MonoBehaviour {
         RenderSettings.skybox = skyboxGround;
         ObjectPooler.sharedInstance.ClearPooledList();
         initLevel(levelNumber);   
+        audioController.playBuildMusic();
     }
 
     public void initLaunchPhase()
     {
         initLevel(levelNumber);
+        audioController.playLaunchMusic();
         maxHeight = 0f;
         ship.fuel = ship.maxFuel;
         enemySpawnTime = 2f;

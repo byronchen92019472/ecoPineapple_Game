@@ -1166,11 +1166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab0d8907acf9d041a63c1060b2a9a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 8300000, guid: 8f05c11fbc96fd948a15830e7d323bb6, type: 3}
-  pickup: {fileID: 8300000, guid: 8f05c11fbc96fd948a15830e7d323bb6, type: 3}
-  thrustMove: {fileID: 0}
-  thrustUp: {fileID: 0}
-  backgroundMusic: {fileID: 0}
+  explosion: {fileID: 8300000, guid: 074bf57717a451d4cb2b927ff0980592, type: 3}
+  pickup: {fileID: 8300000, guid: 2daa0959d9a3d82488b90cc99347fe8d, type: 3}
+  thrustMove: {fileID: 8300000, guid: f2435c01750123141ab86d9f96e693c8, type: 3}
+  thrustUp: {fileID: 8300000, guid: b6ef759bd8577c34f902e2c5e872c2f8, type: 3}
+  buildMusic: {fileID: 8300000, guid: a223c04285b047148b4b4571fbb5dc25, type: 3}
+  launchMusic: {fileID: 8300000, guid: 0b0564ab6db255c489c7b5b5f87891bd, type: 3}
   audioSource: {fileID: 274422964}
 --- !u!82 &274422964
 AudioSource:
@@ -3166,6 +3167,7 @@ MonoBehaviour:
   trash: {fileID: 1955216139005810, guid: 8703ca8335325bf41a0283b005d2e743, type: 2}
   skyboxGround: {fileID: 2100000, guid: b856175f77c7a544c9bad600e17deeea, type: 2}
   skyboxSpace: {fileID: 2100000, guid: b856175f77c7a544c9bad600e17deeea, type: 2}
+  audioController: {fileID: 274422963}
   levelNumber: 1
 --- !u!4 &854052181
 Transform:
@@ -3225,7 +3227,9 @@ MonoBehaviour:
   milestonePluto: 0
   ship: {fileID: 740515829}
   milestoneText: {fileID: 1999884647}
+  milestoneDisplay: {fileID: 1960677028}
   gameController: {fileID: 0}
+  milestoneDisplayString: 
 --- !u!1 &881951773
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,59 +19,77 @@ public class MilestoneManager : MonoBehaviour {
 
     public Ship ship;
     public Text milestoneText;
+    public Text milestoneDisplay;
     public GameController gameController;
+    public string milestoneDisplayString;
 
     void Start(){
-        milestoneText.enabled = true;
+        milestoneText.enabled = false;
         GameObject gameObject = GameObject.Find("GameController");
         if (gameObject != null){
             gameController = gameObject.GetComponent<GameController>();
         }
     }
 
+    void OnEnable() {
+        milestoneDisplay.text = milestoneDisplayString;
+    }
+
     void Update(){
         if (ship.transform.position.y > 3 && !milestoneOne){
             StartCoroutine(showMilestone("Milestone Reached\nFirst Flight"));
+            //milestoneDisplayString += "First Flight\n";
+            milestoneDisplay.text += "First Flight\n";
             milestoneOne = true;
         }
         if (ship.transform.position.y > 140 && !milestoneTwo){
             StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
+            milestoneDisplay.text +="Out of the Earths Atmosphere\n";
             milestoneTwo = true;
         }
         if (ship.transform.position.y > 700 && !milestoneMoon){
             StartCoroutine(showMilestone("Milestone Reached\nReached the Moon"));
+            milestoneDisplay.text += "Reached the Moon\n";
             milestoneMoon = true;
         }
         if (ship.transform.position.y > 1500 && !milestoneVenus && gameController.levelNumber == 2){
-            StartCoroutine(showMilestone("Milestone Reached\nReached the Venus"));
+            StartCoroutine(showMilestone("Milestone Reached\nReached Venus"));
+            milestoneDisplay.text += "Reached Venus\n";
             milestoneVenus = true;
         }
         if (ship.transform.position.y > 2200 && !milestoneMercury && gameController.levelNumber == 2){
-            StartCoroutine(showMilestone("Milestone Reached\nReached the Mercury"));
+            StartCoroutine(showMilestone("Milestone Reached\nReached Mercury"));
+            milestoneDisplay.text += "Reached Mercury\n";
             milestoneMercury = true;
         }
         if (ship.transform.position.y > 3000 && !milestoneMars && gameController.levelNumber == 3){
             StartCoroutine(showMilestone("Milestone Reached\nReached Mars"));
+            milestoneDisplay.text += "Reached Mars\n";
             milestoneMars = true;
         }
         if (ship.transform.position.y > 5000 && !milestoneJupiter && gameController.levelNumber == 3){
             StartCoroutine(showMilestone("Milestone Reached\nReached Jupiter"));
+            milestoneDisplay.text += "Reached Jupiter\n";
             milestoneJupiter = true;
         }
         if (ship.transform.position.y > 7000 && !milestoneSaturn && gameController.levelNumber == 3){
             StartCoroutine(showMilestone("Milestone Reached\nReached Saturn"));
+            milestoneDisplay.text += "Reached Saturn\n";
             milestoneSaturn = true;
         }
         if (ship.transform.position.y > 9000 && !milestoneNeptune && gameController.levelNumber == 3){
             StartCoroutine(showMilestone("Milestone Reached\nReached Neptune"));
+            milestoneDisplay.text += "Reached Neptune\n";
             milestoneNeptune = true;
         }
-        if (ship.transform.position.y > 11000 && !milestoneVenus && gameController.levelNumber == 3){
-            StartCoroutine(showMilestone("Milestone Reached\nReached Venus"));
-            milestoneVenus = true;
+        if (ship.transform.position.y > 11000 && !milestoneUranus && gameController.levelNumber == 3){
+            StartCoroutine(showMilestone("Milestone Reached\nReached Uranus"));
+            milestoneDisplay.text += "Reached Uranus\n";
+            milestoneUranus = true;
         }
         if (ship.transform.position.y > 15000 && !milestonePluto && gameController.levelNumber == 3){
             StartCoroutine(showMilestone("Milestone Reached\nReached Pluto"));
+            milestoneDisplay.text += "Reached Pluto\n";
             milestonePluto = true;
         }
     }
