@@ -25,7 +25,9 @@ public class TextActivationScript : MonoBehaviour
     public Animation walk2;
 
     public int levelNumber;
-
+    public AudioSource footstepAudio;
+    public AudioClip footnoiseClip;
+    
     void Start()
     {
         bc = GetComponent<BoxCollider2D>();
@@ -42,6 +44,7 @@ public class TextActivationScript : MonoBehaviour
         {
             SceneManager.LoadSceneAsync("SpaceGame");
         }
+
         if (atStart == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
             SceneManager.LoadSceneAsync("Level1Story");
@@ -49,7 +52,11 @@ public class TextActivationScript : MonoBehaviour
             //SceneManager.LoadSceneAsync("SpaceGame");
         }
 
-
+        if (CrossPlatformInputManager.GetAxis("Horizontal") != 0)
+        {
+            footstepAudio.PlayOneShot(footnoiseClip, 0.3f);
+        }
+        
         if (atMilestones == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
             //GameObject.FindGameObjectWithTag("SceneTraveller").GetComponent<MilestoneManager>().updateUIText();
