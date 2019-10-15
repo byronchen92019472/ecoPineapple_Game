@@ -10,6 +10,10 @@ public class LaunchButtonScript : MonoBehaviour {
     public Text fuelDisplay;
     public Text thrustDisplay;
 
+    public Button left;
+    public Button right;
+    public Button up;
+
     public GameController gameController;
     private Ship ship;
     
@@ -17,6 +21,12 @@ public class LaunchButtonScript : MonoBehaviour {
     {
         endButton.onClick.AddListener(() => endButtonClick());
         ship = gameController.ship;
+
+        #if UNITY_STANDALONE_WIN
+            left.gameObject.SetActive(false);
+            right.gameObject.SetActive(false);
+            up.gameObject.SetActive(false);
+        #endif
     }
 
     void Update()

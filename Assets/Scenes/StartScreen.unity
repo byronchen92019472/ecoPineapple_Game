@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -778,7 +778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &335237023
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -878,7 +878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &355122200
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2224,7 +2224,9 @@ MonoBehaviour:
   milestonePluto: 0
   ship: {fileID: 0}
   milestoneText: {fileID: 1399113975}
+  milestoneDisplay: {fileID: 0}
   gameController: {fileID: 0}
+  milestoneCodes: {fileID: 0}
 --- !u!4 &1289893325
 Transform:
   m_ObjectHideFlags: 0
@@ -2609,7 +2611,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1536211269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.01, y: 2.38, z: 0}
+  m_LocalPosition: {x: -0.99, y: 2.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2881,9 +2883,13 @@ MonoBehaviour:
   milestonesCanvas: {fileID: 196797283}
   milestonesDisplayCanvas: {fileID: 260434042}
   atStart: 0
+  walk2: {fileID: 0}
   levelNumber: 0
   footstepAudio: {fileID: 1490363986}
   footnoiseClip: {fileID: 8300000, guid: 370c2a719b713b245bcf70334f7c1c2e, type: 3}
+  left: {fileID: 483759707}
+  right: {fileID: 828760269}
+  confirm: {fileID: 777043782}
 --- !u!1 &1623643154
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,7 +3275,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1895525022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.28, y: 13.16, z: 0}
+  m_LocalPosition: {x: 9.49, y: 13.16, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}

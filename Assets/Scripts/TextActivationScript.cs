@@ -6,6 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.IO;
+using UnityEngine.UI;
 
 public class TextActivationScript : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class TextActivationScript : MonoBehaviour
     public int levelNumber;
     public AudioSource footstepAudio;
     public AudioClip footnoiseClip;
+
+    public Button left;
+    public Button right;
+    public Button confirm;
     
     void Start()
     {
@@ -35,6 +40,12 @@ public class TextActivationScript : MonoBehaviour
         //testing
         //bool sc = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneController>().level3Load;
         //Debug.Log(sc);
+
+        #if UNITY_STANDALONE_WIN
+            left.gameObject.SetActive(false);
+            right.gameObject.SetActive(false);
+            confirm.gameObject.SetActive(false);
+        #endif
     }
 
     void Update()

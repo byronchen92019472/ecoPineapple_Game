@@ -35,6 +35,7 @@ public class SceneController : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(480, 800, false, 60);
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
