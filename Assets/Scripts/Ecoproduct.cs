@@ -34,7 +34,7 @@ public class Ecoproduct : MonoBehaviour {
     {
         if (other.tag == "Ship")
         {
-            ship.player.money += 10;
+            ship.player.money += 50;
             ship.audioManager.playPickup();
             gameObject.SetActive(false);
         }

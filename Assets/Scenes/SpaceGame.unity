@@ -1174,6 +1174,7 @@ MonoBehaviour:
   launchMusic: {fileID: 8300000, guid: 0b0564ab6db255c489c7b5b5f87891bd, type: 3}
   fuelAlarm: {fileID: 8300000, guid: 7b4c0442b6514304fb3f8c9d844a91fd, type: 3}
   starport: {fileID: 8300000, guid: 09f507d74637d1248ae7329e300506b2, type: 3}
+  purchase: {fileID: 8300000, guid: 0a054524b3a90bf429c9e9af438561df, type: 3}
   audioSource: {fileID: 274422964}
 --- !u!82 &274422964
 AudioSource:
@@ -8721,6 +8722,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1883318676 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1172827277149802, guid: 558e688cf1bf3604ab71158d9124422b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2073700607}
+--- !u!65 &1883318681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1883318676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.82, y: 0.82, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1884351686
 GameObject:
   m_ObjectHideFlags: 0
@@ -9445,6 +9463,7 @@ MonoBehaviour:
   closeMilestoneButton: {fileID: 1230296314}
   exitButton: {fileID: 896111178}
   milestoneButton: {fileID: 470328446}
+  audioController: {fileID: 274422963}
   gameController: {fileID: 854052180}
 --- !u!1 &1992700993
 GameObject:
@@ -9847,6 +9866,25 @@ Prefab:
       propertyPath: gc
       value: 
       objectReference: {fileID: 854052180}
+    - target: {fileID: 33840519245998564, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 23561603683443382, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 136674116435156330, guid: 558e688cf1bf3604ab71158d9124422b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671253013272334, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.437
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 558e688cf1bf3604ab71158d9124422b, type: 2}
   m_IsPrefabParent: 0

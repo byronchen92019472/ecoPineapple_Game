@@ -12,6 +12,7 @@ public class AudioController : MonoBehaviour {
 	public AudioClip launchMusic;
 	public AudioClip fuelAlarm;
 	public AudioClip starport;
+	public AudioClip purchase;
 
 	public AudioSource audioSource;
 	// Use this for initialization
@@ -35,6 +36,10 @@ public class AudioController : MonoBehaviour {
 
 	public void playStarport(){
 		audioSource.PlayOneShot(starport, 0.7f);
+	}
+
+	public void playPurchase(){
+		audioSource.PlayOneShot(purchase, 0.7f);
 	}
 
 	public void playBuildMusic(){

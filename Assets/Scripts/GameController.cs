@@ -100,12 +100,16 @@ public class GameController : MonoBehaviour {
             if (levelNumber == 1){
                 
             }else if(levelNumber == 2){
-                spawnEco();
+                if(ship.transform.position.y > 5){
+                    spawnEco();
+                }    
                 if (ship.transform.position.y > 200 && ship.alive){
                     spawnAsteroids();
                 }
             }else if (levelNumber == 3){
-                spawnEco();
+                if(ship.transform.position.y > 5){
+                    spawnEco();
+                }
                 if (ship.transform.position.y > 200 && ship.alive){
                     spawnAsteroids();
                 }
@@ -335,9 +339,15 @@ public class GameController : MonoBehaviour {
             
         }
     }
+
     public void playStoryScene(){
         SaveGame();
-        SceneManager.LoadSceneAsync("Level1Story");
+        StartCoroutine(changeScene());
+    }
+
+    IEnumerator changeScene(){
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Level1Story");
     }
 
     void initLevel(int level){

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class SceneController : MonoBehaviour
     private bool level1Load;
     private bool level2Load;
     public bool level3Load;
+    public Button skipButton;
 
     public bool atStartFromStartScreen;
 
@@ -41,6 +43,14 @@ public class SceneController : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Start(){
+        skipButton.onClick.AddListener(()=> skipButtonClick());
+    }
+
+    void skipButtonClick(){
+        introTime = 0;
     }
 
     // Update is called once per frame

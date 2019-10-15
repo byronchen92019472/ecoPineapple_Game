@@ -56,6 +56,8 @@ public class BuildButtonScript : MonoBehaviour {
     public Button exitButton;
     public Button milestoneButton;
 
+    public AudioController audioController;
+
 
     public GameController gameController;
 
@@ -119,6 +121,7 @@ public class BuildButtonScript : MonoBehaviour {
 
     void closeMilestoneClick(){
         milestonePanel.SetActive(false);
+        
     }
     void exitButtonClick()
     {
@@ -177,6 +180,7 @@ public class BuildButtonScript : MonoBehaviour {
             gameController.ship.maxFuel += selectedFuelValue;
             gameController.player.money -= selectedFuelPrice;
             selectedFuelButton.interactable = false;
+            audioController.playPurchase();
         }
         updateText();
         gameController.SaveGame();
