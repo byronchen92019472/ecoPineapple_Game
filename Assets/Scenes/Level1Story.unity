@@ -554,6 +554,10 @@ MonoBehaviour:
   starportImage: {fileID: 1137771788}
   ecoProductImage: {fileID: 1270258478}
   touristImage: {fileID: 1894117940}
+  elon: {fileID: 1329253331}
+  elon_Sprite1: {fileID: 21300000, guid: 71b7ed383969bd34ca31a64c97d74b63, type: 3}
+  elon_Sprite2: {fileID: 21300000, guid: b9606601e75ded14ca50d0a7842b23dc, type: 3}
+  elon_Sprite3: {fileID: 21300000, guid: 257cad857da328e4ab8de3c5ddebf75b, type: 3}
   readString: []
   levelNumber: 0
   isEndScene: 0
