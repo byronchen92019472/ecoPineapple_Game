@@ -493,6 +493,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 74183114}
+--- !u!1 &109274034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 109274035}
+  - component: {fileID: 109274037}
+  - component: {fileID: 109274036}
+  m_Layer: 5
+  m_Name: TouristPassengerCostText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &109274035
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109274034}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 945056268}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 88}
+  m_SizeDelta: {x: 225.5, y: 52.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &109274036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109274034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 11abc056b9996654295b5c1cc1fd2800, type: 3}
+    m_FontSize: 28
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 100
+--- !u!222 &109274037
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109274034}
 --- !u!1 &113633342
 GameObject:
   m_ObjectHideFlags: 0
@@ -3693,7 +3767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &945056268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3709,6 +3783,7 @@ RectTransform:
   - {fileID: 1669588289}
   - {fileID: 1136644347}
   - {fileID: 1289035316}
+  - {fileID: 109274035}
   m_Father: {fileID: 1614236759}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4326,9 +4401,9 @@ RectTransform:
   m_Father: {fileID: 945056268}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.48400003}
-  m_AnchorMax: {x: 1, y: 0.48400003}
-  m_AnchoredPosition: {x: -89, y: 172}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -34}
   m_SizeDelta: {x: 357.8, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1091516737
@@ -4357,7 +4432,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 181
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4404,8 +4479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 200, y: 70}
+  m_AnchoredPosition: {x: 0, y: -163.5}
+  m_SizeDelta: {x: 294.2, y: 43.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1136644348
 MonoBehaviour:
@@ -9433,6 +9508,7 @@ MonoBehaviour:
   launchButton: {fileID: 1351828271}
   addTouristsButton: {fileID: 1396558743}
   removeTouristsButton: {fileID: 1669588290}
+  upgradeTouristsButton: {fileID: 1136644348}
   fuelTabButton: {fileID: 1955881052}
   touristTabButton: {fileID: 1992700994}
   fuelDisplayPanel: {fileID: 439848478}
@@ -9457,6 +9533,9 @@ MonoBehaviour:
   fuelEffiencyText: {fileID: 126159830}
   moneyDisplayText: {fileID: 1830847617}
   touristDisplayText: {fileID: 1091516737}
+  touristUpgradeCostText: {fileID: 109274036}
+  touristUpgradeCost: 0
+  maxTourist: 0
   displayPanel: {fileID: 1532915378}
   closeDisplayButton: {fileID: 1072644523}
   milestonePanel: {fileID: 1648749069}

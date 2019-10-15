@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
             ship = shipObject.GetComponent<Ship>();
         }
         int rand = Random.Range(0, 6);
-        Debug.Log(rand);
+        speed = Random.Range(-0.2f, 0f);
 		GetComponent<SpriteRenderer>().sprite = asteroidImages[rand];
         //StartCoroutine(selfdestruct());
     }

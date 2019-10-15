@@ -32,7 +32,5 @@ public class Save {
 
     public string milestoneDisplay;
     public string milestoneCodes;
-
-    //public float maxThrust;
-    //public float maxHeight;
+    public int maxTourist;
 }

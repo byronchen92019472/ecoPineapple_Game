@@ -140,6 +140,7 @@ public class GameController : MonoBehaviour {
         save.fuelPart7 = bbs.fuelPart7.interactable;
         save.fuelPart8 = bbs.fuelPart8.interactable;
         save.fuelPart9 = bbs.fuelPart9.interactable;
+        save.maxTourist = bbs.maxTourist;
         save.milestoneOne = mm.milestoneOne;
         save.milestoneTwo = mm.milestoneTwo;
         save.milestoneMoon = mm.milestoneMoon;

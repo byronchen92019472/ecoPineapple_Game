@@ -12,6 +12,7 @@ public class BuildButtonScript : MonoBehaviour {
     public Button launchButton;
     public Button addTouristsButton;
     public Button removeTouristsButton;
+    public Button upgradeTouristsButton;
 
     public Button fuelTabButton;
     public Button touristTabButton;
@@ -42,6 +43,9 @@ public class BuildButtonScript : MonoBehaviour {
     public Text fuelEffiencyText;
     public Text moneyDisplayText;
     public Text touristDisplayText;
+    public Text touristUpgradeCostText;
+    public int touristUpgradeCost;
+    public int maxTourist;
 
     public GameObject displayPanel;
     public Button closeDisplayButton;
@@ -68,6 +72,7 @@ public class BuildButtonScript : MonoBehaviour {
         thrustDisplayText.text = "Max Thrust: " + gameController.ship.maxThrust.ToString();
         fuelEffiencyText.text = "Fuel Effiency: " + gameController.ship.fuelEfficiencyMultiplier.ToString() + "%";
         touristDisplayText.text = "Tourists: " + gameController.ship.tourists.ToString();
+        touristUpgradeCostText.text = "$" + touristUpgradeCost.ToString();
         fuelPurchaseButton.enabled = false;
         fuelTabButtonClick();
     }
@@ -79,6 +84,7 @@ public class BuildButtonScript : MonoBehaviour {
 
         closeDisplayButton.onClick.AddListener(() => closeDisplayClick());
         touristTabButton.onClick.AddListener(() => touristTabButtonClick());
+        upgradeTouristsButton.onClick.AddListener(() => upgradeTouristButtonClick());
 
         fuelTabButton.onClick.AddListener(() => fuelTabButtonClick());
         fuelPurchaseButton.onClick.AddListener(() => fuelPurchaseButtonClick());
@@ -96,6 +102,7 @@ public class BuildButtonScript : MonoBehaviour {
         milestoneButton.onClick.AddListener(() => milestoneButtonClick());
         closeMilestoneButton.onClick.AddListener(() => closeMilestoneClick());
         LoadButton();
+        touristUpgradeCost = maxTourist * 1000;
         Debug.Log("Load Button");
 	}
 
@@ -114,9 +121,19 @@ public class BuildButtonScript : MonoBehaviour {
             fuelPart7.interactable = save.fuelPart7;
             fuelPart8.interactable = save.fuelPart8;
             fuelPart9.interactable = save.fuelPart9;
+            maxTourist = save.maxTourist;
         }else{
             Debug.Log("No Save File");
         }
+    }
+
+    void upgradeTouristButtonClick(){
+        if (gameController.player.money >= touristUpgradeCost){
+            maxTourist = maxTourist + 2;
+            touristUpgradeCost = maxTourist * 1000;
+            gameController.player.money = gameController.player.money - touristUpgradeCost;
+        }
+        updateText();
     }
 
     void closeMilestoneClick(){
@@ -151,8 +168,9 @@ public class BuildButtonScript : MonoBehaviour {
 
     void addTouristsClick()
     {
-        
-        gameController.ship.tourists += 1;
+        if(gameController.ship.tourists < maxTourist){
+            gameController.ship.tourists += 1;
+        }        
         updateText();
     }
 
@@ -237,6 +255,7 @@ public class BuildButtonScript : MonoBehaviour {
         fuelEffiencyText.text = "Fuel Effiency: " + gameController.ship.fuelEfficiencyMultiplier.ToString() + "%";
         moneyDisplayText.text = "x " + gameController.player.money.ToString();
         touristDisplayText.text = "Tourists: " + gameController.ship.tourists.ToString();
+        touristUpgradeCostText.text = "$" + touristUpgradeCost.ToString();
     }
 
     void launchButtonClick()

@@ -90,6 +90,7 @@ public class TextActivationScript : MonoBehaviour
         save.milestonePluto = false;
         save.milestoneDisplay = "";
         save.milestoneCodes = "";
+        save.maxTourist = 2;
         return save;
     }
 
