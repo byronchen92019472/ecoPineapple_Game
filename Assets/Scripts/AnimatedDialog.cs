@@ -14,6 +14,11 @@ public class AnimatedDialog : MonoBehaviour {
     public GameObject starportImage;
     public GameObject ecoProductImage;
     public GameObject touristImage;
+    public Image elon;
+    public Sprite elon_Sprite1;
+    public Sprite elon_Sprite2;
+    public Sprite elon_Sprite3;
+
     public string[] readString;
     public int levelNumber;
 
@@ -28,8 +33,8 @@ public class AnimatedDialog : MonoBehaviour {
     void Start ()
     {
         LoadGame();
-
         if (levelNumber == 1){
+            elon.sprite = elon_Sprite1;
             readString  = new string[10] {
                 "Hello, my name is Elon and I am an investor for this space tourism company",
                 "I have been tasked to guide you in constructing a suitable spacecraft for space tourism",
@@ -44,6 +49,7 @@ public class AnimatedDialog : MonoBehaviour {
             };
         }
         if (levelNumber == 2){
+            elon.sprite = elon_Sprite2;
             readString = new string[11] {
                 "Good job with successfully docking at the spaceport",
                 "\u0022If you get up in the morning and think the future is going to be better, it is a bright day\u0022",
@@ -59,6 +65,7 @@ public class AnimatedDialog : MonoBehaviour {
             };
         }
         if (levelNumber == 3){
+            elon.sprite = elon_Sprite3;
             readString  = new string[14] {
                 "Yeah...um...it is currently not economically feasible to throw rubbish into the sun.", 
                 "Oh well. Can't say I didn't try", 
