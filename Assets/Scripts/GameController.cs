@@ -70,6 +70,7 @@ public class GameController : MonoBehaviour {
     public Material skyboxSpace;
     public AudioController audioController;
     public BuildButtonScript bbs;
+    public MilestoneManager mm;
     public int levelNumber = 1;
   
 	// Use this for initialization
@@ -135,6 +136,19 @@ public class GameController : MonoBehaviour {
         save.fuelPart7 = bbs.fuelPart7.interactable;
         save.fuelPart8 = bbs.fuelPart8.interactable;
         save.fuelPart9 = bbs.fuelPart9.interactable;
+        save.milestoneOne = mm.milestoneOne;
+        save.milestoneTwo = mm.milestoneTwo;
+        save.milestoneMoon = mm.milestoneMoon;
+        save.milestoneMars = mm.milestoneMars;
+        save.milestoneMercury = mm.milestoneMercury;
+        save.milestoneVenus = mm.milestoneVenus;
+        save.milestoneJupiter = mm.milestoneJupiter;
+        save.milestoneSaturn = mm.milestoneSaturn;
+        save.milestoneNeptune = mm.milestoneNeptune;
+        save.milestoneUranus = mm.milestoneUranus;
+        save.milestonePluto = mm.milestonePluto;
+        save.milestoneDisplay = mm.milestoneDisplay.text;
+        save.milestoneCodes = mm.milestoneCodes.text;
         return save;
     }
 
@@ -156,6 +170,19 @@ public class GameController : MonoBehaviour {
             player.money = save.money;
             ship.maxFuel = save.maxFuel;
             levelNumber = save.level;
+            mm.milestoneOne = save.milestoneOne;
+            mm.milestoneTwo = save.milestoneTwo;
+            mm.milestoneMoon = save.milestoneMoon;
+            mm.milestoneMars = save.milestoneMars;
+            mm.milestoneMercury = save.milestoneMercury;
+            mm.milestoneVenus = save.milestoneVenus;
+            mm.milestoneJupiter = save.milestoneJupiter;
+            mm.milestoneSaturn = save.milestoneSaturn;
+            mm.milestoneNeptune = save.milestoneNeptune;
+            mm.milestoneUranus = save.milestoneUranus;
+            mm.milestonePluto = save.milestonePluto;
+            mm.milestoneDisplay.text = save.milestoneDisplay;
+            mm.milestoneCodes.text = save.milestoneCodes;
         }else{
             Debug.Log("No Save File");
         }

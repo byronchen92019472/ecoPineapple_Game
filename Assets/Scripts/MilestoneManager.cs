@@ -21,7 +21,6 @@ public class MilestoneManager : MonoBehaviour {
     public Text milestoneText;
     public Text milestoneDisplay;
     public GameController gameController;
-    public string milestoneDisplayString;
     public Text milestoneCodes;
 
     void Start(){
@@ -32,20 +31,16 @@ public class MilestoneManager : MonoBehaviour {
         }
     }
 
-    void OnEnable() {
-        milestoneDisplay.text = milestoneDisplayString;
-    }
-
     void Update(){
         if (ship.transform.position.y > 3 && !milestoneOne){
             StartCoroutine(showMilestone("Milestone Reached\nFirst Flight"));
-            //milestoneDisplayString += "First Flight\n";
             milestoneDisplay.text += "First Flight\n";
             milestoneOne = true;
         }
         if (ship.transform.position.y > 140 && !milestoneTwo){
             StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
             milestoneDisplay.text +="Out of the Earths Atmosphere\n";
+            milestoneCodes.text += "ECODISCOUNT15\n";
             milestoneTwo = true;
         }
         if (ship.transform.position.y > 700 && !milestoneMoon){
@@ -61,6 +56,7 @@ public class MilestoneManager : MonoBehaviour {
         if (ship.transform.position.y > 2200 && !milestoneMercury && gameController.levelNumber == 2){
             StartCoroutine(showMilestone("Milestone Reached\nReached Mercury"));
             milestoneDisplay.text += "Reached Mercury\n";
+            milestoneCodes.text += "ECODISCOUNT30\n";
             milestoneMercury = true;
         }
         if (ship.transform.position.y > 2970 && !milestoneMars && gameController.levelNumber == 3){
@@ -91,6 +87,7 @@ public class MilestoneManager : MonoBehaviour {
         if (ship.transform.position.y > 14970 && !milestonePluto && gameController.levelNumber == 3){
             StartCoroutine(showMilestone("Milestone Reached\nReached Pluto"));
             milestoneDisplay.text += "Reached Pluto\n";
+            milestoneCodes.text += "ECODISCOUNT75\n";
             milestonePluto = true;
         }
     }

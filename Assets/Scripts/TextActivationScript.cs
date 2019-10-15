@@ -32,7 +32,6 @@ public class TextActivationScript : MonoBehaviour
     {
         bc = GetComponent<BoxCollider2D>();
         LoadGame();
-        Debug.Log(levelNumber);
         //testing
         //bool sc = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneController>().level3Load;
         //Debug.Log(sc);
@@ -78,6 +77,19 @@ public class TextActivationScript : MonoBehaviour
         save.fuelPart7 = true;
         save.fuelPart8 = true;
         save.fuelPart9 = true;
+        save.milestoneOne = false;
+        save.milestoneTwo = false;
+        save.milestoneMoon = false;
+        save.milestoneMars = false;
+        save.milestoneMercury = false;
+        save.milestoneVenus = false;
+        save.milestoneJupiter = false;
+        save.milestoneSaturn = false;
+        save.milestoneNeptune = false;
+        save.milestoneUranus = false;
+        save.milestonePluto = false;
+        save.milestoneDisplay = "";
+        save.milestoneCodes = "";
         return save;
     }
 

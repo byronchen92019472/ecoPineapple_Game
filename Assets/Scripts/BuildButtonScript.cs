@@ -97,39 +97,12 @@ public class BuildButtonScript : MonoBehaviour {
         Debug.Log("Load Button");
 	}
 
-    private Save CreateSaveGameObject(){
-        Save save = new Save();
-        save.money = gameController.player.money;
-        save.maxFuel = gameController.ship.maxFuel;
-        save.level = gameController.levelNumber;
-        save.fuelPart1 = fuelPart1.interactable;
-        save.fuelPart2 = fuelPart2.interactable;
-        save.fuelPart3 = fuelPart3.interactable;
-        save.fuelPart4 = fuelPart4.interactable;
-        save.fuelPart5 = fuelPart5.interactable;
-        save.fuelPart6 = fuelPart6.interactable;
-        save.fuelPart7 = fuelPart7.interactable;
-        save.fuelPart8 = fuelPart8.interactable;
-        save.fuelPart9 = fuelPart9.interactable;
-        Debug.Log(save.fuelPart1);
-        Debug.Log(fuelPart1.interactable);
-        return save;
-    }
-    public void SaveButton(){
-        Save save = CreateSaveGameObject();
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
-        bf.Serialize(file, save);
-        file.Close();
-    }
     public void LoadButton(){
         if(File.Exists(Application.persistentDataPath + "/gamesave.save")){
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
             Save save = (Save)bf.Deserialize(file);
             file.Close();
-            Debug.Log(save.fuelPart1);
-            Debug.Log(fuelPart1.interactable);
             fuelPart1.interactable = save.fuelPart1;
             fuelPart2.interactable = save.fuelPart2;
             fuelPart3.interactable = save.fuelPart3;
@@ -206,7 +179,7 @@ public class BuildButtonScript : MonoBehaviour {
             selectedFuelButton.interactable = false;
         }
         updateText();
-        SaveButton();
+        gameController.SaveGame();
         
     }
 

@@ -2727,8 +2727,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -181}
-  m_SizeDelta: {x: 388.29, y: 143.5}
+  m_AnchoredPosition: {x: 0, y: -172}
+  m_SizeDelta: {x: 388.29, y: 113.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &660595375
 MonoBehaviour:
@@ -3245,6 +3245,7 @@ MonoBehaviour:
   skyboxSpace: {fileID: 2100000, guid: b856175f77c7a544c9bad600e17deeea, type: 2}
   audioController: {fileID: 274422963}
   bbs: {fileID: 1985214293}
+  mm: {fileID: 854052183}
   levelNumber: 1
 --- !u!4 &854052181
 Transform:
@@ -3306,7 +3307,6 @@ MonoBehaviour:
   milestoneText: {fileID: 1999884647}
   milestoneDisplay: {fileID: 1960677028}
   gameController: {fileID: 0}
-  milestoneDisplayString: 
   milestoneCodes: {fileID: 660595375}
 --- !u!1 &881951773
 GameObject:
@@ -7488,7 +7488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1648749070
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9118,7 +9118,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1960677029
 CanvasRenderer:
   m_ObjectHideFlags: 0
