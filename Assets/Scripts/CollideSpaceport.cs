@@ -24,8 +24,10 @@ public class CollideSpaceport : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
         if (other.tag == "Ship")
         {
-            if (tag == "StarportEnd")
+            if (tag == "StarportEnd"){
                 gameController.completeLevel();
+                ship.isEndSpaceport = true;
+            }
             ship.audioManager.playStarport();
             ship.dropTourists(planetName, this.transform.position);
         }

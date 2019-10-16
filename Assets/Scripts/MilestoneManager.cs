@@ -38,7 +38,7 @@ public class MilestoneManager : MonoBehaviour {
             milestoneOne = true;
         }
         if (ship.transform.position.y > 140 && !milestoneTwo){
-            StartCoroutine(showMilestone("Milestone Reached\nOut of the Earths Atmosphere"));
+            StartCoroutine(showMilestone("Level 1 Complete\nCode: ECODISCOUNT15\nClick the Trophy to view code"));
             milestoneDisplay.text +="Out of the Earths Atmosphere\n";
             milestoneCodes.text += "ECODISCOUNT15\n";
             milestoneTwo = true;

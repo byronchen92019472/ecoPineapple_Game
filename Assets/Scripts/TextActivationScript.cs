@@ -76,7 +76,7 @@ public class TextActivationScript : MonoBehaviour
     
     private Save CreateSaveGameObject(){
         Save save = new Save();
-        save.money = 0;
+        save.money = 5;
         save.maxFuel = 150;
         save.level = 1;
         save.fuelPart1 = true;
