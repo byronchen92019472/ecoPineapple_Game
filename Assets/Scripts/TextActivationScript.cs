@@ -32,6 +32,8 @@ public class TextActivationScript : MonoBehaviour
     public Button left;
     public Button right;
     public Button confirm;
+
+    private float stepCounter = 0;
     
     void Start()
     {
@@ -64,7 +66,13 @@ public class TextActivationScript : MonoBehaviour
 
         if (CrossPlatformInputManager.GetAxis("Horizontal") != 0)
         {
-            footstepAudio.PlayOneShot(footnoiseClip, 0.3f);
+            stepCounter = stepCounter + Time.deltaTime;
+            if (stepCounter > 0.15)
+            {
+                footstepAudio.PlayOneShot(footnoiseClip, 0.2f);
+                stepCounter = 0;
+            }
+            
         }
         
         if (atMilestones == true && (CrossPlatformInputManager.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") > 0))  //(Input.GetKeyDown("w") || Input.GetKeyDown("up"))

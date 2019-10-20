@@ -19,27 +19,27 @@ public class AudioController : MonoBehaviour {
 
 	void Start() {
 		audioSource = GetComponent<AudioSource>();
-		audioSource.volume = 0.3f;
+		audioSource.volume = 0.2f;
 	}
 	
 	public void playExplosion(){
-		audioSource.PlayOneShot(explosion, 0.7f);
+		audioSource.PlayOneShot(explosion, 0.3f);
 	}
 
 	public void playPickup(){
-		audioSource.PlayOneShot(pickup, 0.7f);
+		audioSource.PlayOneShot(pickup, 0.3f);
 	}
 
 	public void playThrustMove(){
-		audioSource.PlayOneShot(thrustMove, 0.7f);
+		audioSource.PlayOneShot(thrustMove, 0.3f);
 	}
 
 	public void playStarport(){
-		audioSource.PlayOneShot(starport, 0.7f);
+		audioSource.PlayOneShot(starport, 0.3f);
 	}
 
 	public void playPurchase(){
-		audioSource.PlayOneShot(purchase, 0.7f);
+		audioSource.PlayOneShot(purchase, 0.3f);
 	}
 
 	public void playBuildMusic(){

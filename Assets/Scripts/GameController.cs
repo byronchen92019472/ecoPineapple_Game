@@ -365,7 +365,7 @@ public class GameController : MonoBehaviour {
             // addToObjectList(spacePort, new Vector3(-10, 144, 0));
             // addToObjectList(spacePort, new Vector3(-10, 971, 0));
             // addToObjectList(spacePort, new Vector3(-10, 1970, 0));
-            addToObjectList(spacePortEnd, new Vector3(0, 2970, 0));
+            addToObjectList(spacePortEnd, new Vector3(0, 2170, 0));
             addToObjectList(moon, new Vector3(-16.5f, 700, 0));
             addToObjectList(Venus, new Vector3(-5, 1500, 0));
             addToObjectList(Mercury, new Vector3(-5, 2200, 0));
