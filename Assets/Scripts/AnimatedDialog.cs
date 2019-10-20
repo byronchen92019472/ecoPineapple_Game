@@ -9,7 +9,7 @@ public class AnimatedDialog : MonoBehaviour {
     public Text textArea;
     //public string[] strings;
     //public string[] strings2, strings3;
-    public float speed = 0.1f;
+    public float speed = 0.03f;
     public GameObject rubbishImages;
     public GameObject starportImage;
     public GameObject ecoProductImage;
@@ -35,11 +35,12 @@ public class AnimatedDialog : MonoBehaviour {
         LoadGame();
         if (levelNumber == 1){
             elon.sprite = elon_Sprite1;
-            readString  = new string[10] {
+            readString  = new string[11] {
                 "Hello, my name is Elon and I am an investor for this space tourism company",
                 "I have been tasked to guide you in constructing a suitable spacecraft for space tourism",
-                "Your first test is to build a spacecraft that is able to reach our planetary starport",
+                "Your first test is to upgrade the spacecraft that is able to reach our planetary starport",
                 "Be careful though. You want to avoid the space trash layer orbitting the Earth",
+                "Purchase fuel upgrades after every launch to increased distance reached",
                 "Navigate the rocket using the left and right thrusters to avoid the following rubbish obstacles...",
                 "",
                 "Once you are close enough, the starport's tractor beam will guide you in for docking.\n\nThe starport looks like this...",
@@ -83,7 +84,13 @@ public class AnimatedDialog : MonoBehaviour {
                 "We're going to make it happen. As God is my bloody witness, I'm hell-bent on making it work."
             };
         }
-        Debug.Log(readString[0]);
+        if (levelNumber == 4){
+            elon.sprite = elon_Sprite1;
+            readString  = new string[1] {
+                "Congrats you win"
+            };
+        }
+        //Debug.Log(readString[0]);
 
         StartCoroutine (DisplayTimer());
     }
@@ -115,7 +122,7 @@ public class AnimatedDialog : MonoBehaviour {
             {
                 continue;
             }
-            if (stringIndex == 5 && levelNumber == 1)
+            if (stringIndex == 6 && levelNumber == 1)
             {
                 rubbishImages.SetActive(true);
             }
@@ -123,7 +130,7 @@ public class AnimatedDialog : MonoBehaviour {
             {
                 rubbishImages.SetActive(false);
             }
-            if (stringIndex == 7 && levelNumber == 1)
+            if (stringIndex == 8 && levelNumber == 1)
             {
                 starportImage.SetActive(true);
             }

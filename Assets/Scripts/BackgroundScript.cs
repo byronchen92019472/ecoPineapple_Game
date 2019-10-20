@@ -12,21 +12,5 @@ public class BackgroundScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.position = new Vector3(transform.position.x, ship.transform.position.y, transform.position.z);
-        //if (ship.transform.position.y > transform.position.y + 160)
-        //{
-         //   transform.position = new Vector3(transform.position.x, transform.position.y + (480), transform.position.z);
-        //}
-        //move = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.fixedDeltaTime * 60, transform.position.z);
-        
-
-        //if (ship.rb.velocity.y != 0)
-        //{
-         //   transform.position = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.fixedDeltaTime * 60, transform.position.z);
-         //   if (transform.position.y < offset)
-          //  {
-          //      transform.position = new Vector3(transform.position.x, 480, transform.position.z);
-          //  }
-       // }
-        
 	}
 }

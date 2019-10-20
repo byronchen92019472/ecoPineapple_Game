@@ -21,6 +21,7 @@ public class Ship : MonoBehaviour {
     public bool canLaunch;
     public bool launchUp;
     public bool canMoveToSpaceport;
+    public bool isEndSpaceport;
 
     private Vector3 spaceportPos;
     public Player player;
@@ -81,8 +82,9 @@ public class Ship : MonoBehaviour {
         if (canMoveToSpaceport){
             rb.velocity = Vector3.zero;
             transform.position = Vector3.MoveTowards(transform.position, spaceportPos, 0.1f * Time.fixedDeltaTime * 60);
-            if(Vector3.Distance(transform.position, spaceportPos) < 0.1f){
+            if(Vector3.Distance(transform.position, spaceportPos) < 0.1f && isEndSpaceport){
                 rb.velocity = Vector3.zero;
+                isEndSpaceport = false;
                 gc.playStoryScene();
             }
         }

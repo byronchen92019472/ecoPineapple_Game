@@ -106,7 +106,7 @@ public class GameController : MonoBehaviour {
                 if (ship.transform.position.y > 200 && ship.alive){
                     spawnAsteroids();
                 }
-            }else if (levelNumber == 3){
+            }else if (levelNumber >= 3){
                 if(ship.transform.position.y > 5){
                     spawnEco();
                 }
@@ -333,12 +333,9 @@ public class GameController : MonoBehaviour {
     }
 
     public void completeLevel(){
-        if(levelNumber < 3){
-            levelNumber++; 
-            string s = "Level " + levelNumber + "\nComplete";
-            StartCoroutine(showMessage(s, levelText, 2));
-            
-        }
+        //string s = "Level " + levelNumber + "\nComplete";
+        levelNumber++; 
+        //.StartCoroutine(showMessage(s, levelText, 2));
     }
 
     public void playStoryScene(){
@@ -368,7 +365,7 @@ public class GameController : MonoBehaviour {
             // addToObjectList(spacePort, new Vector3(-10, 144, 0));
             // addToObjectList(spacePort, new Vector3(-10, 971, 0));
             // addToObjectList(spacePort, new Vector3(-10, 1970, 0));
-            addToObjectList(spacePortEnd, new Vector3(0, 2970, 0));
+            addToObjectList(spacePortEnd, new Vector3(0, 2170, 0));
             addToObjectList(moon, new Vector3(-16.5f, 700, 0));
             addToObjectList(Venus, new Vector3(-5, 1500, 0));
             addToObjectList(Mercury, new Vector3(-5, 2200, 0));
@@ -391,6 +388,7 @@ public class GameController : MonoBehaviour {
             addToObjectList(Neptune, new Vector3(-5.7f, 11000, 0));
             addToObjectList(Pluto, new Vector3(-5.7f, 15000, 0));
         }
+
     }
 
     void addToObjectList(GameObject obj, Vector3 pos){

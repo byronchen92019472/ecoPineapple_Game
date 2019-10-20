@@ -225,23 +225,23 @@ public class BuildButtonScript : MonoBehaviour {
         }
         if (button == fuelPart5)
         {
-            setFuelPurchase(button, "Fuel 5", 200, 500);
+            setFuelPurchase(button, "Fuel 5", 500, 500);
         }
         if (button == fuelPart6)
         {
-            setFuelPurchase(button, "Fuel 6", 400, 750);
+            setFuelPurchase(button, "Fuel 6", 1000, 750);
         }
         if (button == fuelPart7)
         {
-            setFuelPurchase(button, "Fuel 7", 600, 1000);
+            setFuelPurchase(button, "Fuel 7", 2500, 1000);
         }
         if (button == fuelPart8)
         {
-            setFuelPurchase(button, "Fuel 8", 800, 1500);
+            setFuelPurchase(button, "Fuel 8", 6000, 1500);
         }
         if (button == fuelPart9)
         {
-            setFuelPurchase(button, "Fuel 9", 1000, 2000);
+            setFuelPurchase(button, "Fuel 9", 10000, 2000);
         }
         fuelPurchaseButton.enabled = true;
         updateText();

@@ -16,6 +16,8 @@ public class LaunchButtonScript : MonoBehaviour {
 
     public GameController gameController;
     private Ship ship;
+
+    public bool endButtonShow;
     
     void OnEnable()
     {
@@ -33,6 +35,10 @@ public class LaunchButtonScript : MonoBehaviour {
     {
         fuelDisplay.text = "Fuel: " + ((int) ship.fuel).ToString() + " I " + ship.maxFuel.ToString();
         thrustDisplay.text = "Thrust: " + ((int)ship.thrust).ToString() + " I " + ship.maxThrust.ToString();
+
+        //if(ship.rb.velocity.y < 0){
+          //  endButton.gameObject.SetActive(true);
+        //}
     }
 
     void endButtonClick()
