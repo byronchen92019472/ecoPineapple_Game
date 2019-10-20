@@ -5,6 +5,7 @@ Current Used Unity Version : 2018.1.0f2
 
 ## Release
 Find the final release at: https://github.com/byronchen92019472/ecoPineapple_Game/releases
+Or play the game at: https://byronchen92019472.github.io
 
 ## Description
 This game is a arcade space mobile/desktop flying game where you dodge asteroids and upgrade your ship. 
