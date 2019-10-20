@@ -1,5 +1,7 @@
 # Fly to Space 
-_Current Used Unity Version : 2018.1.0f2
+Current Used Unity Version : 2018.1.0f2
+
+![image](https://user-images.githubusercontent.com/42948358/67153596-d2b84f80-f348-11e9-910b-76411cd09cfd.png)
 
 ## Release
 Find the final release at: https://github.com/byronchen92019472/ecoPineapple_Game/releases
