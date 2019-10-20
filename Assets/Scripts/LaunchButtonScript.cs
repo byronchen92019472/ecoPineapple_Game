@@ -29,6 +29,13 @@ public class LaunchButtonScript : MonoBehaviour {
             right.gameObject.SetActive(false);
             up.gameObject.SetActive(false);
         #endif
+
+        #if UNITY_WEBGL
+            left.gameObject.SetActive(false);
+            right.gameObject.SetActive(false);
+            up.gameObject.SetActive(false);
+        #endif
+
     }
 
     void Update()

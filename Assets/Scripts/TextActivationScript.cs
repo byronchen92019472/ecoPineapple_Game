@@ -48,6 +48,12 @@ public class TextActivationScript : MonoBehaviour
             right.gameObject.SetActive(false);
             confirm.gameObject.SetActive(false);
         #endif
+
+        #if UNITY_WEBGL
+            left.gameObject.SetActive(false);
+            right.gameObject.SetActive(false);
+            confirm.gameObject.SetActive(false);
+        #endif
     }
 
     void Update()

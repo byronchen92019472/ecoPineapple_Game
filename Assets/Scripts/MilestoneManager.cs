@@ -53,7 +53,7 @@ public class MilestoneManager : MonoBehaviour {
             milestoneDisplay.text += "Reached Venus\n";
             milestoneVenus = true;
         }
-        if (ship.transform.position.y > 2200 && !milestoneMercury && gameController.levelNumber == 2){
+        if (ship.transform.position.y > 2150 && !milestoneMercury && gameController.levelNumber == 2){
             StartCoroutine(showMilestone("Milestone Reached\nReached Mercury"));
             milestoneDisplay.text += "Reached Mercury\n";
             milestoneCodes.text += "ECODISCOUNT30\n";
