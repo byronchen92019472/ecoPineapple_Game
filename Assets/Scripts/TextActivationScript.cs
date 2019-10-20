@@ -38,7 +38,7 @@ public class TextActivationScript : MonoBehaviour
     void Start()
     {
         bc = GetComponent<BoxCollider2D>();
-        LoadGame();
+        //LoadGame();
         //testing
         //bool sc = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneController>().level3Load;
         //Debug.Log(sc);
